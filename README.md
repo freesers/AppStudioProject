@@ -12,7 +12,7 @@ de informatie overzichtelijk bij elkaar te vinden.
 
 ## Oplossing
 Het proces van scores invoeren en overzichtelijk uitlezen tijdens Groentijd drastisch versimpelen.
-
+![alt text](https://github.com/freesers/Unit2-ApplePie/blob/master/doc/Simulator%20Screen%20Shot%20-%20iPad%20Pro%20(11-inch)%20-%202018-11-08%20at%2016.17.39.png)
 ### Main Features
 #### MVP
 1. Laat zien welke novieten en welke ronde
