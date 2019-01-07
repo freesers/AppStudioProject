@@ -8,7 +8,8 @@ In studentenhuizen wordt vaak gewerkt met schoonmaaklijstjes, helaas wordt dit v
 Door middel van deze app kan iedereen in het huiz zien wat de schoonmaaktaakjes zijn, en roosterst de app iedereen gelijkwaardig in. Om ervoor te zorgen dat je het niet vergeet krijgt degene die verantwoordelijk is een herinnering op z'n telefoon.
 
 ## Oplossing
-Het roosteren van schoonmaakdiensten in studentenhuizen moderniseren 
+Het roosteren van schoonmaakdiensten in studentenhuizen moderniseren
+![](doc/IMG_3365.JPG)
 ### Main Features
 #### MVP
 1. Laat beheerder klusjes invoeren
