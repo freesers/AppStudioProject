@@ -4,12 +4,11 @@ Deze app moet als het ware de Wie Betaalt Wat van de schoonmaakroosters in stude
 Alle taakjes worden evenredig verdeeld onder de bewoners
 
 ## Problem Statement
-In studentedhuizen wordt vaak gewerkt met schoonmaaklijstjes, helaas wordt dit vaak vergeten, of raken de papiertjes kwijt.
+In studentenhuizen wordt vaak gewerkt met schoonmaaklijstjes, helaas wordt dit vaak vergeten, of raken de papiertjes kwijt.
 Door middel van deze app kan iedereen in het huiz zien wat de schoonmaaktaakjes zijn, en roosterst de app iedereen gelijkwaardig in. Om ervoor te zorgen dat je het niet vergeet krijgt degene die verantwoordelijk is een herinnering op z'n telefoon.
 
 ## Oplossing
-Het proces van scores invoeren en overzichtelijk uitlezen tijdens Groentijd drastisch versimpelen.
-![alt text](https://github.com/freesers/AppStudioProject/blob/master/doc/IMG_2961.JPG)
+Het roosteren van schoonmaakdiensten in studentenhuizen moderniseren 
 ### Main Features
 #### MVP
 1. Laat beheerder klusjes invoeren
@@ -28,8 +27,11 @@ Het proces van scores invoeren en overzichtelijk uitlezen tijdens Groentijd dras
 UserNotifications
 
 #### external components
+Server (dacht eraan om de server van restaurant aan te passen) 
+
 
 #### Hardest parts
-Syncing the apps with each other
+Het syncen van de huisbewoners
+Lokale notificaties
 
 
