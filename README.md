@@ -1,35 +1,35 @@
-# AppStudioProject - Groentijd (nog niet zeker of ik dit echt wil)
+# AppStudioProject - Studentenhuis Schoonmaak (niet de uiteindelijke titel)
 # Sander de Vries
-Deze app zorgt ervoor dat de groentijd bij de ov forvm gemakkelijker 
-verloopt omdat het stemproces via een app gaat. 
+Deze app moet als het ware de Wie Betaalt Wat van de schoonmaakroosters in studentenhuizen worden.
+Alle taakjes worden evenredig verdeeld onder de bewoners
 
 ## Problem Statement
-Elk jaar komen er nieuwe mensen langs ons dispuut om te kijken of wij hen, en zij ons
-willen kiezen. Na elke ronde moet er gestemd worden, dit gebeurt op papier of met een gebrekkige webiste.
-Iedereen laten stemmen en de informatie samenvatten is altijd een rommelige taak. Door middel van een
-"Groentijd" App, kan elk dispuutslid snel op zijn eigen telefoon een score en een notitie toevoegen, en is
-de informatie overzichtelijk bij elkaar te vinden. 
+In studentedhuizen wordt vaak gewerkt met schoonmaaklijstjes, helaas wordt dit vaak vergeten, of raken de papiertjes kwijt.
+Door middel van deze app kan iedereen in het huiz zien wat de schoonmaaktaakjes zijn, en roosterst de app iedereen gelijkwaardig in. Om ervoor te zorgen dat je het niet vergeet krijgt degene die verantwoordelijk is een herinnering op z'n telefoon.
 
 ## Oplossing
 Het proces van scores invoeren en overzichtelijk uitlezen tijdens Groentijd drastisch versimpelen.
 ![alt text](https://github.com/freesers/AppStudioProject/blob/master/doc/IMG_2961.JPG)
 ### Main Features
 #### MVP
-1. Laat zien welke novieten en welke ronde
-2. Drup op een noviet om beoordeling en notities te kunnen geven
-3. Zie overzicht van alle novieten
-4. Synchroniseer met online library
-6. Zie alle gemiddelde scores van novieten.
+1. Laat beheerder klusjes invoeren
+2. Huisbewoners kunnen zich bij het huis aanmelden
+3. Huisbewoners hebben een overzicht van de klusjes en wat hiervoor gedaan moet worden.
+4. Huisbewoners worden automatisch ingedeeld door de app voor een klusje
+5. Huisbewoners kunnen het rooster zien waarop staat wie wat wanneer moet doen. 
+6. Huisbewoners krijgen een notificatie als ze aan de beurt zijn
+7. Een kleine online server die de gebruikers gebruiken om de app te synchroniseren ( anders zou de huisbewoner/beheerder de app lokaal kunnen gebruiken, en via een whatsapp sharesheet het rooster delen.)
 #### Optional
-5. Laat met badge zien als novieten medisch zijn
-6. Laat gemiddelde scores alleen zichtbaar met wachtwoord
+7. Laat een badge zien als jouw klusje nog moet gebeuren
+8. 
 
 ## Prerequisites
-#### Data sources
-https://web568.webfaction.com/phpMyAdmin/db_structure.php?server=1&db=forvm 
+#### Frameworks
+UserNotifications
+
 #### external components
-SQL
+
 #### Hardest parts
-Connecting to SQL and syncing all data
+Syncing the apps with each other
 
 
