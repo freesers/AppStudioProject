@@ -1,4 +1,4 @@
-# AppStudioProject - Studentenhuis Schoonmaak (niet de uiteindelijke titel)
+# AppStudioProject - Sweep
 # Sander de Vries
 Deze app moet als het ware de Wie Betaalt Wat van de schoonmaakroosters in studentenhuizen worden.
 Alle taakjes worden evenredig verdeeld onder de bewoners
