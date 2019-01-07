@@ -30,6 +30,7 @@ UserNotifications
 #### external components
 Server (dacht eraan om de server van restaurant aan te passen) 
 SQLlite
+FireBase
 
 #### Similar apps
 Nog niet een app gevonden op de AppStore die dit ook doet
