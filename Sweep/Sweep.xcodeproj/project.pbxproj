@@ -8,11 +8,16 @@
 
 /* Begin PBXBuildFile section */
 		11AB608321E39D83001CB0D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AB608221E39D83001CB0D0 /* AppDelegate.swift */; };
-		11AB608521E39D83001CB0D0 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AB608421E39D83001CB0D0 /* ViewController.swift */; };
+		11AB608521E39D83001CB0D0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AB608421E39D83001CB0D0 /* LoginViewController.swift */; };
 		11AB608821E39D83001CB0D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AB608621E39D83001CB0D0 /* Main.storyboard */; };
 		11AB608A21E39D85001CB0D0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 11AB608921E39D85001CB0D0 /* Assets.xcassets */; };
 		11AB608D21E39D85001CB0D0 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AB608B21E39D85001CB0D0 /* LaunchScreen.storyboard */; };
 		11AB609521E39F57001CB0D0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 11AB609421E39F57001CB0D0 /* GoogleService-Info.plist */; };
+		11B0DD7221E4F32B006382CF /* ChoresTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B0DD7121E4F32B006382CF /* ChoresTableViewController.swift */; };
+		11B0DD7421E4F343006382CF /* ScheduleTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B0DD7321E4F343006382CF /* ScheduleTableViewController.swift */; };
+		11B0DD7621E4F367006382CF /* ResidentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B0DD7521E4F367006382CF /* ResidentsViewController.swift */; };
+		11B0DD7821E4F6F3006382CF /* AddChoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B0DD7721E4F6F3006382CF /* AddChoreViewController.swift */; };
+		11B0DD7A21E4FFB3006382CF /* AddUserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11B0DD7921E4FFB3006382CF /* AddUserViewController.swift */; };
 		3F4AF0D6FC908EE6241AB89F /* Pods_Sweep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2864D150DB09FE2EF15C27A5 /* Pods_Sweep.framework */; };
 /* End PBXBuildFile section */
 
@@ -20,12 +25,17 @@
 		07BA2A88FB0C5E160C80FE2B /* Pods-Sweep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sweep.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sweep/Pods-Sweep.release.xcconfig"; sourceTree = "<group>"; };
 		11AB607F21E39D83001CB0D0 /* Sweep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sweep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11AB608221E39D83001CB0D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		11AB608421E39D83001CB0D0 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		11AB608421E39D83001CB0D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		11AB608721E39D83001CB0D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		11AB608921E39D85001CB0D0 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		11AB608C21E39D85001CB0D0 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		11AB608E21E39D85001CB0D0 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		11AB609421E39F57001CB0D0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		11B0DD7121E4F32B006382CF /* ChoresTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoresTableViewController.swift; sourceTree = "<group>"; };
+		11B0DD7321E4F343006382CF /* ScheduleTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleTableViewController.swift; sourceTree = "<group>"; };
+		11B0DD7521E4F367006382CF /* ResidentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResidentsViewController.swift; sourceTree = "<group>"; };
+		11B0DD7721E4F6F3006382CF /* AddChoreViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddChoreViewController.swift; sourceTree = "<group>"; };
+		11B0DD7921E4FFB3006382CF /* AddUserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewController.swift; sourceTree = "<group>"; };
 		2864D150DB09FE2EF15C27A5 /* Pods_Sweep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sweep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC78BD0CFCD65332182F5CDC /* Pods-Sweep.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sweep.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sweep/Pods-Sweep.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -64,7 +74,12 @@
 			isa = PBXGroup;
 			children = (
 				11AB608221E39D83001CB0D0 /* AppDelegate.swift */,
-				11AB608421E39D83001CB0D0 /* ViewController.swift */,
+				11AB608421E39D83001CB0D0 /* LoginViewController.swift */,
+				11B0DD7121E4F32B006382CF /* ChoresTableViewController.swift */,
+				11B0DD7321E4F343006382CF /* ScheduleTableViewController.swift */,
+				11B0DD7521E4F367006382CF /* ResidentsViewController.swift */,
+				11B0DD7721E4F6F3006382CF /* AddChoreViewController.swift */,
+				11B0DD7921E4FFB3006382CF /* AddUserViewController.swift */,
 				11AB608621E39D83001CB0D0 /* Main.storyboard */,
 				11AB608921E39D85001CB0D0 /* Assets.xcassets */,
 				11AB608B21E39D85001CB0D0 /* LaunchScreen.storyboard */,
@@ -192,6 +207,7 @@
 			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Sweep/Pods-Sweep-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
 				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
 				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
 			);
@@ -199,6 +215,7 @@
 			outputFileListPaths = (
 			);
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
 			);
@@ -214,7 +231,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11AB608521E39D83001CB0D0 /* ViewController.swift in Sources */,
+				11B0DD7421E4F343006382CF /* ScheduleTableViewController.swift in Sources */,
+				11B0DD7221E4F32B006382CF /* ChoresTableViewController.swift in Sources */,
+				11AB608521E39D83001CB0D0 /* LoginViewController.swift in Sources */,
+				11B0DD7621E4F367006382CF /* ResidentsViewController.swift in Sources */,
+				11B0DD7A21E4FFB3006382CF /* AddUserViewController.swift in Sources */,
+				11B0DD7821E4F6F3006382CF /* AddChoreViewController.swift in Sources */,
 				11AB608321E39D83001CB0D0 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,4 +7,5 @@ target 'Sweep' do
 
   # Pods for Sweep
   pod 'Firebase/Core'
+  pod 'Firebase/Auth'
 end
