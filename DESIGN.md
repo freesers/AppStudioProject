@@ -4,7 +4,7 @@
 ![](doc/UISketches.png)
 
 ## Utility Models
-![](doc/UtilityModels.JPG)
+![](doc/UtilityModels.png)
 
 ## API Frameworks
 * Firebase Auth
