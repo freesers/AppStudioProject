@@ -16,6 +16,6 @@ Today I mainly foccused reading the Human Interface guidelines and working on my
 # Day 4
 The day started off with our first team meeting with Emma, we discussed our projects and prototypes. Fried (teammember) mentioned that he had had a TA telling him FireBase might be too big for the scope of this project. And to use a local server instead. I'm personally not sure yet whether I want to use it or not, as a local server would kind of defeat the purpose of this app. I finished the day with completing my prototype and reading more about FireBase Realtime Storage
 Storyboard:
-![](doc/Prototype10/01.png)
+![](doc/Prototype10:01.png)
 Detail of first version custom table cell:
 ![](doc/ChoreTableCellV1.png)
