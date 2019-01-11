@@ -19,3 +19,6 @@ Storyboard:
 ![](doc/Prototype10:01.png)
 Detail of first version custom table cell:
 ![](doc/ChoreTableCellV1.png)
+
+# Day 5
+Spent all day trying to get FireBase storage to work, unfortunately too large a hassle to integrate into the project (Should have listened to earlier advice). Decided I will only be using FireBase for Authentication, then using the specific UID in own local server. Will modify the resto server to work with my app.
