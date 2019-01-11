@@ -7,7 +7,7 @@ Today I submitted my (first) design document and I met with my group (H)
 ![](doc/UISketches.png)
 The user first logs in or registers, the is presented with a tab bar controller between three main screens. Then there will be a couple loose viewcontrollers either presented modally or with a show - detail style. 
 
-![](UtilityModels.png)
+![](doc/UtilityModels.png)
 The first ideas on how the data should be modeled. The main structures are Users (detailing user information) and Chores.
 
 # Day 3
