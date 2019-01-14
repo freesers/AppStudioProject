@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		1143AFB721E8E09C006DAE58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1143AFB621E8E09C006DAE58 /* GoogleService-Info.plist */; };
+		11A3E5FA21EC9E5E007E28D4 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3E5F921EC9E5E007E28D4 /* House.swift */; };
+		11A3E5FC21ECA104007E28D4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3E5FB21ECA104007E28D4 /* RegisterViewController.swift */; };
+		11A3E60121ECA409007E28D4 /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3E60021ECA409007E28D4 /* UserModelController.swift */; };
+		11A3E60321ECB04B007E28D4 /* HouseModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3E60221ECB04B007E28D4 /* HouseModelController.swift */; };
 		11AB608321E39D83001CB0D0 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AB608221E39D83001CB0D0 /* AppDelegate.swift */; };
 		11AB608521E39D83001CB0D0 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11AB608421E39D83001CB0D0 /* LoginViewController.swift */; };
 		11AB608821E39D83001CB0D0 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 11AB608621E39D83001CB0D0 /* Main.storyboard */; };
@@ -27,6 +31,10 @@
 
 /* Begin PBXFileReference section */
 		1143AFB621E8E09C006DAE58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		11A3E5F921EC9E5E007E28D4 /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
+		11A3E5FB21ECA104007E28D4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		11A3E60021ECA409007E28D4 /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
+		11A3E60221ECB04B007E28D4 /* HouseModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HouseModelController.swift; sourceTree = "<group>"; };
 		11AB607F21E39D83001CB0D0 /* Sweep.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Sweep.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		11AB608221E39D83001CB0D0 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		11AB608421E39D83001CB0D0 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -60,12 +68,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		1143AFB521E8DB9D006DAE58 /* Modals */ = {
+		1143AFB521E8DB9D006DAE58 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				11C7809921E7584D00AB5CEF /* User.swift */,
+				11A3E5F921EC9E5E007E28D4 /* House.swift */,
 			);
-			name = Modals;
+			name = Models;
+			sourceTree = "<group>";
+		};
+		11A3E5FD21ECA3E0007E28D4 /* ModelControllers */ = {
+			isa = PBXGroup;
+			children = (
+				11A3E60021ECA409007E28D4 /* UserModelController.swift */,
+				11A3E60221ECB04B007E28D4 /* HouseModelController.swift */,
+			);
+			name = ModelControllers;
 			sourceTree = "<group>";
 		};
 		11AB607621E39D83001CB0D0 = {
@@ -94,7 +112,8 @@
 				11C7809F21E7644700AB5CEF /* ViewControllers */,
 				11C7809B21E7643600AB5CEF /* ChoreTableViewCell.swift */,
 				11C7809C21E7643600AB5CEF /* ChoreTableViewCell.xib */,
-				1143AFB521E8DB9D006DAE58 /* Modals */,
+				1143AFB521E8DB9D006DAE58 /* Models */,
+				11A3E5FD21ECA3E0007E28D4 /* ModelControllers */,
 				11AB608921E39D85001CB0D0 /* Assets.xcassets */,
 				11AB608B21E39D85001CB0D0 /* LaunchScreen.storyboard */,
 				11AB608E21E39D85001CB0D0 /* Info.plist */,
@@ -106,6 +125,7 @@
 		11C7809F21E7644700AB5CEF /* ViewControllers */ = {
 			isa = PBXGroup;
 			children = (
+				11A3E5FB21ECA104007E28D4 /* RegisterViewController.swift */,
 				11AB608421E39D83001CB0D0 /* LoginViewController.swift */,
 				11B0DD7921E4FFB3006382CF /* AddUserViewController.swift */,
 				11B0DD7121E4F32B006382CF /* ChoresTableViewController.swift */,
@@ -263,12 +283,16 @@
 				11C7809D21E7643600AB5CEF /* ChoreTableViewCell.swift in Sources */,
 				11B0DD7421E4F343006382CF /* ScheduleTableViewController.swift in Sources */,
 				11B0DD7221E4F32B006382CF /* ChoresTableViewController.swift in Sources */,
+				11A3E5FC21ECA104007E28D4 /* RegisterViewController.swift in Sources */,
+				11A3E60321ECB04B007E28D4 /* HouseModelController.swift in Sources */,
 				11AB608521E39D83001CB0D0 /* LoginViewController.swift in Sources */,
 				11B0DD7621E4F367006382CF /* ResidentsViewController.swift in Sources */,
 				11C7809A21E7584D00AB5CEF /* User.swift in Sources */,
 				11B0DD7A21E4FFB3006382CF /* AddUserViewController.swift in Sources */,
 				11B0DD7821E4F6F3006382CF /* AddChoreViewController.swift in Sources */,
 				11AB608321E39D83001CB0D0 /* AppDelegate.swift in Sources */,
+				11A3E60121ECA409007E28D4 /* UserModelController.swift in Sources */,
+				11A3E5FA21EC9E5E007E28D4 /* House.swift in Sources */,
 				11C780A321E76E8600AB5CEF /* ChoreDetailViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
