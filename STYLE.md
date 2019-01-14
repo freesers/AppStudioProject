@@ -22,4 +22,4 @@
 
 
 ### Sources:
-* https://github.com/linkedin/swift-style-guide
+* https://github.com/linkedin/swift-style-guide (my code will adhere to part 1, 2 and 4)
