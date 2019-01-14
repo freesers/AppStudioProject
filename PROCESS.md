@@ -25,6 +25,7 @@ Spent all day trying to get FireBase storage to work, unfortunately too large a 
 
 # Day 6
 Today I began modelling the datastructure of the users and houses. I decided I'd create datamodelcontrollers which can be used troughout the app. Still have to figure out how to make it work with the new resto server, Martijn still has to do some modifcations to the server for it to work with the app (filtering in querries). 
-Then had a team meeting for the basic style guide and updates. Fried is also waiting on the server to work.
-Almost finished with work for user registration. Uses FireBase Auth, for registration and login. Handles most cases (wrong password, same email etc. Decided that if you chose to create a new house, you become the administrator. App warns you about that. Basic registration screen:
+Then had a team meeting for the basic style guide (https://github.com/freesers/AppStudioProject/blob/master/STYLE.md) and updates. Fried is also waiting on the server to work.
+Almost finished with work for user registration. Uses FireBase Auth, for registration and login. Handles most cases (wrong password, same email etc. Decided that if you chose to create a new house, you become the administrator. App warns you about that. 
+Basic registration screen:
 ![](doc/RegistrationScreen14jan.png)
