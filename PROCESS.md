@@ -22,3 +22,9 @@ Detail of first version custom table cell:
 
 # Day 5
 Spent all day trying to get FireBase storage to work, unfortunately too large a hassle to integrate into the project (Should have listened to earlier advice). Decided I will only be using FireBase for Authentication, then using the specific UID in own local server. Will modify the resto server to work with my app.
+
+# Day 6
+Today I began modelling the datastructure of the users and houses. I decided I'd create datamodelcontrollers which can be used troughout the app. Still have to figure out how to make it work with the new resto server, Martijn still has to do some modifcations to the server for it to work with the app (filtering in querries). 
+Then had a team meeting for the basic style guide and updates. Fried is also waiting on the server to work.
+Almost finished with work for user registration. Uses FireBase Auth, for registration and login. Handles most cases (wrong password, same email etc. Decided that if you chose to create a new house, you become the administrator. App warns you about that. Basic registration screen:
+![](doc/RegistrationScreen14jan.png)
