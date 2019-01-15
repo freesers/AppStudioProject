@@ -12,16 +12,21 @@ class UserModelController {
     
     static let shared = UserModelController()
     
-    var currentUser: User?
-    var residents: [User]?
+    static var currentUser: User!
+    static var residents: [User]!
     
     
-    func addUser(name: String, uid: String, email: String, password: String, isAdministrator: Bool, house: String) {
-        currentUser = User(name: name, uid: uid, email: email, password: password, isAdministrator: isAdministrator, house: house)
+    static func addUser(name: String, uid: String, email: String, password: String, isAdministrator: Bool, house: String) {
+        UserModelController.currentUser = User(uid: uid, name: name, email: email, password: password, isAdministrator: isAdministrator, house: house)
         
-        if let currentUser = currentUser {
+        if let currentUser = UserModelController.currentUser {
             residents?.append(currentUser)
         }
+    }
+    
+    static func setCurrentUser(with uid: String) {
+        let matchingUser = UserModelController.residents.first{$0.uid == uid}
+        UserModelController.currentUser = matchingUser
     }
     
     

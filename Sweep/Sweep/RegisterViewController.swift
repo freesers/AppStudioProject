@@ -28,6 +28,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
         password2Textfield.textContentType = .password
     
         
@@ -80,85 +81,96 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return true
     }
     
+    //MARK: Registration code
+    
     @IBAction func registerButtonTapped(_ sender: UIButton) {
-        if createUser() {
-            performSegue(withIdentifier: "registrationSucces", sender: nil)
+        if checkFields() && checkPassword() {
+            
+            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: nil)
+            let FIRUser = Auth.auth().currentUser
+            guard let user = FIRUser else { return }
+            let uid = user.uid
+            
+            let newUser = createUser(with: uid)
+            if nameTextField.text! == newUser.name {
+                setDisplayName(name: newUser.name)
+                performSegue(withIdentifier: "registrationSucces", sender: nil)
+            }
+        }
+    }
+    
+    /// set displayname in FIR
+    func setDisplayName(name: String) {
+        let user = Auth.auth().currentUser
+        if let user = user {
+            let changeRequest = user.createProfileChangeRequest()
+            
+            changeRequest.displayName = name
+            changeRequest.commitChanges { (error) in
+                if let error = error {
+                    print("Changerequest Error: \(error.localizedDescription)")
+                } else {
+                    print("Displayname updated with: \(name)")
+                }
+            }
+        }
+    }
+    
+    /// checks if textfield are filled in
+    func checkFields() -> Bool {
+        if nameTextField.text?.isEmpty ?? true {
+            createAlert(with: "Name field is empty")
+            return false
+        } else if emailTextField.text?.isEmpty ?? true {
+            createAlert(with: "Email field is empty")
+            return false
+        } else if passwordTextField.text?.isEmpty ?? true || password2Textfield.text?.isEmpty ?? true {
+            createAlert(with: "Password field is empty")
+            return false
         } else {
-            print("error")
+            return true
         }
     }
     
-
-    
-    func createUser() -> Bool {
-        
-        var registrationSucces = false
-        
-        
-        guard checkPassword() else { return false }
-        
-        let tryUid = makeFIBUser()
-        
-        guard let uid = tryUid else { return false}
-        guard nameTextField.text != nil else {return false}
-        
-        if let newHouse = newHouseTextfield.text {
-            
-            let alert = UIAlertController(title: "You will create a new house", message: "By creating a new house, you will be the administrator and add chores", preferredStyle: .alert)
-            alert.addAction((UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
-                UserModelController.shared.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, password: self.passwordTextField.text!, isAdministrator: true, house: newHouse)
-                registrationSucces = true
-            })))
-            alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { (UIAlertAction) in
-                self.newHouseTextfield.text = nil
-            }))
-            
-            self.present(alert, animated: true, completion: nil)
-            
-        }
-        
-        
-        return registrationSucces
-    }
-   
     /// checks if passwords match, shows alert and resets otherwise
     func checkPassword() -> Bool {
-        
         if passwordTextField.text != password2Textfield.text {
             
             let alert = UIAlertController(title: "Error", message: "Your passwords don't match", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
-                self.passwordTextField.text = ""
-                self.password2Textfield.text = ""
+                
             }))
             self.present(alert, animated: true, completion: nil)
             return false
-       
-        } else if passwordTextField.text == "" {
-            
-            let alert = UIAlertController(title: "Error", message: "No password entered", preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
-                self.passwordTextField.text = ""
-                self.password2Textfield.text = ""
-            }))
-            self.present(alert, animated: true, completion: nil)
-            return false
+        } else {
+            return true
         }
-        return true
     }
     
-    /// register user at FireBase and return UID
-    func makeFIBUser() -> String? {
-        
-        var uid: String? = nil
-        guard let email = emailTextField.text, let password = passwordTextField.text else { return uid }
-        
-        Auth.auth().createUser(withEmail: email, password: password) { (user, Error) in
-            uid = user?.user.uid
-            print(Error.debugDescription)
-        }
-        return uid
+    /// creates custom alert message
+    func createAlert(with message: String) {
+        let alert = UIAlertController(title: "Error", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+        self.present(alert, animated: true, completion: nil)
     }
+    
+
+    /// creates user, either administrator or just member
+    func createUser(with uid: String) -> User {
+        
+        if newHouseTextfield.text! != "" {
+            
+            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, password: self.passwordTextField.text!, isAdministrator: true, house: self.newHouseTextfield.text!)
+            return UserModelController.currentUser!
+        } else {
+           
+            let housePickedRow = housePickerView.selectedRow(inComponent: 0)
+            let housePicked = pickerData[housePickedRow]
+            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, password: self.passwordTextField.text!, isAdministrator: true, house: housePicked.name)
+            return UserModelController.currentUser!
+        }
+    }
+
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         

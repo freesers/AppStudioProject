@@ -7,24 +7,35 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 class ResidentsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        if let currentUser = Auth.auth().currentUser?.displayName {
+            self.title = "Hi, \(currentUser)"
+        }
         // Do any additional setup after loading the view.
     }
     
-
-    /*
+    @IBAction func logOutButtonPressed(_ sender: Any) {
+        let firebaseAuth = Auth.auth()
+        
+        do {
+            try firebaseAuth.signOut()
+            performSegue(withIdentifier: "logOutSegue", sender: nil)
+            print("Logged out")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+        
+    }
+    
+    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+    
 
 }
