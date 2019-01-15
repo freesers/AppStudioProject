@@ -29,3 +29,7 @@ Then had a team meeting for the basic style guide (https://github.com/freesers/A
 Almost finished with work for user registration. Uses FireBase Auth, for registration and login. Handles most cases (wrong password, same email etc. Decided that if you chose to create a new house, you become the administrator. App warns you about that. 
 Basic registration screen:
 ![](doc/RegistrationScreen14jan.png)
+
+# Day 7
+I completed the registration procces, users can now register, select or create house, login, logout and stay logged in. One problem when you restart the app but are logged in: loggout unwind segue doesn't work because the loginViewController is not loaded. Couldn't figure it out and no TA available.
+Will try to sync users and houses with the server tommorow
