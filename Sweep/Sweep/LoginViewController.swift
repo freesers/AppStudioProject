@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseAuth
 
+
+
 class LoginViewController: UIViewController, UITextFieldDelegate {
     
     @IBOutlet weak var loginButton: UIButton!
@@ -16,11 +18,24 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
+    var loginState: Bool!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
+       // isUserLoggedIn()
         loginButton.layer.cornerRadius = 12
-        
+
+        isUserLoggedIn()
+    }
+    
+    func isUserLoggedIn() {
+        DispatchQueue.main.async {
+            if let user = Auth.auth().currentUser {
+                self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
+                self.emailTextField.text = user.email
+                self.passwordTextField.text = "*******"
+            }
+        }
     }
    
     
@@ -40,23 +55,27 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     //MARK: Login code
     @IBAction func loginButtonPressed(_ sender: Any) {
+        animateButton(loginButton: loginButton)
         guard checkFields() else { return }
         
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (authResult, authError) in
             if let result = authResult {
                 print("UID: \(result.user.uid)")
+                self.performSegue(withIdentifier: "logInSegue", sender: nil)
             } else {
                 guard let loginError = authError else { return }
                 print("Login Error: \(loginError.localizedDescription)")
             }
         }
-        
-        if Auth.auth().currentUser == nil {
-            
-            // user is signed in
-            performSegue(withIdentifier: "logInSegue", sender: nil)
+    }
+    
+    func animateButton(loginButton: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            loginButton.transform = CGAffineTransform(scaleX: 1.5, y: 3)
+            loginButton.transform = CGAffineTransform.identity
         }
     }
+
     
     func checkFields() -> Bool {
         if emailTextField.text! == "" {

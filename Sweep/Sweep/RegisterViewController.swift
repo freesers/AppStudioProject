@@ -28,10 +28,6 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        password2Textfield.textContentType = .password
-    
-        
         // configure register button
         registerButton.layer.cornerRadius = 12
         
@@ -59,17 +55,15 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     //MARK: Controlling the Keyboard
+    
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         switch textField {
         case nameTextField:
-            textField.resignFirstResponder()
             emailTextField.becomeFirstResponder()
         case emailTextField:
-            emailTextField.resignFirstResponder()
             passwordTextField.becomeFirstResponder()
         case passwordTextField:
-            passwordTextField.resignFirstResponder()
             password2Textfield.becomeFirstResponder()
         case password2Textfield:
             password2Textfield.resignFirstResponder()

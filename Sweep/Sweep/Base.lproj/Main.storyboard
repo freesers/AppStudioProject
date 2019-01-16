@@ -58,7 +58,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
                                         <connections>
                                             <outlet property="delegate" destination="ZIw-fv-iT5" id="Wnc-tL-Kqe"/>
                                         </connections>
@@ -70,7 +70,7 @@
                                         </constraints>
                                         <nil key="textColor"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="done" secureTextEntry="YES" textContentType="password"/>
+                                        <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" returnKeyType="next" secureTextEntry="YES" smartDashesType="no" smartInsertDeleteType="no" smartQuotesType="no" textContentType="new-password"/>
                                         <connections>
                                             <outlet property="delegate" destination="ZIw-fv-iT5" id="cWg-BS-ebP"/>
                                         </connections>
@@ -277,6 +277,7 @@
                         <outlet property="loginButton" destination="fco-Ms-nX2" id="eMp-fL-0tv"/>
                         <outlet property="passwordTextField" destination="lBf-fy-T1u" id="dua-1n-1oc"/>
                         <segue destination="1lu-RO-M5K" kind="show" identifier="logInSegue" id="Wlt-Tn-As5"/>
+                        <segue destination="1lu-RO-M5K" kind="show" identifier="loggedInSegue" id="cGg-ST-MlQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JrJ-uE-E9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -369,7 +370,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ka4-Qp-2w7">
                                         <rect key="frame" x="0.0" y="0.0" width="375" height="750"/>
                                         <subviews>
-                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Afbeelding" translatesAutoresizingMaskIntoConstraints="NO" id="PSa-oG-CIs">
+                                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="test" translatesAutoresizingMaskIntoConstraints="NO" id="PSa-oG-CIs">
                                                 <rect key="frame" x="8" y="8" width="359" height="240"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="240" id="IMy-RK-2Vo"/>
@@ -633,12 +634,12 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Afbeelding" width="1920" height="1440"/>
         <image name="broom" width="51" height="51"/>
         <image name="list" width="30" height="30"/>
         <image name="people" width="30" height="30"/>
+        <image name="test" width="1920" height="1440"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Wlt-Tn-As5"/>
+        <segue reference="cGg-ST-MlQ"/>
     </inferredMetricsTieBreakers>
 </document>

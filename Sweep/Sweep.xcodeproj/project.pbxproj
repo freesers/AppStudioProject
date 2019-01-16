@@ -31,6 +31,7 @@
 
 /* Begin PBXFileReference section */
 		1143AFB621E8E09C006DAE58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		11811CFF21EF90750035B3EB /* NetworkingTests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = NetworkingTests.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		11A3E5F921EC9E5E007E28D4 /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		11A3E5FB21ECA104007E28D4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		11A3E60021ECA409007E28D4 /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
@@ -89,6 +90,7 @@
 		11AB607621E39D83001CB0D0 = {
 			isa = PBXGroup;
 			children = (
+				11811CFF21EF90750035B3EB /* NetworkingTests.playground */,
 				11AB608121E39D83001CB0D0 /* Sweep */,
 				11AB608021E39D83001CB0D0 /* Products */,
 				182A66A92A813D60071B9E88 /* Pods */,
