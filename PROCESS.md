@@ -33,3 +33,7 @@ Basic registration screen:
 # Day 7
 I completed the registration procces, users can now register, select or create house, login, logout and stay logged in. One problem when you restart the app but are logged in: loggout unwind segue doesn't work because the loginViewController is not loaded. Couldn't figure it out and no TA available.
 Will try to sync users and houses with the server tommorow
+
+# Day 8 
+Problem from yesterday solved, always boot with loginVC and immediately segue to next screen if already logged in. Further polished registration/login process. After that I started to work with the server. Used a playground to test network functions. Figured out al the code to work with the reste server. I can store multiple key-value pairs in the same array index. 
+I will use /list & /menu as users and houses. Also encoded image to ascii to store on the server, retrieving and decoding work as well.
