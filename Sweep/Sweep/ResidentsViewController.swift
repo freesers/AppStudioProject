@@ -14,11 +14,11 @@ class ResidentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        if let currentUser = Auth.auth().currentUser?.displayName {
-            self.title = "Hi, \(currentUser)"
-        }
-        // Do any additional setup after loading the view.
+       self.title = Hi, "\(UserModelController.currentUser.name)"
+       
     }
+    
+    
     
     @IBAction func logOutButtonPressed(_ sender: Any) {
         let firebaseAuth = Auth.auth()

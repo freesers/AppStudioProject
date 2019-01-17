@@ -18,6 +18,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     @IBOutlet weak var housePickerView: UIPickerView!
     @IBOutlet weak var newHouseTextfield: UITextField!
+    @IBOutlet weak var disabledPickerViewLabel: UILabel!
     
     @IBOutlet weak var registerButton: UIButton!
     
@@ -75,39 +76,49 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return true
     }
     
+    func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
+        if newHouseTextfield.text != "" {
+            housePickerView.isHidden = true
+            disabledPickerViewLabel.isHidden = false
+        } else {
+            housePickerView.isHidden = false
+            disabledPickerViewLabel.isHidden = true
+        }
+        return true
+    }
     //MARK: Registration code
     
     @IBAction func registerButtonTapped(_ sender: UIButton) {
         if checkFields() && checkPassword() {
-            
-            Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!, completion: nil)
-            let FIRUser = Auth.auth().currentUser
-            guard let user = FIRUser else { return }
-            let uid = user.uid
-            
-            let newUser = createUser(with: uid)
-            if nameTextField.text! == newUser.name {
-                setDisplayName(name: newUser.name)
-                performSegue(withIdentifier: "registrationSucces", sender: nil)
+     
+            registerUser { (uid) in
+                DispatchQueue.main.async {
+                    let newUser = self.createUser(with: uid)
+                    if self.nameTextField.text! == newUser.name {
+                        self.performSegue(withIdentifier: "registrationSucces", sender: nil)
+                    }
+                }
             }
         }
     }
     
-    /// set displayname in FIR
-    func setDisplayName(name: String) {
-        let user = Auth.auth().currentUser
-        if let user = user {
-            let changeRequest = user.createProfileChangeRequest()
+    func registerUser(completion: @escaping (String) -> Void) {
+        var uid = ""
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (AuthDataResult, Error) in
+            guard let user = AuthDataResult?.user else { return }
+            uid = user.uid
             
-            changeRequest.displayName = name
+            let changeRequest = user.createProfileChangeRequest()
+            changeRequest.displayName = self.nameTextField.text!
             changeRequest.commitChanges { (error) in
                 if let error = error {
                     print("Changerequest Error: \(error.localizedDescription)")
                 } else {
-                    print("Displayname updated with: \(name)")
+                    print("Displayname updated with: \(self.nameTextField.text!)")
                 }
             }
         }
+        completion(uid)
     }
     
     /// checks if textfield are filled in

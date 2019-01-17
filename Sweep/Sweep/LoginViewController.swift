@@ -20,6 +20,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     var loginState: Bool!
     
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
        // isUserLoggedIn()
@@ -34,6 +36,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
                 self.emailTextField.text = user.email
                 self.passwordTextField.text = "*******"
+                
+                UserModelController.loadUser(completion: { user in
+                    UserModelController.currentUser = user
+                })
             }
         }
     }

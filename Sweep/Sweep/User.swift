@@ -8,13 +8,20 @@
 
 import Foundation
 
-struct User {
+struct User: Codable {
     
+    var id: Int
     var uid: String
     var name: String
     var email: String
     var password: String
-    var isAdministrator: Bool
+    var isAdministrator: String
     var house: String
     
+    var description: String {
+
+        // custom string to upload to server
+        return "uid=\(uid)&name=\(name)&email=\(email)&password=\(password)&isAdministrator=\(String(isAdministrator))&house=\(house)"
+    }
+
 }

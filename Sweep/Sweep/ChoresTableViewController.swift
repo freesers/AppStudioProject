@@ -13,6 +13,7 @@ class ChoresTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerTableViewCell()
+
     }
 
     // MARK: - Table view data source

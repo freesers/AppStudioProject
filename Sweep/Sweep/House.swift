@@ -9,21 +9,14 @@
 import Foundation
 import UIKit
 
-class House {
+struct House {
     
     var name: String
     var chores: [Chore]?
     var residents: [String]
     var administrator: String
-    
-    init(name: String, residents: [String], administrator: String) {
-        self.name = name
-        self.residents = residents
-        self.administrator = administrator
-    }
-    
-}
 
+}
 
 struct Chore {
     
