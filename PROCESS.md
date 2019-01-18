@@ -40,3 +40,7 @@ I will use /list & /menu as users and houses. Also encoded image to ascii to sto
 
 # Day 9
 The network code to store users on the server works, also loading users to have their information ready throughout the app. Unfortunately, I later realised that the resto server had been updated with new filtering options. Which made previous work unnecessary, I also strugled a very long time with a very simple bug that i only spotted at the end of the day. Hopefully tommorow I can add in the rest of the house info to the server.
+
+# Day 10
+Finally figured all the network stuff out, completion blocks in completion blocks... Wrote extensions to UIViewcontroller and UIColor to have keyboarddismissal and custom app color easily available troughout the app. Users can now add basic chore to the table view.
+
