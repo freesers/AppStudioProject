@@ -37,3 +37,6 @@ Will try to sync users and houses with the server tommorow
 # Day 8 
 Problem from yesterday solved, always boot with loginVC and immediately segue to next screen if already logged in. Further polished registration/login process. After that I started to work with the server. Used a playground to test network functions. Figured out al the code to work with the reste server. I can store multiple key-value pairs in the same array index. 
 I will use /list & /menu as users and houses. Also encoded image to ascii to store on the server, retrieving and decoding work as well.
+
+# Day 9
+The network code to store users on the server works, also loading users to have their information ready throughout the app. Unfortunately, I later realised that the resto server had been updated with new filtering options. Which made previous work unnecessary, I also strugled a very long time with a very simple bug that i only spotted at the end of the day. Hopefully tommorow I can add in the rest of the house info to the server.
