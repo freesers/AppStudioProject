@@ -43,5 +43,6 @@ The network code to store users on the server works, also loading users to have 
 
 # Day 10
 Finally figured all the network stuff out, completion blocks in completion blocks... Wrote extensions to UIViewcontroller and UIColor to have keyboarddismissal and custom app color easily available troughout the app. Users can now add basic chore to the table view.
+
 ![](doc/addChore.png)
 ![](doc/launchScreen.png)
