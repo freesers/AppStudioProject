@@ -11,6 +11,8 @@ import Foundation
 class HouseModelController {
     
     static let shared = HouseModelController(house: House(name: "De Lelie", residents: ["Sander"], administrator: "Sander"))
+    
+    static var chores = [Chore]()
 
     var houses: [House]
     

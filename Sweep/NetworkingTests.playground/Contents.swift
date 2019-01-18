@@ -84,4 +84,4 @@ for i in 1...20 {
 }
 
 
-//deleteRestoServer(withId: 1)
+deleteRestoServer(withId: 1)

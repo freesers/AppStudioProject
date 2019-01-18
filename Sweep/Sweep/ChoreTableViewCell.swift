@@ -11,6 +11,11 @@ import UIKit
 class ChoreTableViewCell: UITableViewCell {
 
     @IBOutlet weak var cleanedButton: UIButton!
+    @IBOutlet weak var choreTitleLabel: UILabel!
+    @IBOutlet weak var choreImageView: UIImageView!
+    @IBOutlet weak var choreDueDateLabel: UILabel!
+    @IBOutlet weak var chorePersonDueLabel: UILabel!
+    @IBOutlet weak var choreDaysSinceCleanLabel: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()

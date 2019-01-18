@@ -9,16 +9,24 @@
 import UIKit
 
 class ChoresTableViewController: UITableViewController {
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerTableViewCell()
 
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        self.tableView.reloadData()
+    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        print(HouseModelController.chores.count)
+        return HouseModelController.chores.count
+        
     }
 
 
@@ -31,6 +39,11 @@ class ChoresTableViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChoreCell", for: indexPath) as! ChoreTableViewCell
+        
+        let chore = HouseModelController.chores[indexPath.row]
+        cell.choreTitleLabel.text = chore.title
+        cell.choreImageView.image = chore.photo
+        
         
         return cell
     }
@@ -86,7 +99,7 @@ class ChoresTableViewController: UITableViewController {
     */
     
     @IBAction func unwindToChores(segue: UIStoryboardSegue) {
-        
+
     }
 
 }

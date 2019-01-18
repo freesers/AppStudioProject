@@ -39,6 +39,8 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // configure picker
         housePickerView.dataSource = self
         housePickerView.delegate = self
+        
+        self.hideKeyboardWithTap()
  
     }
     
@@ -88,38 +90,30 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     //MARK: Registration code
     
-    @IBAction func registerButtonTapped(_ sender: UIButton) {
-        if checkFields() && checkPassword() {
-     
-            registerUser { (uid) in
-                DispatchQueue.main.async {
-                    let newUser = self.createUser(with: uid)
-                    if self.nameTextField.text! == newUser.name {
-                        self.performSegue(withIdentifier: "registrationSucces", sender: nil)
-                    }
+    @IBAction func registerButtonTapped(_ sender: Any) {
+        guard checkFields() && checkPassword() else { return }
+        
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
+        var uid = ""
+        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (AuthDataResult, Error) in
+            if let user = AuthDataResult?.user {
+                uid = user.uid
+                self.setCurrentUser(with: uid) {
+                    self.performSegue(withIdentifier: "registrationSucces", sender: nil)
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 }
+            }
+            if let error = Error {
+                print("AutError: \(error.localizedDescription)")
             }
         }
     }
     
-    func registerUser(completion: @escaping (String) -> Void) {
-        var uid = ""
-        Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (AuthDataResult, Error) in
-            guard let user = AuthDataResult?.user else { return }
-            uid = user.uid
-            
-            let changeRequest = user.createProfileChangeRequest()
-            changeRequest.displayName = self.nameTextField.text!
-            changeRequest.commitChanges { (error) in
-                if let error = error {
-                    print("Changerequest Error: \(error.localizedDescription)")
-                } else {
-                    print("Displayname updated with: \(self.nameTextField.text!)")
-                }
-            }
-        }
-        completion(uid)
+    func setCurrentUser(with uid: String, completion: @escaping () -> Void) {
+        UserModelController.currentUser = self.createUser(with: uid)
+        completion()
     }
+    
     
     /// checks if textfield are filled in
     func checkFields() -> Bool {
@@ -163,6 +157,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     /// creates user, either administrator or just member
     func createUser(with uid: String) -> User {
         
+        // textfield is filled in
         if newHouseTextfield.text! != "" {
             
             UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, password: self.passwordTextField.text!, isAdministrator: true, house: self.newHouseTextfield.text!)

@@ -24,8 +24,19 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-       // isUserLoggedIn()
+        self.hideKeyboardWithTap()
         loginButton.layer.cornerRadius = 12
+        
+// Block to logout for debugging
+//
+//        let firebaseAuth = Auth.auth()
+//        do {
+//            try firebaseAuth.signOut()
+//           // performSegue(withIdentifier: "logOutSegue", sender: nil)
+//            print("Logged out")
+//        } catch let signOutError as NSError {
+//            print ("Error signing out: %@", signOutError)
+//        }
 
         isUserLoggedIn()
     }
@@ -33,12 +44,16 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     func isUserLoggedIn() {
         DispatchQueue.main.async {
             if let user = Auth.auth().currentUser {
-                self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = true
                 self.emailTextField.text = user.email
                 self.passwordTextField.text = "*******"
+                self.loginButton.setTitle("Logging in...", for: .normal)
+                let uid = user.uid
                 
-                UserModelController.loadUser(completion: { user in
+                UserModelController.loadUser(with: uid, completion: { (user) in
                     UserModelController.currentUser = user
+                    self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
                 })
             }
         }
@@ -67,7 +82,12 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (authResult, authError) in
             if let result = authResult {
                 print("UID: \(result.user.uid)")
-                self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                self.loginButton.setTitle("Logging in...", for: .normal)
+                UserModelController.loadUser(with: result.user.uid, completion: { (user) in
+                    UserModelController.currentUser = user
+                    self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                })
+                
             } else {
                 guard let loginError = authError else { return }
                 print("Login Error: \(loginError.localizedDescription)")
@@ -106,6 +126,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
         emailTextField.text = ""
         passwordTextField.text = ""
+        loginButton.setTitle("Login", for: .normal)
         print("worked")
     }
 

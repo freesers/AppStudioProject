@@ -45,15 +45,15 @@ class UserModelController {
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
-       // let postString = newUser.description
-      //  request.httpBody = postString.data(using: .utf8)
+        let postString = newUser.description
+        request.httpBody = postString.data(using: .utf8)
         
         let task = URLSession.shared.uploadTask(withStreamedRequest: request)
         task.resume()
     }
     
-    static func loadUser(completion: @escaping (User) -> Void) {
-        let userUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/users?uid=G6Hq5IASpZc5PRW5DuE8ALIH3bc2")!
+    static func loadUser(with uid: String, completion: @escaping (User) -> Void) {
+        let userUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/users?uid=\(uid)")!
         let request = URLRequest(url: userUrl)
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in

@@ -14,7 +14,7 @@ class ResidentsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-       self.title = Hi, "\(UserModelController.currentUser.name)"
+        self.title = "Hi, \(UserModelController.currentUser.name)"
        
     }
     
@@ -35,7 +35,7 @@ class ResidentsViewController: UIViewController {
     
     
     // MARK: - Navigation
-
+    
     
 
 }

@@ -122,7 +122,7 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <action selector="registerButtonTapped:" destination="ZIw-fv-iT5" eventType="touchUpInside" id="1aW-iq-oM7"/>
+                                    <action selector="registerButtonTapped:" destination="ZIw-fv-iT5" eventType="touchUpInside" id="M2n-Fs-k6y"/>
                                 </connections>
                             </button>
                             <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VRT-Xf-gAQ">
@@ -360,7 +360,7 @@
                     <navigationItem key="navigationItem" title="Chores" id="zpk-NF-Upe">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RzA-pr-LI7">
                             <connections>
-                                <segue destination="WqO-wP-pt0" kind="presentation" id="dUB-bb-ckI"/>
+                                <segue destination="crp-lQ-hpo" kind="presentation" modalTransitionStyle="flipHorizontal" id="Iir-Ti-VPM"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -368,6 +368,80 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRZ-54-ym4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3758" y="-1603"/>
+        </scene>
+        <!--New Chore-->
+        <scene sceneID="Jx1-iN-ahg">
+            <objects>
+                <viewController id="KGu-fV-EbN" customClass="AddChoreViewController" customModule="Sweep" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="UAE-Ew-V1B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="hT4-fd-maK">
+                                <rect key="frame" x="16" y="114" width="343" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="Z7H-Xf-HYi">
+                                <rect key="frame" x="16" y="199" width="343" height="180"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="180" id="VIx-56-0nL"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Poi-tJ-SgI">
+                                <rect key="frame" x="16" y="199" width="343" height="180"/>
+                                <state key="normal" title="Take Image"/>
+                                <connections>
+                                    <action selector="takeImageButtonTapped:" destination="KGu-fV-EbN" eventType="touchUpInside" id="rXz-MD-o38"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="A picture of a cleaned chore" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxA-5b-PPz">
+                                <rect key="frame" x="80" y="170" width="215" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Z7H-Xf-HYi" firstAttribute="top" secondItem="jxA-5b-PPz" secondAttribute="bottom" constant="8" id="25p-iE-LQl"/>
+                            <constraint firstItem="hT4-fd-maK" firstAttribute="leading" secondItem="HVz-pt-3XI" secondAttribute="leading" constant="16" id="267-G8-LLH"/>
+                            <constraint firstItem="HVz-pt-3XI" firstAttribute="trailing" secondItem="Z7H-Xf-HYi" secondAttribute="trailing" constant="16" id="6G0-ff-iFv"/>
+                            <constraint firstItem="jxA-5b-PPz" firstAttribute="centerX" secondItem="UAE-Ew-V1B" secondAttribute="centerX" id="ALc-CS-IXB"/>
+                            <constraint firstItem="Z7H-Xf-HYi" firstAttribute="top" secondItem="hT4-fd-maK" secondAttribute="bottom" constant="55" id="M06-gz-MbP"/>
+                            <constraint firstItem="Z7H-Xf-HYi" firstAttribute="trailing" secondItem="Poi-tJ-SgI" secondAttribute="trailing" id="W1z-DJ-rOv"/>
+                            <constraint firstItem="hT4-fd-maK" firstAttribute="top" secondItem="HVz-pt-3XI" secondAttribute="top" constant="50" id="WZD-mu-Ria"/>
+                            <constraint firstItem="Z7H-Xf-HYi" firstAttribute="leading" secondItem="Poi-tJ-SgI" secondAttribute="leading" id="WaM-lR-7zT"/>
+                            <constraint firstItem="Z7H-Xf-HYi" firstAttribute="top" secondItem="Poi-tJ-SgI" secondAttribute="top" id="fZV-x1-b03"/>
+                            <constraint firstItem="HVz-pt-3XI" firstAttribute="trailing" secondItem="hT4-fd-maK" secondAttribute="trailing" constant="16" id="ioO-kJ-zNV"/>
+                            <constraint firstItem="Z7H-Xf-HYi" firstAttribute="bottom" secondItem="Poi-tJ-SgI" secondAttribute="bottom" id="jxF-tE-0nU"/>
+                            <constraint firstItem="Z7H-Xf-HYi" firstAttribute="leading" secondItem="HVz-pt-3XI" secondAttribute="leading" constant="16" id="nJT-kn-ZWO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="HVz-pt-3XI"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="New Chore" id="phL-Eq-WdW">
+                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="vMi-kj-zHy">
+                            <connections>
+                                <segue destination="Q1e-Qb-hmr" kind="unwind" identifier="cancelUnwindSegue" unwindAction="unwindToChoresWithSegue:" id="7re-Gw-o39"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="iio-yR-ajz">
+                            <connections>
+                                <segue destination="Q1e-Qb-hmr" kind="unwind" identifier="saveUnwindSegue" unwindAction="unwindToChoresWithSegue:" id="BpJ-90-Vau"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="choreImage" destination="Z7H-Xf-HYi" id="ZaL-eX-2SC"/>
+                        <outlet property="choreNameTextField" destination="hT4-fd-maK" id="aY5-Ky-g0D"/>
+                        <outlet property="selectImageButton" destination="Poi-tJ-SgI" id="9Bc-O0-Qhx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Sct-LH-gtp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <exit id="Q1e-Qb-hmr" userLabel="Exit" sceneMemberID="exit"/>
+            </objects>
+            <point key="canvasLocation" x="5648.8000000000002" y="-2042.4287856071965"/>
         </scene>
         <!--Keuken 1-->
         <scene sceneID="bv7-DI-dnj">
@@ -498,50 +572,6 @@
             </objects>
             <point key="canvasLocation" x="4710" y="-1260"/>
         </scene>
-        <!--Add Chore View Controller-->
-        <scene sceneID="nfW-Yh-ejD">
-            <objects>
-                <viewController modalTransitionStyle="flipHorizontal" id="WqO-wP-pt0" customClass="AddChoreViewController" customModule="Sweep" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="vf1-Ev-xg0">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <navigationBar contentMode="scaleToFill" largeTitles="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dgW-IL-kCQ">
-                                <rect key="frame" x="0.0" y="20" width="375" height="96"/>
-                                <textAttributes key="titleTextAttributes">
-                                    <offsetWrapper key="textShadowOffset" horizontal="0.0" vertical="0.0"/>
-                                </textAttributes>
-                                <items>
-                                    <navigationItem title="New Chore" id="asH-HL-HHi">
-                                        <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="kjJ-SH-kTU">
-                                            <connections>
-                                                <segue destination="cfk-fy-aLZ" kind="unwind" unwindAction="unwindToChoresWithSegue:" id="rFi-Em-4Er"/>
-                                            </connections>
-                                        </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" style="done" systemItem="save" id="dVh-sd-1sW">
-                                            <connections>
-                                                <segue destination="cfk-fy-aLZ" kind="unwind" unwindAction="unwindToChoresWithSegue:" id="vLU-Vi-6Q2"/>
-                                            </connections>
-                                        </barButtonItem>
-                                    </navigationItem>
-                                </items>
-                            </navigationBar>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstAttribute="trailing" secondItem="dgW-IL-kCQ" secondAttribute="trailing" id="mwQ-Dd-gqm"/>
-                            <constraint firstItem="dgW-IL-kCQ" firstAttribute="leading" secondItem="ZgJ-pL-hxW" secondAttribute="leading" id="qDs-6L-SI9"/>
-                            <constraint firstItem="dgW-IL-kCQ" firstAttribute="top" secondItem="ZgJ-pL-hxW" secondAttribute="top" id="rCA-Mf-AKj"/>
-                        </constraints>
-                        <viewLayoutGuide key="safeArea" id="ZgJ-pL-hxW"/>
-                    </view>
-                    <nil key="simulatedTopBarMetrics"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="qF0-Hk-GgH" userLabel="First Responder" sceneMemberID="firstResponder"/>
-                <exit id="cfk-fy-aLZ" userLabel="Exit" sceneMemberID="exit"/>
-            </objects>
-            <point key="canvasLocation" x="4710" y="-1970"/>
-        </scene>
         <!--Schedule-->
         <scene sceneID="b71-j3-ceC">
             <objects>
@@ -644,6 +674,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hGp-KX-LQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="3757.5999999999999" y="-68.815592203898049"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="GAE-CW-eLc">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="crp-lQ-hpo" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="dY2-Pr-bRN">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="KGu-fV-EbN" kind="relationship" relationship="rootViewController" id="adg-ld-Uwn"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="55p-Gi-CDa" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="4709.6000000000004" y="-2042.4287856071965"/>
         </scene>
     </scenes>
     <resources>

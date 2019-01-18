@@ -80,6 +80,11 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="choreDaysSinceCleanLabel" destination="SRt-di-45f" id="mAU-e4-bce"/>
+                <outlet property="choreDueDateLabel" destination="22t-tE-Udj" id="VDB-i8-qPk"/>
+                <outlet property="choreImageView" destination="CeS-ui-sg4" id="hUP-G9-YdH"/>
+                <outlet property="chorePersonDueLabel" destination="M94-5S-tS7" id="zhm-jj-Xaf"/>
+                <outlet property="choreTitleLabel" destination="mc4-Ll-Hqw" id="ABX-Uk-y9j"/>
                 <outlet property="cleanedButton" destination="lW7-Dl-WL9" id="yZt-iy-tQc"/>
             </connections>
             <point key="canvasLocation" x="52.799999999999997" y="33.283358320839582"/>
