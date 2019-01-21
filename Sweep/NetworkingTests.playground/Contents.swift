@@ -47,24 +47,40 @@ func serverRequest(request: URLRequest) {
 //serverRequest()
 
 func deleteRestoServer(withId id: Int) {
-    let listUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/users/\(String(id))")
+    let listUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/houses/\(String(id))")
     var request = URLRequest(url: listUrl!)
     request.httpMethod = "DELETE"
     serverRequest(request: request)
 }
 
 
+
+let names = ["Sander", "Wietse", "Inge"]
+
+func json(names: [Any]) -> String? {
+    guard let data = try? JSONSerialization.data(withJSONObject: names, options: []) else { return nil}
+    return String(data: data, encoding: .utf8)
+}
+
+let jsonNames = json(names: names)
+
 struct House: Codable {
+    
+    var id: Int
     var name: String
+    var residents: [String]
+    var administrator: String
     
 }
+
+let house1 = House(id: 0, name: "lelie", residents: ["Sander", "West"], administrator: "Sander")
 
 func addTestToServer() {
     let listUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/list")!
     var request = URLRequest(url: listUrl)
     request.httpMethod = "POST"
     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-    let postString = "name=JasA&werkt=sadsf?&foto=hoi)"
+    let postString = "name=\(jsonNames!)&werkt=sadsf?&foto=hoi)"
     request.httpBody = postString.data(using: .utf8)
     
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -79,9 +95,59 @@ func addTestToServer() {
 
 //addTestToServer()
 
+//deleteRestoServer(withId: 1)
+//deleteRestoServer(withId: 2)
+
+
+//typealias housje = [House]
+//
+//func getHouseID(name: String) {
+//
+//    var houseID = 0
+//    let houseNameURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/houses?name=\(name)")!
+//
+//    let task = URLSession.shared.dataTask(with: houseNameURL) { (houseData, houseResponse, houseError) in
+//        if let houseData = houseData {
+//            print(houseData)
+//            guard let house = try? JSONDecoder().decode(housje.self, from: houseData) else { print("huh"); return }
+//            houseID = house[0].id
+//            print(house[0].residents)
+//
+//            let data = house[0].residents.data(using: String.Encoding.utf8, allowLossyConversion: false)
+//
+//            if let stringArray = try? JSONSerialization.jsonObject(with: data!, options: []) as! [String] {
+//                print(stringArray)
+//            }
+//
+//            print(houseID)
+//        } else {
+//            print("houseIDErro")
+//        }
+//    }
+//    task.resume()
+//}
+//getHouseID(name: "Sjaakhouse")
+
+//typealias Welcome = [WelcomeElement]
+
+//struct WelcomeElement: Codable {
+//    let id: Int
+//    let name, werkt, foto: String
+//}
+//
+//let url = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/list")
+//
+//let task = URLSession.shared.dataTask(with: url!) { (data, response, errro) in
+//    if let data = data {
+//        guard let welcome = try? JSONDecoder().decode(Welcome.self, from: data) else { return }
+//        print(welcome[0].name)
+//    }
+//}
+//task.resume()
+
 for i in 1...20 {
     deleteRestoServer(withId: i)
 }
 
 
-deleteRestoServer(withId: 1)
+//deleteRestoServer(withId: 1)

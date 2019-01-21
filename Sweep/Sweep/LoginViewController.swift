@@ -51,9 +51,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let uid = user.uid
                 
                 UserModelController.loadUser(with: uid, completion: { (user) in
-                    UserModelController.currentUser = user
-                    self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    DispatchQueue.main.async {
+                        UserModelController.currentUser = user
+                        self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    }
                 })
             }
         }

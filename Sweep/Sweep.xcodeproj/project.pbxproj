@@ -26,6 +26,7 @@
 		11C7809D21E7643600AB5CEF /* ChoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7809B21E7643600AB5CEF /* ChoreTableViewCell.swift */; };
 		11C7809E21E7643600AB5CEF /* ChoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C7809C21E7643600AB5CEF /* ChoreTableViewCell.xib */; };
 		11C780A321E76E8600AB5CEF /* ChoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C780A221E76E8600AB5CEF /* ChoreDetailViewController.swift */; };
+		11DDE3BA21F5E9EF004B721C /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DDE3B921F5E9EF004B721C /* Chore.swift */; };
 		B34B49EC16C513E6B6DD9ABA /* Pods_Sweep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F8D22D81A199142687D017 /* Pods_Sweep.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,6 +53,7 @@
 		11C7809B21E7643600AB5CEF /* ChoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTableViewCell.swift; sourceTree = "<group>"; };
 		11C7809C21E7643600AB5CEF /* ChoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoreTableViewCell.xib; sourceTree = "<group>"; };
 		11C780A221E76E8600AB5CEF /* ChoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreDetailViewController.swift; sourceTree = "<group>"; };
+		11DDE3B921F5E9EF004B721C /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
 		24F8D22D81A199142687D017 /* Pods_Sweep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sweep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45FB12D89A12A1B6922CC441 /* Pods-Sweep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sweep.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sweep/Pods-Sweep.release.xcconfig"; sourceTree = "<group>"; };
 		7B42D045C3EDA155735E72C9 /* Pods-Sweep.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sweep.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sweep/Pods-Sweep.debug.xcconfig"; sourceTree = "<group>"; };
@@ -74,6 +76,7 @@
 			children = (
 				11C7809921E7584D00AB5CEF /* User.swift */,
 				11A3E5F921EC9E5E007E28D4 /* House.swift */,
+				11DDE3B921F5E9EF004B721C /* Chore.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -334,6 +337,7 @@
 				11AB608321E39D83001CB0D0 /* AppDelegate.swift in Sources */,
 				11A3E60121ECA409007E28D4 /* UserModelController.swift in Sources */,
 				11A3E5FA21EC9E5E007E28D4 /* House.swift in Sources */,
+				11DDE3BA21F5E9EF004B721C /* Chore.swift in Sources */,
 				11C780A321E76E8600AB5CEF /* ChoreDetailViewController.swift in Sources */,
 				11B2ED5521F20E44009C1688 /* Extensions.swift in Sources */,
 			);

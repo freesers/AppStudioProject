@@ -22,7 +22,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     @IBOutlet weak var registerButton: UIButton!
     
-    var pickerData = HouseModelController.shared.houses
+    var pickerData = [House]()
     var newUser: User? = nil
     
     
@@ -33,8 +33,16 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         registerButton.layer.cornerRadius = 12
         
         // load sample houses
-        HouseModelController.shared.addSamplehouses()
-        pickerData = HouseModelController.shared.houses
+        HouseModelController.loadHouses { (houses) in
+            HouseModelController.houses = houses
+            DispatchQueue.main.async {
+                self.formattedHouseNames()
+                self.pickerData = HouseModelController.houses
+                self.housePickerView.reloadComponent(0)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+        
         
         // configure picker
         housePickerView.dataSource = self
@@ -42,6 +50,14 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         self.hideKeyboardWithTap()
  
+    }
+    
+    func formattedHouseNames() {
+        
+        for (i, house) in HouseModelController.houses.enumerated() {
+            let houseName = house.name.replacingOccurrences(of: "*", with: " ")
+            HouseModelController.houses[i].name = houseName
+        }
     }
     
     //MARK - Housepicker
@@ -99,8 +115,21 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
             if let user = AuthDataResult?.user {
                 uid = user.uid
                 self.setCurrentUser(with: uid) {
-                    self.performSegue(withIdentifier: "registrationSucces", sender: nil)
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    if self.newHouseTextfield.text! != "" {
+                        self.registerNewHouse(name: self.newHouseTextfield.text!, resident: self.nameTextField.text!, administrator: self.nameTextField.text!, completion: {
+                            DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "registrationSucces", sender: nil)
+                                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                            }
+                        })
+                    } else {
+                        self.registerExistingHouse {
+                            DispatchQueue.main.async {
+                                self.performSegue(withIdentifier: "registrationSucces", sender: nil)
+                                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                            }
+                        }
+                    }
                 }
             }
             if let error = Error {
@@ -111,6 +140,19 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     func setCurrentUser(with uid: String, completion: @escaping () -> Void) {
         UserModelController.currentUser = self.createUser(with: uid)
+        completion()
+    }
+    
+    func registerNewHouse(name: String, resident: String, administrator: String, completion: @escaping () -> Void) {
+        HouseModelController.uploadNewHouse(with: name, residents: [resident], administrator: administrator)
+        completion()
+    }
+    
+    func registerExistingHouse(completion: @escaping () -> Void) {
+        let selectedHouseRow = housePickerView.selectedRow(inComponent: 0)
+        let selectedHouse = pickerData[selectedHouseRow].name
+        
+        HouseModelController.joinHouse(houseName: selectedHouse, residentName: nameTextField.text!)
         completion()
     }
     

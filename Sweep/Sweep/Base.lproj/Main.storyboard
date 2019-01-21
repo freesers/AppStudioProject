@@ -305,6 +305,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="15" translatesAutoresizingMaskIntoConstraints="NO" id="9d9-YY-uj0">
+                                <rect key="frame" x="16" y="189" width="343" height="371"/>
+                            </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MSY-TG-P85">
                                 <rect key="frame" x="159" y="568" width="57" height="30"/>
                                 <state key="normal" title="Loggout"/>
@@ -312,16 +315,31 @@
                                     <action selector="logOutButtonPressed:" destination="SHe-DN-Gzg" eventType="touchUpInside" id="xi4-8B-BIS"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Residents of: Housename" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="55p-OT-fvm">
+                                <rect key="frame" x="0.0" y="135" width="375" height="24"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="20"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
                             <constraint firstItem="Mp1-wi-Lbm" firstAttribute="bottom" secondItem="MSY-TG-P85" secondAttribute="bottom" constant="20" id="1y8-qW-pN4"/>
+                            <constraint firstItem="MSY-TG-P85" firstAttribute="top" secondItem="9d9-YY-uj0" secondAttribute="bottom" constant="8" id="4mN-RB-rUK"/>
+                            <constraint firstItem="55p-OT-fvm" firstAttribute="trailing" secondItem="Mp1-wi-Lbm" secondAttribute="trailing" id="F8D-W3-kaF"/>
+                            <constraint firstItem="55p-OT-fvm" firstAttribute="top" secondItem="Mp1-wi-Lbm" secondAttribute="top" constant="19" id="H7p-Q6-sGS"/>
                             <constraint firstItem="MSY-TG-P85" firstAttribute="centerX" secondItem="LcD-kX-Qs2" secondAttribute="centerX" id="Ody-50-SEt"/>
+                            <constraint firstItem="55p-OT-fvm" firstAttribute="leading" secondItem="Mp1-wi-Lbm" secondAttribute="leading" id="UFb-hh-qqo"/>
+                            <constraint firstItem="9d9-YY-uj0" firstAttribute="leading" secondItem="Mp1-wi-Lbm" secondAttribute="leading" constant="16" id="dRh-yW-63c"/>
+                            <constraint firstItem="9d9-YY-uj0" firstAttribute="top" secondItem="55p-OT-fvm" secondAttribute="bottom" constant="30" id="jAM-JV-HJT"/>
+                            <constraint firstItem="Mp1-wi-Lbm" firstAttribute="trailing" secondItem="9d9-YY-uj0" secondAttribute="trailing" constant="16" id="zEJ-qo-Lce"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="Mp1-wi-Lbm"/>
                     </view>
                     <navigationItem key="navigationItem" title="Hi, User" id="4Zb-VY-is6"/>
                     <connections>
+                        <outlet property="houseNameLabel" destination="55p-OT-fvm" id="3B4-Pz-7vf"/>
+                        <outlet property="residentsStackView" destination="9d9-YY-uj0" id="Kh6-sX-BiG"/>
                         <segue destination="J44-aC-IeH" kind="unwind" identifier="logOutSegue" unwindAction="unwindToLoginWithSegue:" id="fDl-4J-tUM"/>
                     </connections>
                 </viewController>

@@ -8,23 +8,15 @@
 
 
 import Foundation
-import UIKit
 
-struct House {
+struct House: Codable {
     
+    var id: Int
     var name: String
-    var residents: [String]
+    
+    // preferably [String], but the resto server gives problems 
+    var residents: String
     var administrator: String
     
-}
-
-struct Chore {
-    
-    var title: String
-    var house: String
-    var photo: UIImage
-    var lastCleaned: Date?
-    var cleaningDue: Date?
-    var cleaningBy: String?
 }
 
