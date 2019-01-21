@@ -29,8 +29,6 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
         choreImage.layer.borderWidth = 1.5
         choreImage.layer.borderColor = UIColor.skyBlue.cgColor
         
-        print("hi")
-        
     }
     
     @IBAction func takeImageButtonTapped(_ sender: UIButton) {

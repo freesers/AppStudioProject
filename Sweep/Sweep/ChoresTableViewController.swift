@@ -24,7 +24,6 @@ class ChoresTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print(HouseModelController.chores.count)
         return HouseModelController.chores.count
         
     }

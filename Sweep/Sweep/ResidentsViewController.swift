@@ -24,7 +24,7 @@ class ResidentsViewController: UIViewController {
         self.title = "Hi, \(UserModelController.currentUser.name)"
         houseNameLabel.text = "Residents of: \(UserModelController.currentUser.house)"
         
-        residentsStackView.translatesAutoresizingMaskIntoConstraints = false
+       
         
         HouseModelController.loadResidents(from: currentHouse) { (house) in
             self.turnStringInArray(residentString: house.residents)
@@ -34,9 +34,6 @@ class ResidentsViewController: UIViewController {
             }
             
         }
-        
-        
-       
     }
     
     func turnStringInArray(residentString: String) {
@@ -51,7 +48,6 @@ class ResidentsViewController: UIViewController {
             let newLabel = UILabel()
             newLabel.text = resident
             newLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-            print("Label", newLabel)
             residentsStackView.addArrangedSubview(newLabel)
         }
     }

@@ -27,7 +27,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.hideKeyboardWithTap()
         loginButton.layer.cornerRadius = 12
         
-// Block to logout for debugging
+ //Block to logout for debugging
 //
 //        let firebaseAuth = Auth.auth()
 //        do {
@@ -37,8 +37,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //        } catch let signOutError as NSError {
 //            print ("Error signing out: %@", signOutError)
 //        }
-
-        isUserLoggedIn()
+//
+//        isUserLoggedIn()
     }
     
     func isUserLoggedIn() {
@@ -80,14 +80,17 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginButtonPressed(_ sender: Any) {
         animateButton(loginButton: loginButton)
         guard checkFields() else { return }
+        self.loginButton.setTitle("Logging in...", for: .normal)
         
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (authResult, authError) in
             if let result = authResult {
                 print("UID: \(result.user.uid)")
-                self.loginButton.setTitle("Logging in...", for: .normal)
                 UserModelController.loadUser(with: result.user.uid, completion: { (user) in
                     UserModelController.currentUser = user
-                    self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                    
+                    DispatchQueue.main.async {
+                        self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                    }
                 })
                 
             } else {

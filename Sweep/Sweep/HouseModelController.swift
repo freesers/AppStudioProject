@@ -81,7 +81,9 @@ class HouseModelController {
     
     /// gets house ID and residents needed to join a new house
     static func getHouseID(name: String, completion: @escaping (Int, String) -> Void) {
-        let houseNameURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/houses?name=\(name)")!
+        
+        let formattedName = name.replacingOccurrences(of: " ", with: "*")
+        let houseNameURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/houses?name=\(formattedName)")!
         
         let task = URLSession.shared.dataTask(with: houseNameURL) { (houseData, houseResponse, houseError) in
             if let houseData = houseData {
