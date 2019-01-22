@@ -66,7 +66,7 @@ class ChoreModelController {
     }
     
     // load chore from server 
-    static func loadChores(from house: String, completion: @escaping ([ServerChore]) -> Void) {
+    static func loadServerChores(from house: String, completion: @escaping ([ServerChore]) -> Void) {
         let formattedHouse = house.replacingOccurrences(of: " ", with: "*")
         
         let loadChoreURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/chores?house=\(formattedHouse)")!
@@ -78,5 +78,27 @@ class ChoreModelController {
             }
         }
         task.resume()
+    }
+    
+    static func loadChores(chores: [ServerChore]) {
+        
+        for serverChore in chores {
+            var imageString = serverChore.image
+            imageString.remove(at: imageString.startIndex)
+            imageString.remove(at: imageString.index(before: imageString.endIndex))
+        
+            
+            //TODO: FIX BUG
+            // imageData nil
+            
+            let imageData = Data(base64Encoded: imageString, options)
+            let image = UIImage(data: imageData!)
+            let cleaningDue = ChoreModelController.dueDate
+            
+            let chore = Chore(title: serverChore.title, house: serverChore.house, photo: image!, lastCleaned: nil, cleaningDue: cleaningDue, cleaningBy: nil)
+            
+            ChoreModelController.chores.append(chore)
+        }
+        print(ChoreModelController.chores)
     }
 }

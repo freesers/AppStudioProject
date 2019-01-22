@@ -16,9 +16,11 @@ class ScheduleTableViewController: UITableViewController {
         
         // TODO: decode image and load ServerChores in actual chores, update choretableview
         // dont forget to delete  first and last [ ] for image string
-        ChoreModelController.loadChores(from: "De Lelie") { (chores) in
-            print(chores[0])
-        }
+//        ChoreModelController.loadServerChores(from: "De Lelie") { (chores) in
+//            DispatchQueue.main.async {
+//                ChoreModelController.loadChores(chores: chores)
+//            }
+//        }
         
         
 

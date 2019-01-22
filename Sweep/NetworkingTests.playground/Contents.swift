@@ -64,15 +64,15 @@ struct User: Codable {
 }
 
 
-//let image = UIImage(named: "Schermafbeelding 2019-01-16 om 17.17.56.png")
-//let imageData = image?.pngData()
-////print(imageData!)
-//
-//let encodedImage = imageData?.base64EncodedString(options: .lineLength76Characters)
-////print(encodedImage!)
+let image = UIImage(named: "Schermafbeelding 2019-01-16 om 17.17.56.png")
+let imageData = image?.jpegData(compressionQuality: 1)
+//print(imageData!)
 
-//let decodedImageData = Data(base64Encoded: encodedImage!, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)
-//let decodedImage = UIImage(data: decodedImageData!)
+let encodedImage = imageData?.base64EncodedString(options: .lineLength76Characters)
+//print(encodedImage!)
+
+let decodedImageData = Data(base64Encoded: encodedImage!, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)
+let decodedImage = UIImage(data: decodedImageData!)
 
 
 
