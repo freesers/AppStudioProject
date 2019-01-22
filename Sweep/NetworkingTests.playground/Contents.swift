@@ -3,6 +3,58 @@ import PlaygroundSupport
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
+var currentDate = Date()
+currentDate = currentDate.addingTimeInterval(60 * 60 * 24 * 7)
+
+let userCalendar = Calendar.current
+
+let years = 2019
+let days = 27
+let months = 1
+
+var cleaningDateComponent = DateComponents()
+cleaningDateComponent.year = years
+cleaningDateComponent.day = days
+cleaningDateComponent.month = months
+cleaningDateComponent.hour = 23
+cleaningDateComponent.minute = 59
+cleaningDateComponent.second = 59
+
+var weekComponent = DateComponents()
+weekComponent.weekday = 1
+weekComponent.hour = 23
+weekComponent.minute = 59
+
+var firstCleaningDate = userCalendar.date(from: cleaningDateComponent)!
+
+
+
+var cleaningDates = [Date]()
+
+for _ in 1...100 {
+    let date = firstCleaningDate
+    cleaningDates.append(date)
+    let newDate = firstCleaningDate.addingTimeInterval(60 * 60 * 24 * 7)
+    firstCleaningDate = newDate
+}
+
+var cleaningDue = Date()
+
+
+for date in cleaningDates {
+    if currentDate < date {
+        cleaningDue = date
+        break
+    }
+}
+
+
+
+let dateformatter = DateFormatter()
+dateformatter.locale = Locale(identifier: "nl_NL")
+dateformatter.setLocalizedDateFormatFromTemplate("MMMMdE")
+
+dateformatter.string(from: cleaningDue)
 //typealias User = [UserElement]
 
 struct User: Codable {
@@ -12,12 +64,12 @@ struct User: Codable {
 }
 
 
-let image = UIImage(named: "Schermafbeelding 2019-01-16 om 17.17.56.png")
-let imageData = image?.pngData()
-//print(imageData!)
-
-let encodedImage = imageData?.base64EncodedString(options: .lineLength76Characters)
-//print(encodedImage!)
+//let image = UIImage(named: "Schermafbeelding 2019-01-16 om 17.17.56.png")
+//let imageData = image?.pngData()
+////print(imageData!)
+//
+//let encodedImage = imageData?.base64EncodedString(options: .lineLength76Characters)
+////print(encodedImage!)
 
 //let decodedImageData = Data(base64Encoded: encodedImage!, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)
 //let decodedImage = UIImage(data: decodedImageData!)
@@ -47,7 +99,7 @@ func serverRequest(request: URLRequest) {
 //serverRequest()
 
 func deleteRestoServer(withId id: Int) {
-    let listUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/houses/\(String(id))")
+    let listUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/chores/\(String(id))")
     var request = URLRequest(url: listUrl!)
     request.httpMethod = "DELETE"
     serverRequest(request: request)
@@ -150,4 +202,4 @@ for i in 1...20 {
 }
 
 
-//deleteRestoServer(withId: 1)
+deleteRestoServer(withId: 2)

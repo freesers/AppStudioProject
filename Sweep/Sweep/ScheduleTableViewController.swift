@@ -12,6 +12,15 @@ class ScheduleTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
+        // TODO: decode image and load ServerChores in actual chores, update choretableview
+        // dont forget to delete  first and last [ ] for image string
+        ChoreModelController.loadChores(from: "De Lelie") { (chores) in
+            print(chores[0])
+        }
+        
+        
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false

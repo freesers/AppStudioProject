@@ -29,6 +29,8 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
         choreImage.layer.borderWidth = 1.5
         choreImage.layer.borderColor = UIColor.skyBlue.cgColor
         
+        ChoreModelController.setupDates()
+        
     }
     
     @IBAction func takeImageButtonTapped(_ sender: UIButton) {
@@ -50,17 +52,14 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
         picker.dismiss(animated: true, completion: nil)
     }
     
-    
-
-    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "saveUnwindSegue" else { return }
         
-        let newChore = Chore(title: choreNameTextField.text ?? "No Title", house: UserModelController.currentUser.house, photo: imageTaken, lastCleaned: nil, cleaningDue: nil, cleaningBy: nil)
-        HouseModelController.chores.append(newChore)
+        let newChore = Chore(title: choreNameTextField.text ?? "No Title", house: UserModelController.currentUser.house, photo: imageTaken, lastCleaned: nil, cleaningDue: ChoreModelController.dueDate, cleaningBy: nil)
+        ChoreModelController.chores.append(newChore)
     }
     
 

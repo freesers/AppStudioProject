@@ -24,7 +24,7 @@ class ChoresTableViewController: UITableViewController {
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return HouseModelController.chores.count
+        return ChoreModelController.chores.count
         
     }
 
@@ -39,12 +39,24 @@ class ChoresTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChoreCell", for: indexPath) as! ChoreTableViewCell
         
-        let chore = HouseModelController.chores[indexPath.row]
+        let chore = ChoreModelController.chores[indexPath.row]
         cell.choreTitleLabel.text = chore.title
         cell.choreImageView.image = chore.photo
+        cell.choreDueDateLabel.text = "Due: \(getDateString())"
         
         
         return cell
+    }
+    
+    func getDateString() -> String {
+        let date = ChoreModelController.dueDate
+        
+        let dateformatter = DateFormatter()
+        dateformatter.locale = Locale(identifier: "nl_NL")
+        dateformatter.setLocalizedDateFormatFromTemplate("MMMMdE")
+        let dateString = dateformatter.string(from: date)
+        
+        return dateString
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {

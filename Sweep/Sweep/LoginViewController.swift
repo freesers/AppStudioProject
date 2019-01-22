@@ -38,7 +38,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
 //            print ("Error signing out: %@", signOutError)
 //        }
 //
-//        isUserLoggedIn()
+        isUserLoggedIn()
     }
     
     func isUserLoggedIn() {
@@ -81,6 +81,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         animateButton(loginButton: loginButton)
         guard checkFields() else { return }
         self.loginButton.setTitle("Logging in...", for: .normal)
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (authResult, authError) in
             if let result = authResult {
@@ -90,6 +91,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                     
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                        UIApplication.shared.isNetworkActivityIndicatorVisible = false
                     }
                 })
                 

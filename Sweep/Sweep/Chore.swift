@@ -18,3 +18,11 @@ struct Chore {
     var cleaningDue: Date?
     var cleaningBy: String?
 }
+
+struct ServerChore: Codable {
+    
+    var id: Int
+    var title: String
+    var house: String
+    var image: String
+}
