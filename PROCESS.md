@@ -46,3 +46,7 @@ Finally figured all the network stuff out, completion blocks in completion block
 
 ![](doc/addChore.png)
 ![](doc/launchScreen.png)
+
+# Day 11
+Houses and residents can be added, new users can choose existing houses. Users can see the other residents in the house. 
+Server code had to be adjusted to work with arrays. Networkcode now shows networkactivity indicator. Some buttons have animations
