@@ -50,3 +50,6 @@ Finally figured all the network stuff out, completion blocks in completion block
 # Day 11
 Houses and residents can be added, new users can choose existing houses. Users can see the other residents in the house. 
 Server code had to be adjusted to work with arrays. Networkcode now shows networkactivity indicator. Some buttons have animations
+
+# Day 12
+Chores can be updates to the server, including the encoded jpeg image. PNG is too large. Wrote all of the Date & Calender code to keep track of the cleaning day. Chores can be downloaded, only the image doesn't decode yet
