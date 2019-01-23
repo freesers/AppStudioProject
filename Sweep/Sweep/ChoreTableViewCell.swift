@@ -41,5 +41,6 @@ class ChoreTableViewCell: UITableViewCell {
         self.delegate?.cleanedButtonPressed(cell: self)
     }
     
+    
 
 }

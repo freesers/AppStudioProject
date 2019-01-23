@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NewChoresDelegate {
 
     @IBOutlet weak var addChoreButton: UIBarButtonItem!
     
@@ -17,6 +17,7 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerTableViewCell()
+        ChoreModelController.delegate = self
         
         
         if !Bool(UserModelController.currentUser.isAdministrator)! {
@@ -45,6 +46,12 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
                 self.tableView.reloadData()
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
             }
+        }
+    }
+    
+    func reloadCells() {
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
         }
     }
     

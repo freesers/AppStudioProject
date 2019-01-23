@@ -9,10 +9,16 @@
 import Foundation
 import UIKit
 
+protocol NewChoresDelegate {
+    func reloadCells()
+}
+
 class ChoreModelController {
     
     static var chores = [Chore]() 
     static var dueDate = Date()
+    
+    static var delegate: NewChoresDelegate?
     
     
     // get current date and next due date for chores (every sundag 23:59)
@@ -169,6 +175,11 @@ class ChoreModelController {
         if let chores = try? Data(contentsOf: ChoreModelController.choresDirectory), let decodedChores = try? plistDecoder.decode([Chore].self, from: chores) {
             ChoreModelController.chores = decodedChores
             completion()
+        } else {
+            ChoreModelController.loadServerChores(from: UserModelController.currentUser.house) { (chores) in
+                ChoreModelController.loadChores(chores: chores)
+                self.delegate?.reloadCells()
+            }
         }
     }
 
