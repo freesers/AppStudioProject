@@ -27,6 +27,9 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         self.hideKeyboardWithTap()
         loginButton.layer.cornerRadius = 12
         
+        // Create correct deadlines for the chores
+        ChoreModelController.setupDates()
+        
  //Block to logout for debugging
 //
 //        let firebaseAuth = Auth.auth()

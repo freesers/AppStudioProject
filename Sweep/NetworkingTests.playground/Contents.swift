@@ -3,60 +3,98 @@ import PlaygroundSupport
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
-var currentDate = Date()
-currentDate = currentDate.addingTimeInterval(60 * 60 * 24 * 7)
 
-let userCalendar = Calendar.current
-
-let years = 2019
-let days = 27
-let months = 1
-
-var cleaningDateComponent = DateComponents()
-cleaningDateComponent.year = years
-cleaningDateComponent.day = days
-cleaningDateComponent.month = months
-cleaningDateComponent.hour = 23
-cleaningDateComponent.minute = 59
-cleaningDateComponent.second = 59
-
-var weekComponent = DateComponents()
-weekComponent.weekday = 1
-weekComponent.hour = 23
-weekComponent.minute = 59
-
-var firstCleaningDate = userCalendar.date(from: cleaningDateComponent)!
-
-
-
-var cleaningDates = [Date]()
-
-for _ in 1...100 {
-    let date = firstCleaningDate
-    cleaningDates.append(date)
-    let newDate = firstCleaningDate.addingTimeInterval(60 * 60 * 24 * 7)
-    firstCleaningDate = newDate
+struct ServerChore: Codable {
+    
+    var id: Int
+    var title: String
+    var house: String
+    var image: String
 }
 
-var cleaningDue = Date()
 
-
-for date in cleaningDates {
-    if currentDate < date {
-        cleaningDue = date
-        break
+func loadServerChores(from house: String, completion: @escaping ([ServerChore]) -> Void) {
+    let formattedHouse = house.replacingOccurrences(of: " ", with: "*")
+    print("1")
+    let loadChoreURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/chores?house=\(formattedHouse)")!
+    print("2")
+    let task = URLSession.shared.dataTask(with: loadChoreURL) { (data, response, error) in
+        if let choreData = data {
+            guard let chores = try? JSONDecoder().decode([ServerChore].self, from: choreData) else {
+                print("fail")
+                return  }
+            completion(chores)
+            print("complete")
+        }
     }
+    task.resume()
 }
 
 
+//loadServerChores(from: "De Lelie") { (serverchore) in
+//    let imageString = serverchore[0].image
+//    print(imageString)
+//    let imageData = Data(base64Encoded: imageString)
+//    print(imageData as Any)
+//    let image = UIImage(data: imageData!)
+//    print(image!)
+//}
 
-let dateformatter = DateFormatter()
-dateformatter.locale = Locale(identifier: "nl_NL")
-dateformatter.setLocalizedDateFormatFromTemplate("MMMMdE")
 
-dateformatter.string(from: cleaningDue)
-//typealias User = [UserElement]
-
+//var currentDate = Date()
+//currentDate = currentDate.addingTimeInterval(60 * 60 * 24 * 7)
+//
+//let userCalendar = Calendar.current
+//
+//let years = 2019
+//let days = 27
+//let months = 1
+//
+//var cleaningDateComponent = DateComponents()
+//cleaningDateComponent.year = years
+//cleaningDateComponent.day = days
+//cleaningDateComponent.month = months
+//cleaningDateComponent.hour = 23
+//cleaningDateComponent.minute = 59
+//cleaningDateComponent.second = 59
+//
+//var weekComponent = DateComponents()
+//weekComponent.weekday = 1
+//weekComponent.hour = 23
+//weekComponent.minute = 59
+//
+//var firstCleaningDate = userCalendar.date(from: cleaningDateComponent)!
+//
+//
+//
+//var cleaningDates = [Date]()
+//
+//for _ in 1...100 {
+//    let date = firstCleaningDate
+//    cleaningDates.append(date)
+//    let newDate = firstCleaningDate.addingTimeInterval(60 * 60 * 24 * 7)
+//    firstCleaningDate = newDate
+//}
+//
+//var cleaningDue = Date()
+//
+//
+//for date in cleaningDates {
+//    if currentDate < date {
+//        cleaningDue = date
+//        break
+//    }
+//}
+//
+//
+//
+//let dateformatter = DateFormatter()
+//dateformatter.locale = Locale(identifier: "nl_NL")
+//dateformatter.setLocalizedDateFormatFromTemplate("MMMMdE")
+//
+//dateformatter.string(from: cleaningDue)
+////typealias User = [UserElement]
+//
 struct User: Codable {
     let id: Int
     let uid, name, email, password: String
@@ -64,22 +102,22 @@ struct User: Codable {
 }
 
 
-let image = UIImage(named: "Schermafbeelding 2019-01-16 om 17.17.56.png")
-let imageData = image?.jpegData(compressionQuality: 1)
-//print(imageData!)
-
-let encodedImage = imageData?.base64EncodedString(options: .lineLength76Characters)
-//print(encodedImage!)
-
-let decodedImageData = Data(base64Encoded: encodedImage!, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)
-let decodedImage = UIImage(data: decodedImageData!)
-
-
-
+//let image = UIImage(named: "Schermafbeelding 2019-01-16 om 17.17.56.png")
+//let imageData = image?.jpegData(compressionQuality: 1)
+////print(imageData!)
+//
+//let encodedImage = imageData?.base64EncodedString(options: .lineLength76Characters)
+////print(encodedImage!)
+//
+//let decodedImageData = Data(base64Encoded: encodedImage!, options: Data.Base64DecodingOptions.ignoreUnknownCharacters)
+//let decodedImage = UIImage(data: decodedImageData!)
+//
+//
+//
 func serverRequest(request: URLRequest) {
-    
-    
-    
+
+
+
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
         if let error = error {
             print(error)
@@ -96,52 +134,68 @@ func serverRequest(request: URLRequest) {
     task.resume()
 }
 
-//serverRequest()
-
+////serverRequest()
+//
 func deleteRestoServer(withId id: Int) {
     let listUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/chores/\(String(id))")
     var request = URLRequest(url: listUrl!)
     request.httpMethod = "DELETE"
     serverRequest(request: request)
 }
+//
+//
+//
+//let names = ["Sander", "Wietse", "Inge"]
+//
+//func json(names: [Any]) -> String? {
+//    guard let data = try? JSONSerialization.data(withJSONObject: names, options: []) else { return nil}
+//    return String(data: data, encoding: .utf8)
+//}
+//
+//let jsonNames = json(names: names)
+//
+//struct House: Codable {
+//
+//    var id: Int
+//    var name: String
+//    var residents: [String]
+//    var administrator: String
+//
+//}
+//
+//let house1 = House(id: 0, name: "lelie", residents: ["Sander", "West"], administrator: "Sander")
+//
 
+typealias List = [ListElement]
 
-
-let names = ["Sander", "Wietse", "Inge"]
-
-func json(names: [Any]) -> String? {
-    guard let data = try? JSONSerialization.data(withJSONObject: names, options: []) else { return nil}
-    return String(data: data, encoding: .utf8)
-}
-
-let jsonNames = json(names: names)
-
-struct House: Codable {
+struct ListElement: Codable {
     
-    var id: Int
+    var id: String
     var name: String
-    var residents: [String]
-    var administrator: String
-    
-}
 
-let house1 = House(id: 0, name: "lelie", residents: ["Sander", "West"], administrator: "Sander")
+}
 
 func addTestToServer() {
     let listUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/list")!
     var request = URLRequest(url: listUrl)
     request.httpMethod = "POST"
     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-    let postString = "name=\(jsonNames!)&werkt=sadsf?&foto=hoi)"
+    let postString = "name=Sander"
     request.httpBody = postString.data(using: .utf8)
-    
+
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
         if let data = data {
             print(data)
+            guard let listID = try? JSONDecoder().decode(List.self, from: data) else { print("why");return }
+            print(listID[0])
         }
+        if let response = response {
+            print(response.description)
+        }
+        
     }
     task.resume()
-    
+
 }
 
 
@@ -197,9 +251,9 @@ func addTestToServer() {
 //}
 //task.resume()
 
-for i in 1...20 {
-    deleteRestoServer(withId: i)
-}
-
-
+//for i in 1...20 {
+//    deleteRestoServer(withId: i)
+//}
+//
+//
 deleteRestoServer(withId: 2)

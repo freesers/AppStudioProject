@@ -17,10 +17,7 @@ class HouseModelController {
 
     static var houses = [House]()
     
-    
-//    func addHouse(with name: String, residents: [String], administrator: String ) {
-//        houses.append(House(id: 0, name: name, residents: residents, administrator: administrator))
-//    }
+
     
     static func toString(data: Any) -> String? {
         guard let data = try? JSONSerialization.data(withJSONObject: data, options: []) else { return nil }

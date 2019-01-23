@@ -8,12 +8,27 @@
 
 import UIKit
 
-class ChoresTableViewController: UITableViewController {
-    
+class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
+    @IBOutlet weak var addChoreButton: UIBarButtonItem!
+    
+    var tempIndexPath: IndexPath?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerTableViewCell()
+        
+        
+        if !Bool(UserModelController.currentUser.isAdministrator)! {
+            addChoreButton.isEnabled = false
+            addChoreButton.tintColor = UIColor.clear
+        } else {
+            self.navigationItem.leftBarButtonItem = editButtonItem
+        }
+        
+        ChoreModelController.loadChoresDirectory {
+            self.loadChoresFromServer()
+        }
 
     }
     
@@ -21,14 +36,29 @@ class ChoresTableViewController: UITableViewController {
         super.viewWillAppear(true)
         self.tableView.reloadData()
     }
+    
+    func loadChoresFromServer() {
+        ChoreModelController.loadServerChores(from: getHouseName()) { (serverChores) in
+            DispatchQueue.main.async {
+                ChoreModelController.chores.removeAll()
+                ChoreModelController.loadChores(chores: serverChores)
+                self.tableView.reloadData()
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    func getHouseName() -> String {
+        let house = UserModelController.currentUser.house
+        let formattedHouse = house.replacingOccurrences(of: " ", with: "*")
+        return formattedHouse
+    }
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ChoreModelController.chores.count
         
     }
-
-
     
     func registerTableViewCell() {
         let choreCell = UINib(nibName: "ChoreTableViewCell", bundle: nil)
@@ -43,6 +73,8 @@ class ChoresTableViewController: UITableViewController {
         cell.choreTitleLabel.text = chore.title
         cell.choreImageView.image = chore.photo
         cell.choreDueDateLabel.text = "Due: \(getDateString())"
+        cell.choreDaysLeft.text = "Days left: \(ChoreModelController.daysInterval(date: Date()))"
+        cell.delegate = self
         
         
         return cell
@@ -59,30 +91,73 @@ class ChoresTableViewController: UITableViewController {
         return dateString
     }
     
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: "choreDetailSegue", sender: nil)
     }
     
+    func cleanedButtonPressed(cell: ChoreTableViewCell) {
+        presentImagePicker()
+        guard let indexPath = self.tableView.indexPath(for: cell) else { return }
+        tempIndexPath = indexPath
+    }
+    
+    func presentImagePicker() {
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = .camera
+        imagePicker.allowsEditing = false
+        imagePicker.cameraDevice = .rear
+        
+        self.present(imagePicker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
+        
+        if let index = tempIndexPath {
+            ChoreModelController.chores[index.row].photo = image
+            ChoreModelController.saveChoresDirectory()
+            
+            // TODO: set days left to "chore done"
 
-    /*
+        }
+        picker.dismiss(animated: true) {
+            guard let index = self.tempIndexPath?.row else { return }
+            ChoreModelController.getChoreID(choreName: ChoreModelController.chores[index].title, completion: { (id) in
+                ChoreModelController.mutateChore(chore: ChoreModelController.chores[index], id: id)
+            })
+        }
+    }
+    
+
+    
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        return true
+        if Bool(UserModelController.currentUser.isAdministrator)! {
+            return true
+        } else {
+            return false
+        }
     }
-    */
+    
 
-    /*
+    
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
+            
+            let chore = ChoreModelController.chores[indexPath.row]
+            ChoreModelController.getChoreID(choreName: chore.title) { (id) in
+                ChoreModelController.deleteChore(with: id, completion: {})
+            }
+            ChoreModelController.chores.remove(at: indexPath.row)
+            ChoreModelController.saveChoresDirectory()
             tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
-    */
+    
 
     /*
     // Override to support rearranging the table view.

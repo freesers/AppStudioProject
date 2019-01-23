@@ -208,7 +208,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
            
             let housePickedRow = housePickerView.selectedRow(inComponent: 0)
             let housePicked = pickerData[housePickedRow]
-            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, password: self.passwordTextField.text!, isAdministrator: true, house: housePicked.name)
+            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, password: self.passwordTextField.text!, isAdministrator: false, house: housePicked.name)
             return UserModelController.currentUser!
         }
     }

@@ -58,8 +58,10 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "saveUnwindSegue" else { return }
         
-        let newChore = Chore(title: choreNameTextField.text ?? "No Title", house: UserModelController.currentUser.house, photo: imageTaken, lastCleaned: nil, cleaningDue: ChoreModelController.dueDate, cleaningBy: nil)
+        let newChore = Chore(title: choreNameTextField.text ?? "No Title", house: UserModelController.currentUser.house, image: imageTaken, lastCleaned: nil, cleaningDue: ChoreModelController.dueDate, cleaningBy: nil)
         ChoreModelController.chores.append(newChore)
+        ChoreModelController.uploadChore(chore: newChore)
+        ChoreModelController.saveChoresDirectory()
     }
     
 

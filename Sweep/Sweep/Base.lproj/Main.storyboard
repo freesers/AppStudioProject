@@ -390,6 +390,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="addChoreButton" destination="RzA-pr-LI7" id="Hdb-Cb-l28"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qRZ-54-ym4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
