@@ -53,3 +53,13 @@ Server code had to be adjusted to work with arrays. Networkcode now shows networ
 
 # Day 12
 Chores can be updates to the server, including the encoded jpeg image. PNG is too large. Wrote all of the Date & Calender code to keep track of the cleaning day. Chores can be downloaded, only the image doesn't decode yet
+
+# Day 13
+Image decoding problem solved. Residents can now upload and delete chores (if they are administrator). And all users download the chores for their house. Residents can now complete a chore by tapping "cleaned", they will have to take a picture as verification. Updated chore is uploaded to server. 
+To make tableview quicker; all chores are stored in the documents directory, quickly showing the last know chores (and corresponding images), then replacing with the new ones. Will choose not to implement the chore -> detail viewcontroller as it won't present new information. Instead tapping the picture of the chore will show a viewcontroller dedicated for the picture, with zooming capabilities. 
+### Tasks left: 
+* image viewcontroller
+* automatic schedule
+* leave house option
+* prettier "residents" tap
+* overal prettier design
