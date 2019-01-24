@@ -94,8 +94,13 @@ class ChoreModelController {
         
         let postString = "title=\(title)&house=\(formattedHouse)&image=[\(imageString)]"
         request.httpBody = postString.data(using: .utf8)
+       
+        UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
+            DispatchQueue.main.async {
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
             if let error = error {
                 print(error.localizedDescription)
             }
@@ -164,6 +169,7 @@ class ChoreModelController {
         if let encodedChores = try? plistEncoder.encode(chores) {
             do {
                 try encodedChores.write(to: ChoreModelController.choresDirectory, options: .noFileProtection)
+                print("saved")
             } catch {
                 print("Write to choresDirectory failed")
             }

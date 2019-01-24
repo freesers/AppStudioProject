@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 // tap recogniser every viewcontroller can use
-extension UIViewController {
+extension UIViewController: UITextFieldDelegate {
     
     func hideKeyboardWithTap() {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
@@ -20,11 +20,29 @@ extension UIViewController {
     @objc func hideKeyboard() {
         view.endEditing(true)
     }
+    
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        self.view.endEditing(true)
+        return false
+        
+    }
 }
 
 extension UIColor {
     
     static let skyBlue = UIColor(red: 106.0/255.0, green: 207.0/255.0, blue: 255.0/255.0, alpha: 1)
+    static let skyComplement = UIColor(red: 1, green: 153/255, blue: 106/255, alpha: 1)
+}
+
+extension String {
+    
+    func turnStringInArray() -> [String] {
+        let data = self.data(using: .utf8)
+        if let stringArray = try? JSONSerialization.jsonObject(with: data!, options: []) as! [String] {
+            return stringArray
+        }
+        return [String]()
+    }
 }
 
 extension DateComponents {

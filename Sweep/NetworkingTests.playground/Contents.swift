@@ -3,6 +3,36 @@ import PlaygroundSupport
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
+6 % 3
+
+var chores = [1,2,3]
+var people = [0,1,2,3,4]
+
+for peep in people {
+    print(peep % chores.count)
+}
+
+//let last = people.removeLast()
+//people.insert(last, at: 0)
+//people.capacity
+
+
+0 % 3
+
+0 - 3 * ( 0 / 3)
+
+
+
+
+//var date = Date()
+//let calendar = Calendar.current
+//
+//var week = calendar.component(.weekOfYear, from: date)
+//
+//calendar
+//let nextweek = calendar.date(byAdding: .day, value: 7, to: date)
+//let weekday = calendar.component(.weekOfYear, from: nextweek!)
+
 
 struct ServerChore: Codable {
     
@@ -256,4 +286,4 @@ func addTestToServer() {
 //}
 //
 //
-deleteRestoServer(withId: 2)
+//deleteRestoServer(withId: 2)

@@ -8,11 +8,14 @@
 
 import UIKit
 
+
 class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NewChoresDelegate {
 
     @IBOutlet weak var addChoreButton: UIBarButtonItem!
     
     var tempIndexPath: IndexPath?
+    var currentTitle: String!
+    var currentImage: UIImage!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -99,16 +102,18 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     }
     
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "choreDetailSegue", sender: nil)
-    }
-    
     func cleanedButtonPressed(cell: ChoreTableViewCell) {
         presentImagePicker()
         guard let indexPath = self.tableView.indexPath(for: cell) else { return }
         tempIndexPath = indexPath
     }
     
+    func imageTapped(cell: ChoreTableViewCell) {
+        self.currentTitle = cell.choreTitleLabel.text
+        self.currentImage = cell.choreImageView.image
+        performSegue(withIdentifier: "imageSegue", sender: nil)
+    }
+
     func presentImagePicker() {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -165,6 +170,7 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
         }
     }
     
+    
 
     /*
     // Override to support rearranging the table view.
@@ -181,15 +187,18 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+        if segue.identifier == "imageSegue" {
+            let imageViewController = segue.destination as! DetailImageViewController
+            imageViewController.image = self.currentImage
+            imageViewController.imageTitle = self.currentTitle
+        }
     }
-    */
+    
     
     @IBAction func unwindToChores(segue: UIStoryboardSegue) {
 

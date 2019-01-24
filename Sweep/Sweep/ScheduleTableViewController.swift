@@ -8,39 +8,67 @@
 
 import UIKit
 
+
+
 class ScheduleTableViewController: UITableViewController {
+    
+    var weekdays = [Int]()
+    
+    var counter = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        calculateSections()
         
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    /// calcs the coming five weeks for section headers
+    func calculateSections() {
+        let calendar = Calendar.current
+        var date = Date()
+        
+        for _ in 1...6 {
+            let weekday = calendar.component(.weekOfYear, from: date)
+            weekdays.append(weekday)
+            
+            // increment week
+            date = calendar.date(byAdding: .day, value: 7, to: date, wrappingComponents: false)!
+        }
     }
 
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
+        return weekdays.count
+    }
+
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "Week \(weekdays[section])"
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
+        return ChoreModelController.chores.count
     }
 
-    /*
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
+        let cell = tableView.dequeueReusableCell(withIdentifier: "scheduleCell", for: indexPath)
 
-        // Configure the cell...
-
+        cell.textLabel?.text = ChoreModelController.chores[indexPath.row].title
+        
+        let peopleIndex = getCellID(with: indexPath) % HouseModelController.residents.count
+        cell.detailTextLabel?.text = HouseModelController.residents[peopleIndex]
+        
         return cell
     }
-    */
+    
+    func getCellID(with indexPath: IndexPath) -> Int {
+        let sectionNumber = indexPath.section * ChoreModelController.chores.count
+        let rowNumber = indexPath.row
+        return sectionNumber + rowNumber
+    }
+    
+    
 
     /*
     // Override to support conditional editing of the table view.

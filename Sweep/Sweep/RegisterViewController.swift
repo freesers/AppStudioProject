@@ -9,7 +9,7 @@
 import UIKit
 import FirebaseAuth
 
-class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, UITextFieldDelegate {
+class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
@@ -75,7 +75,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     
     //MARK: Controlling the Keyboard
     
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         switch textField {
         case nameTextField:
@@ -202,13 +202,13 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // textfield is filled in
         if newHouseTextfield.text! != "" {
             
-            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, password: self.passwordTextField.text!, isAdministrator: true, house: self.newHouseTextfield.text!)
+            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, isAdministrator: true, house: self.newHouseTextfield.text!)
             return UserModelController.currentUser!
         } else {
            
             let housePickedRow = housePickerView.selectedRow(inComponent: 0)
             let housePicked = pickerData[housePickedRow]
-            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, password: self.passwordTextField.text!, isAdministrator: false, house: housePicked.name)
+            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, isAdministrator: false, house: housePicked.name)
             return UserModelController.currentUser!
         }
     }

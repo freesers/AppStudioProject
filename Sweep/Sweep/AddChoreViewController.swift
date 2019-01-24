@@ -19,6 +19,7 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
         }
     }
     @IBOutlet weak var choreNameTextField: UITextField!
+    @IBOutlet weak var saveChoreButton: UIBarButtonItem!
     
     var imageTaken: UIImage!
     
@@ -30,6 +31,8 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
         choreImage.layer.borderColor = UIColor.skyBlue.cgColor
         
         ChoreModelController.setupDates()
+        
+        saveChoreButton.isEnabled = false
         
     }
     
@@ -49,8 +52,19 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
             choreImage.image = imageTaken
             selectImageButton.setTitle(nil, for: .normal)
         }
-        picker.dismiss(animated: true, completion: nil)
+        picker.dismiss(animated: true) {
+            if self.choreNameTextField.text != "" {
+                self.saveChoreButton.isEnabled = true
+            }
+        }
     }
+    
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        saveChoreButton.isEnabled = (imageTaken != nil && sender.text != "") ? true : false
+    }
+    
+    
+    
     
     // MARK: - Navigation
 

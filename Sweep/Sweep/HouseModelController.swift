@@ -12,10 +12,8 @@ import UIKit
 class HouseModelController {
     
     static let shared = HouseModelController()
-    
-    static var chores = [Chore]()
-
     static var houses = [House]()
+    static var residents = [String]()
     
 
     
@@ -44,6 +42,9 @@ class HouseModelController {
             if let houseData = houseData {
                 print(houseData)
             }
+            if let error = houseError {
+                print(error.localizedDescription)
+            }
         }
         task.resume()
     }
@@ -70,6 +71,9 @@ class HouseModelController {
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
                 if let data = data {
                     print(data)
+                }
+                if let error = error {
+                    print(error.localizedDescription)
                 }
             })
             task.resume()
@@ -127,11 +131,4 @@ class HouseModelController {
     
     
 }
-
-//let data = house[0].residents.data(using: String.Encoding.utf8, allowLossyConversion: false)
-//
-//if let stringArray = try? JSONSerialization.jsonObject(with: data!, options: []) as! [String] {
-//    print(stringArray)
-//}
-
 

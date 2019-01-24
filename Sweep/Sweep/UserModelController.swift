@@ -17,8 +17,8 @@ class UserModelController {
     static var residents = [User]()
     
     
-    static func addUser(name: String, uid: String, email: String, password: String, isAdministrator: Bool, house: String) {
-        UserModelController.currentUser = User(id: 0, uid: uid, name: name, email: email, password: password, isAdministrator: String(isAdministrator), house: house)
+    static func addUser(name: String, uid: String, email: String, isAdministrator: Bool, house: String) {
+        UserModelController.currentUser = User(id: 0, uid: uid, name: name, email: email, isAdministrator: String(isAdministrator), house: house)
         
         if let currentUser = UserModelController.currentUser {
             UserModelController.residents.append(currentUser)
@@ -65,8 +65,10 @@ class UserModelController {
             }
         }
         task.resume()
+    }
     
-}
+    //MARK: scheduling
+    
     
 
     

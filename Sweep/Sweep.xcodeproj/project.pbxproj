@@ -25,9 +25,10 @@
 		11C7809A21E7584D00AB5CEF /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7809921E7584D00AB5CEF /* User.swift */; };
 		11C7809D21E7643600AB5CEF /* ChoreTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C7809B21E7643600AB5CEF /* ChoreTableViewCell.swift */; };
 		11C7809E21E7643600AB5CEF /* ChoreTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 11C7809C21E7643600AB5CEF /* ChoreTableViewCell.xib */; };
-		11C780A321E76E8600AB5CEF /* ChoreDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11C780A221E76E8600AB5CEF /* ChoreDetailViewController.swift */; };
 		11DDE3BA21F5E9EF004B721C /* Chore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DDE3B921F5E9EF004B721C /* Chore.swift */; };
 		11DDE3BC21F7328D004B721C /* ChoreModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11DDE3BB21F7328D004B721C /* ChoreModelController.swift */; };
+		11E002B821F9FEB20045DAE7 /* DetailImageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E002B721F9FEB20045DAE7 /* DetailImageViewController.swift */; };
+		11E002BA21FA24790045DAE7 /* ScheduleController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11E002B921FA24790045DAE7 /* ScheduleController.swift */; };
 		B34B49EC16C513E6B6DD9ABA /* Pods_Sweep.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 24F8D22D81A199142687D017 /* Pods_Sweep.framework */; };
 /* End PBXBuildFile section */
 
@@ -53,9 +54,10 @@
 		11C7809921E7584D00AB5CEF /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		11C7809B21E7643600AB5CEF /* ChoreTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreTableViewCell.swift; sourceTree = "<group>"; };
 		11C7809C21E7643600AB5CEF /* ChoreTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ChoreTableViewCell.xib; sourceTree = "<group>"; };
-		11C780A221E76E8600AB5CEF /* ChoreDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreDetailViewController.swift; sourceTree = "<group>"; };
 		11DDE3B921F5E9EF004B721C /* Chore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chore.swift; sourceTree = "<group>"; };
 		11DDE3BB21F7328D004B721C /* ChoreModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChoreModelController.swift; sourceTree = "<group>"; };
+		11E002B721F9FEB20045DAE7 /* DetailImageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailImageViewController.swift; sourceTree = "<group>"; };
+		11E002B921FA24790045DAE7 /* ScheduleController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleController.swift; sourceTree = "<group>"; };
 		24F8D22D81A199142687D017 /* Pods_Sweep.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Sweep.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45FB12D89A12A1B6922CC441 /* Pods-Sweep.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sweep.release.xcconfig"; path = "Pods/Target Support Files/Pods-Sweep/Pods-Sweep.release.xcconfig"; sourceTree = "<group>"; };
 		7B42D045C3EDA155735E72C9 /* Pods-Sweep.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Sweep.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Sweep/Pods-Sweep.debug.xcconfig"; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 			children = (
 				11A3E60021ECA409007E28D4 /* UserModelController.swift */,
 				11A3E60221ECB04B007E28D4 /* HouseModelController.swift */,
+				11E002B921FA24790045DAE7 /* ScheduleController.swift */,
 				11DDE3BB21F7328D004B721C /* ChoreModelController.swift */,
 			);
 			name = ModelControllers;
@@ -144,8 +147,8 @@
 			children = (
 				11B0DD7121E4F32B006382CF /* ChoresTableViewController.swift */,
 				11C7809B21E7643600AB5CEF /* ChoreTableViewCell.swift */,
-				11C780A221E76E8600AB5CEF /* ChoreDetailViewController.swift */,
 				11B0DD7721E4F6F3006382CF /* AddChoreViewController.swift */,
+				11E002B721F9FEB20045DAE7 /* DetailImageViewController.swift */,
 			);
 			name = Chores;
 			sourceTree = "<group>";
@@ -336,14 +339,15 @@
 				11AB608521E39D83001CB0D0 /* LoginViewController.swift in Sources */,
 				11B0DD7621E4F367006382CF /* ResidentsViewController.swift in Sources */,
 				11C7809A21E7584D00AB5CEF /* User.swift in Sources */,
+				11E002BA21FA24790045DAE7 /* ScheduleController.swift in Sources */,
 				11B0DD7821E4F6F3006382CF /* AddChoreViewController.swift in Sources */,
 				11AB608321E39D83001CB0D0 /* AppDelegate.swift in Sources */,
 				11A3E60121ECA409007E28D4 /* UserModelController.swift in Sources */,
 				11DDE3BC21F7328D004B721C /* ChoreModelController.swift in Sources */,
 				11A3E5FA21EC9E5E007E28D4 /* House.swift in Sources */,
 				11DDE3BA21F5E9EF004B721C /* Chore.swift in Sources */,
-				11C780A321E76E8600AB5CEF /* ChoreDetailViewController.swift in Sources */,
 				11B2ED5521F20E44009C1688 /* Extensions.swift in Sources */,
+				11E002B821F9FEB20045DAE7 /* DetailImageViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -14,14 +14,13 @@ struct User: Codable {
     var uid: String
     var name: String
     var email: String
-    var password: String
     var isAdministrator: String
     var house: String
     
     var description: String {
 
         // custom string to upload to server
-        return "uid=\(uid)&name=\(name)&email=\(email)&password=\(password)&isAdministrator=\(String(isAdministrator))&house=\(house)"
+        return "uid=\(uid)&name=\(name)&email=\(email)&isAdministrator=\(String(isAdministrator))&house=\(house)"
     }
 
 }

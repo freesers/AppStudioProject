@@ -11,7 +11,7 @@ import FirebaseAuth
 
 
 
-class LoginViewController: UIViewController, UITextFieldDelegate {
+class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
     
@@ -54,6 +54,11 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 let uid = user.uid
                 
                 UserModelController.loadUser(with: uid, completion: { (user) in
+                    
+                    HouseModelController.loadResidents(from: user.house) { (house) in
+                        HouseModelController.residents = house.residents.turnStringInArray()
+                    }
+                    
                     DispatchQueue.main.async {
                         UserModelController.currentUser = user
                         self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
@@ -66,7 +71,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
    
     
     //MARK: Keyboard control
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         switch textField {
         case emailTextField:
             emailTextField.resignFirstResponder()
@@ -91,6 +96,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 print("UID: \(result.user.uid)")
                 UserModelController.loadUser(with: result.user.uid, completion: { (user) in
                     UserModelController.currentUser = user
+                    
+                    HouseModelController.loadResidents(from: user.house) { (house) in
+                        HouseModelController.residents = house.residents.turnStringInArray()
+                    }
                     
                     DispatchQueue.main.async {
                         self.performSegue(withIdentifier: "logInSegue", sender: nil)
