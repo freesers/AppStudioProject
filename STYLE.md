@@ -10,7 +10,7 @@
 #### Comment rules:
 * two slashes and lowercase 
 * three slashes above functions
-* In the comment header above classes; name the properties and what the class does in general
+* In the comment header above classes;  short description of the purpose of the class
 
 #### Naming conventions:
 * camelCase for variables and functions
