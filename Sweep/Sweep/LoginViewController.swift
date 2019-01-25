@@ -10,7 +10,6 @@ import UIKit
 import FirebaseAuth
 
 
-
 class LoginViewController: UIViewController {
     
     @IBOutlet weak var loginButton: UIButton!
@@ -19,7 +18,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     
     var loginState: Bool!
-    
+
 
     
     override func viewDidLoad() {
@@ -57,6 +56,13 @@ class LoginViewController: UIViewController {
                     
                     HouseModelController.loadResidents(from: user.house) { (house) in
                         HouseModelController.residents = house.residents.turnStringInArray()
+                        
+                        ChoreModelController.loadChoresDirectory {
+                            self.loadChoresFromServer()
+                            ScheduleController.rearrangePeople()
+                        }
+                        
+                        
                     }
                     
                     DispatchQueue.main.async {
@@ -67,6 +73,22 @@ class LoginViewController: UIViewController {
                 })
             }
         }
+    }
+    
+    func loadChoresFromServer() {
+        ChoreModelController.loadServerChores(from: getHouseName()) { (serverChores) in
+            DispatchQueue.main.async {
+                ChoreModelController.chores.removeAll()
+                ChoreModelController.loadChores(chores: serverChores)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        }
+    }
+    
+    func getHouseName() -> String {
+        let house = UserModelController.currentUser.house
+        let formattedHouse = house.replacingOccurrences(of: " ", with: "*")
+        return formattedHouse
     }
    
     
@@ -99,6 +121,8 @@ class LoginViewController: UIViewController {
                     
                     HouseModelController.loadResidents(from: user.house) { (house) in
                         HouseModelController.residents = house.residents.turnStringInArray()
+                        
+                        ScheduleController.rearrangePeople()
                     }
                     
                     DispatchQueue.main.async {
@@ -148,7 +172,7 @@ class LoginViewController: UIViewController {
         loginButton.setTitle("Login", for: .normal)
         print("worked")
     }
-
+    
 
 }
 

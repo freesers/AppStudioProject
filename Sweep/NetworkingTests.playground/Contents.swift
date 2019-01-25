@@ -3,27 +3,18 @@ import PlaygroundSupport
 
 PlaygroundPage.current.needsIndefiniteExecution = true
 
-6 % 3
+var cleaningDayComponent = DateComponents(calendar: nil, timeZone: nil, era: nil, year: 2019, month: 1, day: 27, hour: 23, minute: 59, second: 59, nanosecond: nil, weekday: 1, weekdayOrdinal: nil, quarter: nil, weekOfMonth: nil, weekOfYear: nil, yearForWeekOfYear: nil)
 
-var chores = [1,2,3]
-var people = [0,1,2,3,4]
-
-for peep in people {
-    print(peep % chores.count)
-}
-
-//let last = people.removeLast()
-//people.insert(last, at: 0)
-//people.capacity
+var firstCleaningDate = Calendar.current.date(from: cleaningDayComponent)
+var calendar = Calendar.current
+calendar.firstWeekday = 2
+let week = calendar.component(.weekOfMonth, from: firstCleaningDate!)
 
 
-0 % 3
-
-0 - 3 * ( 0 / 3)
-
-
-
-
+var datenew = Date().addingTimeInterval(60*60*24*5*7)
+var calendar2 = Calendar.current
+calendar2.firstWeekday = 2
+let currentweek = calendar2.component(.weekOfYear, from: datenew)
 //var date = Date()
 //let calendar = Calendar.current
 //
@@ -145,9 +136,7 @@ struct User: Codable {
 //
 //
 func serverRequest(request: URLRequest) {
-
-
-
+    
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
         if let error = error {
             print(error)
@@ -286,4 +275,4 @@ func addTestToServer() {
 //}
 //
 //
-//deleteRestoServer(withId: 2)
+//deleteRestoServer(withId: 8)

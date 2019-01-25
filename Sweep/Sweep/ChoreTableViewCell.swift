@@ -21,7 +21,6 @@ class ChoreTableViewCell: UITableViewCell {
     @IBOutlet weak var choreDueDateLabel: UILabel!
     @IBOutlet weak var chorePersonDueLabel: UILabel!
     @IBOutlet weak var choreDaysLeft: UILabel!
-    //var 
     
     var delegate: CellSubclassDelegate?
  

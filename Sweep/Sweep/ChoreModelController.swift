@@ -177,11 +177,19 @@ class ChoreModelController {
     }
     
     static func loadChoresDirectory(completion: @escaping () -> Void) {
-        let plistDecoder = PropertyListDecoder()
-        if let chores = try? Data(contentsOf: ChoreModelController.choresDirectory), let decodedChores = try? plistDecoder.decode([Chore].self, from: chores) {
-            ChoreModelController.chores = decodedChores
-            completion()
-        } else {
+        
+        var loadServer = true
+        
+        DispatchQueue.main.sync {
+            let plistDecoder = PropertyListDecoder()
+            if let chores = try? Data(contentsOf: ChoreModelController.choresDirectory), let decodedChores = try? plistDecoder.decode([Chore].self, from: chores) {
+                ChoreModelController.chores = decodedChores
+                loadServer = false
+                completion()
+            }
+        }
+        
+        if loadServer {
             ChoreModelController.loadServerChores(from: UserModelController.currentUser.house) { (chores) in
                 ChoreModelController.loadChores(chores: chores)
                 self.delegate?.reloadCells()

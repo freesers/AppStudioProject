@@ -10,18 +10,21 @@ import UIKit
 
 
 class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NewChoresDelegate {
-
+    
     @IBOutlet weak var addChoreButton: UIBarButtonItem!
     
     var tempIndexPath: IndexPath?
     var currentTitle: String!
     var currentImage: UIImage!
+    var firstLoad = true
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerTableViewCell()
         ChoreModelController.delegate = self
-        
+      
+    
         
         if !Bool(UserModelController.currentUser.isAdministrator)! {
             addChoreButton.isEnabled = false
@@ -30,39 +33,30 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
             self.navigationItem.leftBarButtonItem = editButtonItem
         }
         
-        ChoreModelController.loadChoresDirectory {
-            self.loadChoresFromServer()
-        }
 
     }
     
+    
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
         self.tableView.reloadData()
     }
     
-    func loadChoresFromServer() {
-        ChoreModelController.loadServerChores(from: getHouseName()) { (serverChores) in
-            DispatchQueue.main.async {
-                ChoreModelController.chores.removeAll()
-                ChoreModelController.loadChores(chores: serverChores)
-                self.tableView.reloadData()
-                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-            }
-        }
-    }
-    
-    func reloadCells() {
+    func reloadTableView() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
         }
     }
     
-    func getHouseName() -> String {
-        let house = UserModelController.currentUser.house
-        let formattedHouse = house.replacingOccurrences(of: " ", with: "*")
-        return formattedHouse
+    func reloadCells() {
+        tableView.reloadData()
     }
+    
 
     // MARK: - Table view data source
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -83,11 +77,26 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
         cell.choreTitleLabel.text = chore.title
         cell.choreImageView.image = chore.photo
         cell.choreDueDateLabel.text = "Due: \(getDateString())"
+        cell.chorePersonDueLabel.text = "By \(HouseModelController.residents[indexPath.row])"
         cell.choreDaysLeft.text = "Days left: \(ChoreModelController.daysInterval(date: Date()))"
         cell.delegate = self
         
         
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if firstLoad {
+            cell.alpha = 0
+            
+            UIView.animate(
+                withDuration: 0.5,
+                delay: 0.05 * Double(indexPath.row),
+                animations: {
+                    cell.alpha = 1
+            })
+            firstLoad = false
+        }
     }
     
     func getDateString() -> String {
@@ -162,7 +171,9 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
             
             let chore = ChoreModelController.chores[indexPath.row]
             ChoreModelController.getChoreID(choreName: chore.title) { (id) in
-                ChoreModelController.deleteChore(with: id, completion: {})
+                ChoreModelController.deleteChore(with: id, completion: {
+                    print("Chore Deleted")
+                })
             }
             ChoreModelController.chores.remove(at: indexPath.row)
             ChoreModelController.saveChoresDirectory()

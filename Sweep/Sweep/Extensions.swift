@@ -34,6 +34,19 @@ extension UIColor {
     static let skyComplement = UIColor(red: 1, green: 153/255, blue: 106/255, alpha: 1)
 }
 
+extension UIImage {
+    
+    func isEqualImage(image: UIImage) {
+        let data1 = self.jpegData(compressionQuality: 0.5)!
+        let data2 = image.jpegData(compressionQuality: 0.5)!
+        if data1 == data2 {
+            print("same")
+        } else {
+            print("different")
+        }
+    }
+}
+
 extension String {
     
     func turnStringInArray() -> [String] {

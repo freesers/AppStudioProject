@@ -18,8 +18,14 @@ class ScheduleTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        calculateSections()
         
+        
+        calculateSections()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+        tableView.reloadData()
     }
     
     /// calcs the coming five weeks for section headers
@@ -35,6 +41,7 @@ class ScheduleTableViewController: UITableViewController {
             date = calendar.date(byAdding: .day, value: 7, to: date, wrappingComponents: false)!
         }
     }
+    
 
     // MARK: - Table view data source
 
@@ -48,6 +55,7 @@ class ScheduleTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ChoreModelController.chores.count
+        
     }
 
     
