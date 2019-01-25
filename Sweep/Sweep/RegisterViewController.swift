@@ -5,12 +5,17 @@
 //  Created by Sander de Vries on 14/01/2019.
 //  Copyright © 2019 Sander de Vries. All rights reserved.
 //
+//  Handles all interactions when new user registers
+//  Creates Users, Houses and uploads them to the server
+//
 
 import UIKit
 import FirebaseAuth
 
+
 class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
+    // MARK: Variables
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -32,7 +37,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         // configure register button
         registerButton.layer.cornerRadius = 12
         
-        // load sample houses
+        // load houses to display in the picker
         HouseModelController.loadHouses { (houses) in
             HouseModelController.houses = houses
             DispatchQueue.main.async {
@@ -43,40 +48,45 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
             }
         }
         
-        
         // configure picker
         housePickerView.dataSource = self
         housePickerView.delegate = self
         
+        // make keyboard dismissable with tap
         self.hideKeyboardWithTap()
- 
     }
     
+    
+    // MARK: Housepicker
+    
+    /// renames to correct housenames (spaces don't work in request)
     func formattedHouseNames() {
-        
         for (i, house) in HouseModelController.houses.enumerated() {
             let houseName = house.name.replacingOccurrences(of: "*", with: " ")
             HouseModelController.houses[i].name = houseName
         }
     }
     
-    //MARK - Housepicker
+    /// returns component in pickerview
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         return 1
     }
     
+    /// returns number of rows in pickerview
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return pickerData.count
     }
     
+    /// sets row titles pickerview
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         return pickerData[row].name
     }
     
-    //MARK: Controlling the Keyboard
     
+    // MARK: Controlling the Keyboard
+    
+    /// pressing return shows next textfield
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         switch textField {
         case nameTextField:
             emailTextField.becomeFirstResponder()
@@ -94,6 +104,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         return true
     }
     
+    /// only show housepicker if no new house is filled in
     func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
         if newHouseTextfield.text != "" {
             housePickerView.isHidden = true
@@ -104,32 +115,28 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         }
         return true
     }
-    //MARK: Registration code
     
+    
+    // MARK: Registration code
+    
+    /// creates user account at FireBase and new or existing house
     @IBAction func registerButtonTapped(_ sender: Any) {
+        
+        // check whether fields and passwords are correct
         guard checkFields() && checkPassword() else { return }
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         var uid = ""
+        
+        // create firebase account
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (AuthDataResult, Error) in
-            if let user = AuthDataResult?.user {
-                uid = user.uid
-                self.setCurrentUser(with: uid) {
-                    if self.newHouseTextfield.text! != "" {
-                        self.registerNewHouse(name: self.newHouseTextfield.text!, resident: self.nameTextField.text!, administrator: self.nameTextField.text!, completion: {
-                            DispatchQueue.main.async {
-                                self.performSegue(withIdentifier: "registrationSucces", sender: nil)
-                                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                            }
-                        })
-                    } else {
-                        self.registerExistingHouse {
-                            DispatchQueue.main.async {
-                                self.performSegue(withIdentifier: "registrationSucces", sender: nil)
-                                UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                            }
-                        }
-                    }
+            guard let user = AuthDataResult?.user  else { return }
+            uid = user.uid
+            self.setCurrentUser(with: uid) {
+                if self.newHouseTextfield.text! != "" {
+                    self.newHouse()
+                } else {
+                    self.existingHouse()
                 }
             }
             if let error = Error {
@@ -137,25 +144,6 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
             }
         }
     }
-    
-    func setCurrentUser(with uid: String, completion: @escaping () -> Void) {
-        UserModelController.currentUser = self.createUser(with: uid)
-        completion()
-    }
-    
-    func registerNewHouse(name: String, resident: String, administrator: String, completion: @escaping () -> Void) {
-        HouseModelController.uploadNewHouse(with: name, residents: [resident], administrator: administrator)
-        completion()
-    }
-    
-    func registerExistingHouse(completion: @escaping () -> Void) {
-        let selectedHouseRow = housePickerView.selectedRow(inComponent: 0)
-        let selectedHouse = pickerData[selectedHouseRow].name
-        
-        HouseModelController.joinHouse(houseName: selectedHouse, residentName: nameTextField.text!)
-        completion()
-    }
-    
     
     /// checks if textfield are filled in
     func checkFields() -> Bool {
@@ -177,6 +165,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     func checkPassword() -> Bool {
         if passwordTextField.text != password2Textfield.text {
             
+            // create alert
             let alert = UIAlertController(title: "Error", message: "Your passwords don't match", preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
                 
@@ -184,6 +173,8 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
             self.present(alert, animated: true, completion: nil)
             return false
         } else {
+            
+            // passwords match
             return true
         }
     }
@@ -195,27 +186,65 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         self.present(alert, animated: true, completion: nil)
     }
     
-
-    /// creates user, either administrator or just member
-    func createUser(with uid: String) -> User {
-        
-        // textfield is filled in
-        if newHouseTextfield.text! != "" {
-            
-            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, isAdministrator: true, house: self.newHouseTextfield.text!)
-            return UserModelController.currentUser!
-        } else {
-           
-            let housePickedRow = housePickerView.selectedRow(inComponent: 0)
-            let housePicked = pickerData[housePickedRow]
-            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!, isAdministrator: false, house: housePicked.name)
-            return UserModelController.currentUser!
+    /// creates new house
+    func newHouse() {
+        self.registerNewHouse(name: self.newHouseTextfield.text!, resident: self.nameTextField.text!, administrator: self.nameTextField.text!, completion: {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "registrationSucces", sender: nil)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        })
+    }
+    
+    /// creates existing house
+    func existingHouse() {
+        self.registerExistingHouse {
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "registrationSucces", sender: nil)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
         }
     }
-
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    /// sets current user with uid from FireBase
+    func setCurrentUser(with uid: String, completion: @escaping () -> Void) {
+        UserModelController.currentUser = self.createUser(with: uid)
+        completion()
+    }
+    
+    /// registers new house with new resident and uploads to server
+    func registerNewHouse(name: String, resident: String, administrator: String, completion: @escaping () -> Void) {
+        HouseModelController.uploadNewHouse(with: name, residents: [resident], administrator: administrator)
+        completion()
+    }
+    
+    /// residents joins existring house from picker
+    func registerExistingHouse(completion: @escaping () -> Void) {
+        let selectedHouseRow = housePickerView.selectedRow(inComponent: 0)
+        let selectedHouse = pickerData[selectedHouseRow].name
         
+        HouseModelController.joinHouse(houseName: selectedHouse, residentName: nameTextField.text!)
+        completion()
+    }
+
+    /// creates user, either administrator or just member and uploads to server
+    func createUser(with uid: String) -> User {
+        
+        // create user with new house
+        if newHouseTextfield.text! != "" {
+            
+            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!,
+                                        isAdministrator: true, house: self.newHouseTextfield.text!)
+            return UserModelController.currentUser!
+            
+        // create user with existing house
+        } else {
+            let housePickedRow = housePickerView.selectedRow(inComponent: 0)
+            let housePicked = pickerData[housePickedRow]
+            UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!,
+                                        isAdministrator: false, house: housePicked.name)
+            return UserModelController.currentUser!
+        }
     }
 }
 

@@ -7,7 +7,7 @@
 //
 
 import UIKit
-
+import UserNotifications
 
 class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NewChoresDelegate {
     
@@ -18,12 +18,20 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     var currentImage: UIImage!
     var firstLoad = true
     
+    let notificationController = NotificationController()
+    var residentsDue = [String]() {
+        didSet {
+            notificationController.checkIfUserIsUp(users: residentsDue)
+        }
+    }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerTableViewCell()
         ChoreModelController.delegate = self
       
+        
     
         
         if !Bool(UserModelController.currentUser.isAdministrator)! {
@@ -32,11 +40,8 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
         } else {
             self.navigationItem.leftBarButtonItem = editButtonItem
         }
-        
 
     }
-    
-    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
@@ -46,6 +51,7 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
         super.viewDidAppear(true)
         self.tableView.reloadData()
     }
+    
     
     func reloadTableView() {
         DispatchQueue.main.async {
@@ -80,6 +86,9 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
         cell.chorePersonDueLabel.text = "By \(HouseModelController.residents[indexPath.row])"
         cell.choreDaysLeft.text = "Days left: \(ChoreModelController.daysInterval(date: Date()))"
         cell.delegate = self
+        
+        // set residents due for chores
+        residentsDue.append(HouseModelController.residents[indexPath.row])
         
         
         return cell

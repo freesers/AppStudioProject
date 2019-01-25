@@ -5,9 +5,13 @@
 //  Created by Sander de Vries on 07/01/2019.
 //  Copyright © 2019 Sander de Vries. All rights reserved.
 //
+//  Handles firebase configuration, UserNotification permissions
+//  Saves chores to local directory when background
+//
 
 import UIKit
 import Firebase
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +20,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
         FirebaseApp.configure()
+        
+        let center = UNUserNotificationCenter.current()
+        
+        // Request permission to display alerts and play sounds.
+        center.requestAuthorization(options: [.alert, .sound])
+        { (granted, error) in
+            if granted {
+                print("Notifications enabled")
+            }
+        }
+        
+        let notificationCenter = UNUserNotificationCenter.current()
+        
+        notificationCenter.getNotificationSettings { (settings) in
+            // Do not schedule notifications if not authorized.
+            guard settings.authorizationStatus == .authorized else {print("Notifications disabled"); return}
+        }
 
     return true
     }

@@ -5,6 +5,9 @@
 //  Created by Sander de Vries on 07/01/2019.
 //  Copyright © 2019 Sander de Vries. All rights reserved.
 //
+//  Handles the login screen. If user is already logged in, the user
+//  is redirected to the next screen. Loads all neccesary data from server
+//
 
 import UIKit
 import FirebaseAuth
@@ -12,35 +15,40 @@ import FirebaseAuth
 
 class LoginViewController: UIViewController {
     
+    // MARK: Variables
     @IBOutlet weak var loginButton: UIButton!
-    
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     
     var loginState: Bool!
 
-
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // make keyboard dismissable with tap
         self.hideKeyboardWithTap()
-        loginButton.layer.cornerRadius = 12
         
         // Create correct deadlines for the chores
         ChoreModelController.setupDates()
         
- //Block to logout for debugging
-//
-//        let firebaseAuth = Auth.auth()
-//        do {
-//            try firebaseAuth.signOut()
-//           // performSegue(withIdentifier: "logOutSegue", sender: nil)
-//            print("Logged out")
-//        } catch let signOutError as NSError {
-//            print ("Error signing out: %@", signOutError)
-//        }
-//
+        // set rounded corners to login button
+        loginButton.layer.cornerRadius = 12
+        
+        // check if user is logged in
         isUserLoggedIn()
+    }
+    
+    /// log out from FireBase, use for debugging
+    func logOutFB () {
+        let firebaseAuth = Auth.auth()
+        do {
+            try firebaseAuth.signOut()
+            print("Logged out")
+        } catch let signOutError as NSError {
+            print ("Error signing out: %@", signOutError)
+        }
+
     }
     
     func isUserLoggedIn() {
@@ -122,7 +130,10 @@ class LoginViewController: UIViewController {
                     HouseModelController.loadResidents(from: user.house) { (house) in
                         HouseModelController.residents = house.residents.turnStringInArray()
                         
-                        ScheduleController.rearrangePeople()
+                        ChoreModelController.loadChoresDirectory {
+                            self.loadChoresFromServer()
+                            ScheduleController.rearrangePeople()
+                        }
                     }
                     
                     DispatchQueue.main.async {
