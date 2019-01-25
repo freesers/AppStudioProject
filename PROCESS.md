@@ -63,3 +63,8 @@ To make tableview quicker; all chores are stored in the documents directory, qui
 * leave house option
 * prettier "residents" tap
 * overal prettier design
+
+# Day 14
+Finished the imageviewcontroller. Users can now tap an image and pan/zoom the image. The automatic schedule is done. Created quite a few problems because the tableview is dynamic and the number of residents/chores needn't be the same. Made a workaround the loop the residents over the chores. Made an ScheduleController which creates the correct schedule upon opening app.
+#### Stretch goal
+make local notification to alert user of chore
