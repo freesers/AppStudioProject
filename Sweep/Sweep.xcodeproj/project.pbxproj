@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		113983D821FB5C3C002B9FB9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113983D721FB5C3C002B9FB9 /* NotificationController.swift */; };
 		1143AFB721E8E09C006DAE58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1143AFB621E8E09C006DAE58 /* GoogleService-Info.plist */; };
+		1181529121FCD9CD001E5208 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181529021FCD9CD001E5208 /* Protocols.swift */; };
 		11A3E5FA21EC9E5E007E28D4 /* House.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3E5F921EC9E5E007E28D4 /* House.swift */; };
 		11A3E5FC21ECA104007E28D4 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3E5FB21ECA104007E28D4 /* RegisterViewController.swift */; };
 		11A3E60121ECA409007E28D4 /* UserModelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11A3E60021ECA409007E28D4 /* UserModelController.swift */; };
@@ -37,6 +38,7 @@
 		113983D721FB5C3C002B9FB9 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		1143AFB621E8E09C006DAE58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		11811CFF21EF90750035B3EB /* NetworkingTests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = NetworkingTests.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		1181529021FCD9CD001E5208 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		11A3E5F921EC9E5E007E28D4 /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		11A3E5FB21ECA104007E28D4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		11A3E60021ECA409007E28D4 /* UserModelController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserModelController.swift; sourceTree = "<group>"; };
@@ -87,6 +89,14 @@
 			name = Models;
 			sourceTree = "<group>";
 		};
+		1181529221FCD9DA001E5208 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				1181529021FCD9CD001E5208 /* Protocols.swift */,
+			);
+			name = Protocols;
+			sourceTree = "<group>";
+		};
 		11A3E5FD21ECA3E0007E28D4 /* ModelControllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -129,6 +139,7 @@
 				1143AFB521E8DB9D006DAE58 /* Models */,
 				11A3E5FD21ECA3E0007E28D4 /* ModelControllers */,
 				11B2ED5321F20E24009C1688 /* Extensions */,
+				1181529221FCD9DA001E5208 /* Protocols */,
 				11AB608921E39D85001CB0D0 /* Assets.xcassets */,
 				11AB608E21E39D85001CB0D0 /* Info.plist */,
 				1143AFB621E8E09C006DAE58 /* GoogleService-Info.plist */,
@@ -341,6 +352,7 @@
 				11A3E60321ECB04B007E28D4 /* HouseModelController.swift in Sources */,
 				11AB608521E39D83001CB0D0 /* LoginViewController.swift in Sources */,
 				113983D821FB5C3C002B9FB9 /* NotificationController.swift in Sources */,
+				1181529121FCD9CD001E5208 /* Protocols.swift in Sources */,
 				11B0DD7621E4F367006382CF /* ResidentsViewController.swift in Sources */,
 				11C7809A21E7584D00AB5CEF /* User.swift in Sources */,
 				11E002BA21FA24790045DAE7 /* ScheduleController.swift in Sources */,

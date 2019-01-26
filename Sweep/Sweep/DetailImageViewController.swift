@@ -5,11 +5,16 @@
 //  Created by Sander de Vries on 24/01/2019.
 //  Copyright © 2019 Sander de Vries. All rights reserved.
 //
+//  Viewcontroller to inspect chore image.
+//  Users can zoom and pan around the image
+//
 
 import UIKit
 
+
 class DetailImageViewController: UIViewController, UIScrollViewDelegate {
     
+    //MARK: - Variables
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var navigationBar: UINavigationItem!
@@ -21,8 +26,11 @@ class DetailImageViewController: UIViewController, UIScrollViewDelegate {
         return true
     }
 
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // setup scrollview
         scrollView.minimumZoomScale = 1.0
         scrollView.maximumZoomScale = 6
         scrollView.delegate = self
@@ -30,23 +38,13 @@ class DetailImageViewController: UIViewController, UIScrollViewDelegate {
         scrollView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
         imageView.isUserInteractionEnabled = true
         
+        // set image and title
         imageView.image = self.image!
         navigationBar.title = self.imageTitle!
-        // Do any additional setup after loading the view.
     }
     
+    /// set scrolview to imageview
     func viewForZooming(in scrollView: UIScrollView) -> UIView? {
         return self.imageView
     }
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

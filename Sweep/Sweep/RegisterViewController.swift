@@ -15,7 +15,7 @@ import FirebaseAuth
 
 class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate {
 
-    // MARK: Variables
+    // MARK: - Variables
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
@@ -30,7 +30,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     var pickerData = [House]()
     var newUser: User? = nil
     
-    
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -57,7 +57,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     
-    // MARK: Housepicker
+    // MARK: - Housepicker
     
     /// renames to correct housenames (spaces don't work in request)
     func formattedHouseNames() {
@@ -83,7 +83,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     
-    // MARK: Controlling the Keyboard
+    // MARK: - Controlling the Keyboard
     
     /// pressing return shows next textfield
     override func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -117,7 +117,7 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     }
     
     
-    // MARK: Registration code
+    // MARK: - Registration code
     
     /// creates user account at FireBase and new or existing house
     @IBAction func registerButtonTapped(_ sender: Any) {

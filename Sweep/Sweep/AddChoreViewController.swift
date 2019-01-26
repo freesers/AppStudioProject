@@ -5,12 +5,16 @@
 //  Created by Sander de Vries on 08/01/2019.
 //  Copyright © 2019 Sander de Vries. All rights reserved.
 //
+//  Adds new chore to tableview. Lets users make photo
+//  and title of new chore. Chores are then saven and uploaded
+//
 
 import UIKit
 
+
 class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    
+    // MARK: - Variables
     @IBOutlet weak var selectImageButton: UIButton!
     @IBOutlet weak var choreImage: UIImageView! {
         didSet {
@@ -23,19 +27,31 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
     
     var imageTaken: UIImage!
     
+    // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        // make keyboard dismissable with tap
         self.hideKeyboardWithTap()
         
+        // create skyBlue border arround frame
         choreImage.layer.borderWidth = 1.5
         choreImage.layer.borderColor = UIColor.skyBlue.cgColor
         
-        ChoreModelController.setupDates()
-        
+        // disable savebutton
         saveChoreButton.isEnabled = false
-        
     }
     
+    // MARK: - Textfield
+    
+    /// enable savebutton when textfield and image are not empty
+    @IBAction func textFieldChanged(_ sender: UITextField) {
+        saveChoreButton.isEnabled = (imageTaken != nil && sender.text != "") ? true : false
+    }
+    
+    // MARK: - Image Selection
+    
+    /// present imagepicker when imagebutton is tapped
     @IBAction func takeImageButtonTapped(_ sender: UIButton) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -46,6 +62,7 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
         self.present(imagePicker, animated: true)
     }
     
+    /// set image after photo is taken
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
         if let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage {
             imageTaken = image
@@ -53,22 +70,17 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
             selectImageButton.setTitle(nil, for: .normal)
         }
         picker.dismiss(animated: true) {
+            
+            // enable savebutton if textfield is not empty
             if self.choreNameTextField.text != "" {
                 self.saveChoreButton.isEnabled = true
             }
         }
     }
     
-    @IBAction func textFieldChanged(_ sender: UITextField) {
-        saveChoreButton.isEnabled = (imageTaken != nil && sender.text != "") ? true : false
-    }
-    
-    
-    
-    
     // MARK: - Navigation
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    /// creates, saves & uploads new chore from title and image
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard segue.identifier == "saveUnwindSegue" else { return }
         
@@ -77,6 +89,4 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
         ChoreModelController.uploadChore(chore: newChore)
         ChoreModelController.saveChoresDirectory()
     }
-    
-
 }

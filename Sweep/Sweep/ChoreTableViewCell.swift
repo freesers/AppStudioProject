@@ -5,16 +5,16 @@
 //  Created by Sander de Vries on 10/01/2019.
 //  Copyright © 2019 Sander de Vries. All rights reserved.
 //
+//  Sets up the custom tableView cell with
+//  the custom button, and tapable image
+//
 
 import UIKit
 
-protocol CellSubclassDelegate {
-    func cleanedButtonPressed(cell: ChoreTableViewCell)
-    func imageTapped(cell : ChoreTableViewCell)
-}
 
 class ChoreTableViewCell: UITableViewCell {
 
+    // MARK: - Variables
     @IBOutlet weak var cleanedButton: UIButton!
     @IBOutlet weak var choreTitleLabel: UILabel!
     @IBOutlet weak var choreImageView: UIImageView!
@@ -27,13 +27,15 @@ class ChoreTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        // Initialization code
+        
+        // make button color/cornerradius & imagebutton
         cleanedButton.layer.cornerRadius = 5
         cleanedButton.backgroundColor = UIColor.skyBlue
         choreImageView.layer.cornerRadius = 3
         addButtonOverlay(imageView: choreImageView, cell: self)
     }
     
+    /// adds transparant button subview on image
     func addButtonOverlay(imageView: UIImageView, cell: ChoreTableViewCell) {
         let overlay = UIButton(frame: imageView.frame)
         imageView.isUserInteractionEnabled = true
@@ -42,19 +44,13 @@ class ChoreTableViewCell: UITableViewCell {
         imageView.addSubview(overlay)
     }
     
+    /// informs delegate image is tapped
     @objc func imageViewTapped() {
         self.delegate?.imageTapped(cell: self)
     }
     
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-        // Configure the view for the selected state
-    }
-    
+    /// informs delegate cleaned button is tapped
     @IBAction func cleanedButtonPressed(_ sender: UIButton) {
         self.delegate?.cleanedButtonPressed(cell: self)
     }
-    
-    
-
 }

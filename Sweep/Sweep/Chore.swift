@@ -5,6 +5,9 @@
 //  Created by Sander de Vries on 21/01/2019.
 //  Copyright © 2019 Sander de Vries. All rights reserved.
 //
+//  Struct to create chores and custom encoders
+//  for images to Base64
+//
 
 import Foundation
 import UIKit
@@ -28,6 +31,7 @@ struct Chore: Codable {
         
     }
     
+    /// encodes basic type, only converts UIimage to string first
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         
@@ -68,6 +72,7 @@ struct Chore: Codable {
     }
 }
 
+/// Intermediary struct to handle server version
 struct ServerChore: Codable {
     
     var id: Int

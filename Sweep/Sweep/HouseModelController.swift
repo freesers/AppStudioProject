@@ -5,39 +5,39 @@
 //  Created by Sander de Vries on 14/01/2019.
 //  Copyright © 2019 Sander de Vries. All rights reserved.
 //
+//  Uploads and loads houses to server, including residents
+//
 
 import Foundation
 import UIKit
 
 class HouseModelController {
     
-    static let shared = HouseModelController()
     static var houses = [House]()
     static var residents = [String]()
-    
 
     
-    static func toString(data: Any) -> String? {
-        guard let data = try? JSONSerialization.data(withJSONObject: data, options: []) else { return nil }
-        return String(data: data, encoding: .utf8)
-    }
-    
-    ///MARK: Servercode
+    // MARK: - Network Code
     
     /// uploads new house, making the uploader the administrator
     static func uploadNewHouse(with name: String, residents: [String], administrator: String) {
+        
+        // create request
         let houseURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/houses")!
         var request = URLRequest(url: houseURL)
         request.httpMethod = "POST"
         request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
         
+        // sets spaces to asterisks to avoid server problems
         let formattedName = name.replacingOccurrences(of: " ", with: "*")
         
+        // get uploadable string from array
         guard let residentsString = toString(data: residents) else { return }
         
         let postString = "name=\(formattedName)&residents=\(residentsString)&administrator=\(administrator)"
         request.httpBody = postString.data(using: .utf8)
         
+        // create datatask
         let task = URLSession.shared.dataTask(with: request) { (houseData, houseResponse, houseError) in
             if let houseData = houseData {
                 print(houseData)
@@ -51,6 +51,8 @@ class HouseModelController {
     
     /// lets new users join existing houses
     static func joinHouse(houseName: String, residentName: String) {
+        
+        // gets house id from server and current resident
         getHouseID(name: houseName) { (id, residents) in
             
             // Create array from string, append new resident, transform into array again
@@ -65,7 +67,6 @@ class HouseModelController {
             request.httpMethod = "PUT"
             request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
             let postString = "residents=\(residentsString)"
-            
             request.httpBody = postString.data(using: .utf8)
             
             let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -98,6 +99,7 @@ class HouseModelController {
 
     }
     
+    /// loads existring houses, returns houses in completion handler
     static func loadHouses(completion: @escaping ([House]) -> Void) {
         let houseURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/houses")!
         
@@ -115,6 +117,8 @@ class HouseModelController {
     
     /// load one house to receive all residents living in the house
     static func loadResidents(from house: String, completion: @escaping (House) -> Void) {
+        
+        // replace spaces with asterisks for server communication
         let formattedHouseName = house.replacingOccurrences(of: " ", with: "*")
         
         let houseURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/houses?name=\(formattedHouseName)")!
@@ -128,7 +132,12 @@ class HouseModelController {
         task.resume()
     }
     
+    // MARK: - Helpers
     
-    
+    /// creates string from residents array
+    static func toString(data: Any) -> String? {
+        guard let data = try? JSONSerialization.data(withJSONObject: data, options: []) else { return nil }
+        return String(data: data, encoding: .utf8)
+    }
 }
 
