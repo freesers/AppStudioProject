@@ -84,7 +84,6 @@ class ScheduleTableViewController: UITableViewController {
         let sectionNumber = indexPath.section * ChoreModelController.chores.count
         let rowNumber = indexPath.row
         return sectionNumber + rowNumber
-        
         /*
          indexPath [0,0] to indexPath [1,2] are 6 cells (3 cells per section)
          The section int is multiplied with chore count to see which cell number (minus 1) it has in the view

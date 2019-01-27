@@ -70,8 +70,11 @@ class UserModelController {
                 if let user = user {
                     completion(user[0])
                 }
-                if let error = error {
-                    print(error.localizedDescription)
+                
+                // nothing returned
+                else {
+                    print("Nothing received from server, is it running?")
+                   
                 }
             }
         }
