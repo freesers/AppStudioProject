@@ -68,3 +68,9 @@ To make tableview quicker; all chores are stored in the documents directory, qui
 Finished the imageviewcontroller. Users can now tap an image and pan/zoom the image. The automatic schedule is done. Created quite a few problems because the tableview is dynamic and the number of residents/chores needn't be the same. Made a workaround the loop the residents over the chores. Made an ScheduleController which creates the correct schedule upon opening app.
 #### Stretch goal
 * local notification to alert user of chore
+
+# Day 15
+Schedule didn't change properly when a new week started. To tackle this, the array is shifted at launch of the app from a reference date. Created local notifications with UserNotifications. Users are presented a notification saterday afternoon if they are due for a chore that week. Created an animation to fade in the chores upon launch too look more fluid
+
+###### Saterday
+Made sure everything is nicely commented and looks acording to the style guide
