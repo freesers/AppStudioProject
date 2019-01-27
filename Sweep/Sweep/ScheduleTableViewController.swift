@@ -90,4 +90,24 @@ class ScheduleTableViewController: UITableViewController {
          The section int is multiplied with chore count to see which cell number (minus 1) it has in the view
          */
     }
+    
+    // MARK: - Shake easter egg
+    
+    /// checks when motion ended
+    override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
+        
+        // check if shake
+        guard event?.subtype == UIEvent.EventSubtype.motionShake else { return }
+        
+        if numberOfWeeks == 6 {
+            weekdays.removeAll()
+            numberOfWeeks = 1000
+        } else {
+            weekdays.removeAll()
+            numberOfWeeks = 6
+        }
+        calculateSections()
+        tableView.reloadData()
+    }
+    
 }

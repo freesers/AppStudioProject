@@ -19,6 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        
+        // configure app for use with FireBase server
         FirebaseApp.configure()
         
         let center = UNUserNotificationCenter.current()

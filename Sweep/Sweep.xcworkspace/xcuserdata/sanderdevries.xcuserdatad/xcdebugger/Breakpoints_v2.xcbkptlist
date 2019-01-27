@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/HouseModelController.swift"
-            timestampString = "570237642.6988651"
+            timestampString = "570241347.435796"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -26,13 +26,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/ScheduleTableViewController.swift"
-            timestampString = "570237642.699291"
+            timestampString = "570241347.4358571"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
             endingLineNumber = "16"
-            landmarkName = "unknown"
-            landmarkType = "0">
+            landmarkName = "ScheduleTableViewController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -42,11 +42,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/ChoreModelController.swift"
-            timestampString = "570237642.699342"
+            timestampString = "570241347.436148"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "140"
-            endingLineNumber = "140"
+            startingLineNumber = "157"
+            endingLineNumber = "157"
             landmarkName = "loadServerChores(from:completion:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -58,13 +58,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/ChoreModelController.swift"
-            timestampString = "570237642.699605"
+            timestampString = "570241347.436192"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "148"
-            endingLineNumber = "148"
-            landmarkName = "loadChores(chores:)"
-            landmarkType = "7">
+            startingLineNumber = "170"
+            endingLineNumber = "170"
+            landmarkName = "ChoreModelController"
+            landmarkType = "3">
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -74,11 +74,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/ChoreModelController.swift"
-            timestampString = "570237642.700359"
+            timestampString = "570241347.436231"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "65"
-            endingLineNumber = "65"
+            startingLineNumber = "109"
+            endingLineNumber = "109"
             landmarkName = "uploadChore(chore:)"
             landmarkType = "7">
          </BreakpointContent>
@@ -90,7 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/LoginViewController.swift"
-            timestampString = "570237642.700603"
+            timestampString = "570241347.436269"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "98"
