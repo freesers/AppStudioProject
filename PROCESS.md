@@ -73,4 +73,4 @@ Finished the imageviewcontroller. Users can now tap an image and pan/zoom the im
 Schedule didn't change properly when a new week started. To tackle this, the array is shifted at launch of the app from a reference date. Created local notifications with UserNotifications. Users are presented a notification saterday afternoon if they are due for a chore that week. Created an animation to fade in the chores upon launch too look more fluid
 
 ###### Saterday
-Made sure everything is nicely commented and looks acording to the style guide
+Made sure everything is nicely commented and looks acording to the style guide. And added a little easter egg to the Schedule tab
