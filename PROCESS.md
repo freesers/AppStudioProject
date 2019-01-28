@@ -81,6 +81,8 @@ The resident tab contains a small tableview with the residents. Users can now al
 ### TODO:
 * app icon
 * error messages to the user
+* new message delete alert
+* loading chores faster
 * testing
 * (stretch) finish chore count
 
