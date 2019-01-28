@@ -74,3 +74,20 @@ Schedule didn't change properly when a new week started. To tackle this, the arr
 
 ###### Saterday
 Made sure everything is nicely commented and looks acording to the style guide. And added a little easter egg to the Schedule tab
+
+# Day 16
+Made a coherent app design. Settled on a type of blue that is used troughout the app. Choose Futura as font type for most stuff. Fiddled a lot with the chore cell, but finally chose a small blue border around the image and the blue background that shows trough the navigation controller. Tried to add a feature that shows how many chores each resident completed, but too much a hassle so I didn't finish it. Might do it if I have time left tommorow and wednessday.
+The resident tab contains a small tableview with the residents. Users can now also leave the house and delete their account.
+### TODO:
+* app icon
+* error messages to the user
+* testing
+* (stretch) finish chore count
+
+### images:
+![](doc/beta/addChore.png)
+![](doc/beta/delete.png)
+![](doc/beta/register.png)
+![](doc/beta/residentScreen.png)
+![](doc/beta/schedule.png)
+![](doc/beta/signIn.png)
