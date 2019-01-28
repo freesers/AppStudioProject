@@ -85,9 +85,11 @@ The resident tab contains a small tableview with the residents. Users can now al
 * (stretch) finish chore count
 
 ### images:
-![](doc/beta/addChore.PNG)
-![](doc/beta/delete.PNG)
-![](doc/beta/register.PNG)
-![](doc/beta/residentScreen.PNG)
-![](doc/beta/schedule.PNG)
 ![](doc/beta/signIn.PNG)
+![](doc/beta/register.PNG)
+![](doc/beta/addChore.PNG)
+![](doc/beta/schedule.PNG)
+![](doc/beta/residentScreen.PNG)
+![](doc/beta/delete.PNG)
+
+
