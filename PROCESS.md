@@ -83,6 +83,7 @@ The resident tab contains a small tableview with the residents. Users can now al
 * error messages to the user
 * new message delete alert
 * loading chores faster
+* perform segue before save
 * testing
 * (stretch) finish chore count
 
