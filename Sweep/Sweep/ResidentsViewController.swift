@@ -13,36 +13,44 @@ import UIKit
 import FirebaseAuth
 
 
-class ResidentsViewController: UIViewController {
-    
+class ResidentsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+
     // MARK: - Variables
-    let currentHouse = UserModelController.currentUser.house
-    var residents = [String]()
-    
-    @IBOutlet weak var residentsStackView: UIStackView!
+    @IBOutlet weak var leaveHouseButton: UIButton!
     @IBOutlet weak var houseNameLabel: UILabel!
+    @IBOutlet weak var ChoreScoretableView: UITableView!
+    
     
     // MARK: - View Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = "Hi, \(UserModelController.currentUser.name)"
-        houseNameLabel.text = "Residents of: \(UserModelController.currentUser.house)"
-        self.addResidentsToStackView()
+        houseNameLabel.text = "Residents: \(UserModelController.currentUser.house)"
+        
+        ChoreScoretableView.delegate = self
+        ChoreScoretableView.dataSource = self
+        
+        
+        // configure leaveHouseButton
+        leaveHouseButton.layer.cornerRadius = 12
     }
     
-    /// adds residents to stackview
-    func addResidentsToStackView() {
-        for resident in HouseModelController.residents {
-            let newLabel = UILabel()
-            newLabel.text = resident
-            newLabel.heightAnchor.constraint(equalToConstant: 20.0).isActive = true
-            residentsStackView.addArrangedSubview(newLabel)
-        }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return HouseModelController.residents.count
     }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "choreScoreCell", for: indexPath)
+        
+        cell.textLabel?.text = HouseModelController.residents[indexPath.row]
+        
+        return cell
+    }
+  
     
     /// signs user out from FireBase and unwinds to loginscreen
-    @IBAction func logOutButtonPressed(_ sender: Any) {
+    @IBAction func logOutButtonPressed() {
         let firebaseAuth = Auth.auth()
         
         do {
@@ -53,4 +61,41 @@ class ResidentsViewController: UIViewController {
             print ("Error signing out: %@", signOutError)
         }
     }
+    
+    func deleteFireBase() {
+        let user = Auth.auth().currentUser
+        
+        user?.delete { error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else {
+                print("Account deleted from firebase")
+            }
+        }
+    }
+   
+    
+    @IBAction func leaveHouseButtonTapped(_ sender: Any) {
+        
+        let alert = UIAlertController(title: "Are you sure?", message: "You are about to delete your account. If you tap yes, you will removed and deleted as a user. You can make a new account at the sign up screen.", preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "Delete account", style: .destructive, handler: { (UIAlertAction) in
+            self.deleteAccount()
+            self.performSegue(withIdentifier: "deleteAccountSegue", sender: nil)
+        }))
+        
+        present(alert, animated: true)
+        
+    }
+    
+    func deleteAccount() {
+        deleteFireBase()
+        UserModelController.deleteUser(with: UserModelController.currentUser.id)
+        HouseModelController.getHouseID(name: UserModelController.currentUser.house) { (id, residents) in
+            HouseModelController.deleteUserFromHouse(with: id)
+        }
+    }
+    
 }
+

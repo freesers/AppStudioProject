@@ -25,6 +25,8 @@ class ScheduleTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         calculateSections()
+        
+        self.navigationItem.prompt = ""
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -101,9 +103,15 @@ class ScheduleTableViewController: UITableViewController {
         if numberOfWeeks == 6 {
             weekdays.removeAll()
             numberOfWeeks = 1000
+            
+            UIView.animate(withDuration: 1, delay: 0, options: .curveEaseOut, animations: {
+                self.navigationItem.prompt = "For the forseeable future..."
+            }, completion: nil)
+            
         } else {
             weekdays.removeAll()
             numberOfWeeks = 6
+            self.navigationItem.prompt = ""
         }
         calculateSections()
         tableView.reloadData()

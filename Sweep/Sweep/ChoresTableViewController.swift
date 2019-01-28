@@ -57,9 +57,8 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     /// return number of chores for rows
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return ChoreModelController.chores.count
-        
     }
-    
+
     /// configures chore cells
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChoreCell", for: indexPath) as! ChoreTableViewCell
@@ -70,7 +69,7 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
         cell.choreTitleLabel.text = chore.title
         cell.choreImageView.image = chore.photo
         cell.choreDueDateLabel.text = "Due: \(getDateString())"
-        cell.chorePersonDueLabel.text = "By \(residents[indexPath.row % residents.count ])"
+        cell.chorePersonDueLabel.text = "By: \(residents[indexPath.row % residents.count ])"
         cell.choreDaysLeft.text = "Days left: \(ChoreModelController.daysInterval(date: Date()))"
         cell.delegate = self
         

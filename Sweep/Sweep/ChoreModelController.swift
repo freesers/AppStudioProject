@@ -57,8 +57,9 @@ class ChoreModelController {
         
         // replace spaces with asterisks to work with the server
         let formattedHouse = house.replacingOccurrences(of: " ", with: "*")
+        let formattedTitle = title.replacingOccurrences(of: " ", with: "*")
         
-        let postString = "title=\(title)&house=\(formattedHouse)&image=[\(imageString)]"
+        let postString = "title=\(formattedTitle)&house=\(formattedHouse)&image=[\(imageString)]"
         request.httpBody = postString.data(using: .utf8)
         
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
@@ -168,7 +169,9 @@ class ChoreModelController {
             // set Due date
             let cleaningDue = ChoreModelController.dueDate
             
-            let chore = Chore(title: serverChore.title, house: serverChore.house, image: image!, lastCleaned: nil, cleaningDue: cleaningDue, cleaningBy: nil)
+            let title = serverChore.title.replacingOccurrences(of: "*", with: " ")
+            
+            let chore = Chore(title: title, house: serverChore.house, image: image!, lastCleaned: nil, cleaningDue: cleaningDue, cleaningBy: nil)
             ChoreModelController.chores.append(chore)
             
             // reload cells

@@ -80,4 +80,12 @@ class UserModelController {
         }
         task.resume()
     }
+    
+    static func deleteUser(with id: Int) {
+        
+        let deleteURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/users/\(id)")!
+        var request = URLRequest(url: deleteURL)
+        request.httpMethod = "DELETE"
+        URLSession.shared.dataTask(with: request).resume()
+    }
 }

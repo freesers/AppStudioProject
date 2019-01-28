@@ -122,6 +122,8 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
     /// creates user account at FireBase and new or existing house
     @IBAction func registerButtonTapped(_ sender: Any) {
         
+        animateButton(loginButton: sender as! UIButton)
+        
         // check whether fields and passwords are correct
         guard checkFields() && checkPassword() else { return }
         
@@ -172,9 +174,17 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
             }))
             self.present(alert, animated: true, completion: nil)
             return false
-        } else {
+        } else if (passwordTextField.text?.count)! < 6 || (password2Textfield.text?.count)! < 6 {
             
-            // passwords match
+            // create alert
+            let alert = UIAlertController(title: "Error", message: "Your password should at least have 6 characters", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { (UIAlertAction) in
+            }))
+            self.present(alert, animated: true, completion: nil)
+            return false
+        } else {
+           
+            // passwords match and are correct length
             return true
         }
     }
@@ -244,6 +254,16 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
             UserModelController.addUser(name: self.nameTextField.text!, uid: uid, email: self.emailTextField.text!,
                                         isAdministrator: false, house: housePicked.name)
             return UserModelController.currentUser!
+        }
+    }
+    
+    // MARK: - Animation
+    
+    /// UIbutton increase/decrease animation
+    func animateButton(loginButton: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            loginButton.transform = CGAffineTransform(scaleX: 1.5, y: 3)
+            loginButton.transform = CGAffineTransform.identity
         }
     }
 }

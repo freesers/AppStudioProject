@@ -27,11 +27,16 @@ class ChoreTableViewCell: UITableViewCell {
     
     override func awakeFromNib() {
         super.awakeFromNib()
-        
+    
         // make button color/cornerradius & imagebutton
         cleanedButton.layer.cornerRadius = 5
         cleanedButton.backgroundColor = UIColor.skyBlue
+        cleanedButton.layer.borderWidth = 2
+        cleanedButton.layer.borderColor = UIColor.skyBlue.cgColor
+        
         choreImageView.layer.cornerRadius = 3
+        choreImageView.layer.borderColor = UIColor.skyBlue.cgColor
+        choreImageView.layer.borderWidth = 3
         addButtonOverlay(imageView: choreImageView, cell: self)
     }
     
@@ -52,5 +57,16 @@ class ChoreTableViewCell: UITableViewCell {
     /// informs delegate cleaned button is tapped
     @IBAction func cleanedButtonPressed(_ sender: UIButton) {
         self.delegate?.cleanedButtonPressed(cell: self)
+        animateButton(loginButton: sender)
+    }
+    
+    // MARK: - Animation
+    
+    /// UIbutton increase/decrease animation
+    func animateButton(loginButton: UIButton) {
+        UIView.animate(withDuration: 0.3) {
+            loginButton.transform = CGAffineTransform(scaleX: 1.5, y: 3)
+            loginButton.transform = CGAffineTransform.identity
+        }
     }
 }

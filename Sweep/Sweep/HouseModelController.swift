@@ -139,5 +139,30 @@ class HouseModelController {
         guard let data = try? JSONSerialization.data(withJSONObject: data, options: []) else { return nil }
         return String(data: data, encoding: .utf8)
     }
+    
+    static func deleteUserFromHouse(with id: Int) {
+        let newArray = HouseModelController.residents.filter {$0 != UserModelController.currentUser.name}
+        HouseModelController.residents = newArray
+        guard let residentsString = toString(data: newArray) else { return }
+        
+        // replace existing house with updated residents
+        let joinHouseURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/houses/\(id)")!
+        var request = URLRequest(url: joinHouseURL)
+        request.httpMethod = "PUT"
+        request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
+        let postString = "residents=\(residentsString)"
+        request.httpBody = postString.data(using: .utf8)
+        
+        let task = URLSession.shared.dataTask(with: request, completionHandler: { (data, response, error) in
+            if (data != nil) {
+                print("User deleted from house")
+            }
+            if let error = error {
+                print(error.localizedDescription)
+            }
+        })
+        task.resume()
+        
+    }
 }
 

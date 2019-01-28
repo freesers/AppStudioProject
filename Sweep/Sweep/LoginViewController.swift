@@ -19,6 +19,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var enterEmailLabel: UILabel!
+    @IBOutlet weak var enterPasswordLabel: UILabel!
     
     var loginState: Bool!
     var delegate: NewChoresDelegate?
@@ -35,6 +37,11 @@ class LoginViewController: UIViewController {
         
         // set rounded corners to login button
         loginButton.layer.cornerRadius = 12
+        loginButton.backgroundColor = UIColor.white
+
+        // textfield rounded corners
+        emailTextField.layer.cornerRadius = 5
+        passwordTextField.layer.cornerRadius = 5
         
         // check if user is logged in
         isUserLoggedIn()
@@ -104,6 +111,12 @@ class LoginViewController: UIViewController {
         
         // sign in user from FireBase
         Auth.auth().signIn(withEmail: emailTextField.text!, password: passwordTextField.text!) { (authResult, authError) in
+            
+            // check for error first
+            if let error = authError {
+                print("Login error:", error.localizedDescription)
+            }
+            
             guard let result = authResult else { return }
             let uid = result.user.uid
             // load userinfo from server
@@ -143,6 +156,11 @@ class LoginViewController: UIViewController {
                 ChoreModelController.chores.removeAll()
                 ChoreModelController.loadChores(chores: serverChores)
                 UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                
+                // only rearrange if not done yet
+                if !ScheduleController.doneRearranging {
+                    ScheduleController.rearrangePeople()
+                }
             }
         }
     }
@@ -193,7 +211,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Animation
-    
+
     /// UIbutton increase/decrease animation
     func animateButton(loginButton: UIButton) {
         UIView.animate(withDuration: 0.3) {
@@ -201,6 +219,7 @@ class LoginViewController: UIViewController {
             loginButton.transform = CGAffineTransform.identity
         }
     }
+
     
     // MARK: - Navigation
     

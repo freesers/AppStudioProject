@@ -51,6 +51,9 @@ func loadServerChores(from house: String, completion: @escaping ([ServerChore]) 
     task.resume()
 }
 
+let a = [1,2,3]
+let b = a.filter { $0 != 2 }
+b
 
 //loadServerChores(from: "De Lelie") { (serverchore) in
 //    let imageString = serverchore[0].image
@@ -61,6 +64,11 @@ func loadServerChores(from house: String, completion: @escaping ([ServerChore]) 
 //    print(image!)
 //}
 
+
+let deleteURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/users/12")!
+var request = URLRequest(url: deleteURL)
+request.httpMethod = "DELETE"
+URLSession.shared.dataTask(with: request).resume()
 
 //var currentDate = Date()
 //currentDate = currentDate.addingTimeInterval(60 * 60 * 24 * 7)
@@ -195,11 +203,19 @@ struct ListElement: Codable {
 }
 
 func addTestToServer() {
-    let listUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/list")!
+    let listUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/scores")!
     var request = URLRequest(url: listUrl)
     request.httpMethod = "POST"
     request.setValue("application/x-www-form-urlencoded", forHTTPHeaderField: "Content-Type")
-    let postString = "name=Sander"
+    
+    let scores = ["Sander": 5, "Ali": 10]
+    guard let jsonScoreData = try? JSONSerialization.data(withJSONObject: scores, options: []) else {return}
+    let scoresString = String(data: jsonScoreData, encoding: .utf8)
+    
+    
+    
+    
+    let postString = "house=De*Lelie&scores=\(scoresString!)"
     request.httpBody = postString.data(using: .utf8)
 
     let task = URLSession.shared.dataTask(with: request) { (data, response, error) in
@@ -218,7 +234,7 @@ func addTestToServer() {
 }
 
 
-//addTestToServer()
+addTestToServer()
 
 //deleteRestoServer(withId: 1)
 //deleteRestoServer(withId: 2)

@@ -14,6 +14,8 @@ import Foundation
 
 struct ScheduleController {
     
+    static var doneRearranging = false
+    
     // weeknumber of reference date
     static var firstweek: Int {
         var calendar = Calendar.current
@@ -38,6 +40,10 @@ struct ScheduleController {
         let currentWeek = ScheduleController.calcCurrentWeek()
         let weekDifference = currentWeek - oldWeekday
         
+        
+        print(HouseModelController.residents)
+        guard ChoreModelController.chores.count > 0 else { return }
+        
         // rearrange if difference is greater than 0
         if weekDifference > 0 {
             
@@ -48,6 +54,8 @@ struct ScheduleController {
                     HouseModelController.residents.append(first)
                 }
             }
+            
+            doneRearranging = true
         }
     }
 }

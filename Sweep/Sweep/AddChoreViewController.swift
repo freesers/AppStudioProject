@@ -36,7 +36,7 @@ class AddChoreViewController: UIViewController, UIImagePickerControllerDelegate,
         
         // create skyBlue border arround frame
         choreImage.layer.borderWidth = 1.5
-        choreImage.layer.borderColor = UIColor.skyBlue.cgColor
+        choreImage.layer.borderColor = UIColor.white.cgColor
         
         // disable savebutton
         saveChoreButton.isEnabled = false

@@ -37,7 +37,8 @@ extension UIColor {
     
     // the blue color used troughout the app
     static let skyBlue = UIColor(red: 106.0/255.0, green: 207.0/255.0, blue: 255.0/255.0, alpha: 1)
-    static let skyComplement = UIColor(red: 1, green: 153/255, blue: 106/255, alpha: 1)
+    static let skyOrange = UIColor(red: 1, green: 153/255, blue: 106/255, alpha: 1)
+    static let skyGray = UIColor(red: 98/255.0, green: 120/255.0, blue: 130/255.0, alpha: 1)
 }
 
 
