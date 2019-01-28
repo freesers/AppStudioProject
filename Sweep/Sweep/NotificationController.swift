@@ -77,8 +77,8 @@ struct NotificationController {
                 if notifications.isEmpty {
                     self.setupUN()
                 } else {
-                    // self.setupTestUN()
-                    print(notifications.count)
+                    //self.setupTestUN()
+                    //print(notifications.count)
                 }
             }
         }
