@@ -106,7 +106,7 @@ class LoginViewController: UIViewController {
         // animate/update button, check if fields are filled in
         animateButton(loginButton: loginButton)
         guard checkFields() else { return }
-        self.loginButton.setTitle("Logging in...", for: .normal)
+        self.loginButton.setTitle("Signin in...", for: .normal)
         UIApplication.shared.isNetworkActivityIndicatorVisible = true
         
         // sign in user from FireBase
@@ -227,7 +227,7 @@ class LoginViewController: UIViewController {
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
         emailTextField.text = ""
         passwordTextField.text = ""
-        loginButton.setTitle("Login", for: .normal)
+        loginButton.setTitle("Sign In", for: .normal)
         print("worked")
     }
 }
