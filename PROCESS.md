@@ -98,3 +98,7 @@ The resident tab contains a small tableview with the residents. Users can now al
 
 # Day 17
 Made app icon, updated the warning if user wants to leave house. New error messages if something goes wrong with server. Decided not to finish chore count. Not enough time, and want to further polish the existing app. Added functionality that the administrator can only go in editing mode of the chores view if the network request is done. Display a little alert if tapped before network request
+
+# Day 18
+Loading chores bug fixed, and now sorts chores on alphabet. Lasts code tweaks. Discussed and tested each others app in the team meeting, talked about features that we decided to skip. 
+
