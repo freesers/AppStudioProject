@@ -38,7 +38,6 @@
 		11003EB621FF4358000075A2 /* ResidentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResidentsViewController.swift; sourceTree = "<group>"; };
 		113983D721FB5C3C002B9FB9 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		1143AFB621E8E09C006DAE58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		11811CFF21EF90750035B3EB /* NetworkingTests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = NetworkingTests.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		1181529021FCD9CD001E5208 /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		11A3E5F921EC9E5E007E28D4 /* House.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = House.swift; sourceTree = "<group>"; };
 		11A3E5FB21ECA104007E28D4 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
@@ -112,7 +111,6 @@
 		11AB607621E39D83001CB0D0 = {
 			isa = PBXGroup;
 			children = (
-				11811CFF21EF90750035B3EB /* NetworkingTests.playground */,
 				11AB608121E39D83001CB0D0 /* Sweep */,
 				11AB608021E39D83001CB0D0 /* Products */,
 				182A66A92A813D60071B9E88 /* Pods */,
