@@ -21,4 +21,5 @@ protocol CellSubclassDelegate {
 // delegate to inform when to reload tableview
 protocol NewChoresDelegate {
     func reloadCells()
+
 } 

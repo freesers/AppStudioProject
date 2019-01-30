@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		11003EB721FF4358000075A2 /* ResidentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11003EB621FF4358000075A2 /* ResidentsViewController.swift */; };
-		11003EBB21FF609B000075A2 /* TESTChoreScore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11003EBA21FF609B000075A2 /* TESTChoreScore.swift */; };
-		11003EBD21FF612C000075A2 /* TESTChoreScoreController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11003EBC21FF612C000075A2 /* TESTChoreScoreController.swift */; };
 		113983D821FB5C3C002B9FB9 /* NotificationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 113983D721FB5C3C002B9FB9 /* NotificationController.swift */; };
 		1143AFB721E8E09C006DAE58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 1143AFB621E8E09C006DAE58 /* GoogleService-Info.plist */; };
 		1181529121FCD9CD001E5208 /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1181529021FCD9CD001E5208 /* Protocols.swift */; };
@@ -38,8 +36,6 @@
 
 /* Begin PBXFileReference section */
 		11003EB621FF4358000075A2 /* ResidentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResidentsViewController.swift; sourceTree = "<group>"; };
-		11003EBA21FF609B000075A2 /* TESTChoreScore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TESTChoreScore.swift; sourceTree = "<group>"; };
-		11003EBC21FF612C000075A2 /* TESTChoreScoreController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TESTChoreScoreController.swift; sourceTree = "<group>"; };
 		113983D721FB5C3C002B9FB9 /* NotificationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationController.swift; sourceTree = "<group>"; };
 		1143AFB621E8E09C006DAE58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		11811CFF21EF90750035B3EB /* NetworkingTests.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = NetworkingTests.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -89,7 +85,6 @@
 				11C7809921E7584D00AB5CEF /* User.swift */,
 				11A3E5F921EC9E5E007E28D4 /* House.swift */,
 				11DDE3B921F5E9EF004B721C /* Chore.swift */,
-				11003EBA21FF609B000075A2 /* TESTChoreScore.swift */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -109,7 +104,6 @@
 				113983D721FB5C3C002B9FB9 /* NotificationController.swift */,
 				11A3E60221ECB04B007E28D4 /* HouseModelController.swift */,
 				11E002B921FA24790045DAE7 /* ScheduleController.swift */,
-				11003EBC21FF612C000075A2 /* TESTChoreScoreController.swift */,
 				11DDE3BB21F7328D004B721C /* ChoreModelController.swift */,
 			);
 			name = ModelControllers;
@@ -351,7 +345,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				11003EBB21FF609B000075A2 /* TESTChoreScore.swift in Sources */,
 				11C7809D21E7643600AB5CEF /* ChoreTableViewCell.swift in Sources */,
 				11B0DD7421E4F343006382CF /* ScheduleTableViewController.swift in Sources */,
 				11B0DD7221E4F32B006382CF /* ChoresTableViewController.swift in Sources */,
@@ -362,7 +355,6 @@
 				1181529121FCD9CD001E5208 /* Protocols.swift in Sources */,
 				11C7809A21E7584D00AB5CEF /* User.swift in Sources */,
 				11E002BA21FA24790045DAE7 /* ScheduleController.swift in Sources */,
-				11003EBD21FF612C000075A2 /* TESTChoreScoreController.swift in Sources */,
 				11B0DD7821E4F6F3006382CF /* AddChoreViewController.swift in Sources */,
 				11AB608321E39D83001CB0D0 /* AppDelegate.swift in Sources */,
 				11A3E60121ECA409007E28D4 /* UserModelController.swift in Sources */,

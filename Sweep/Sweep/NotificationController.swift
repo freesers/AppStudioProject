@@ -50,13 +50,13 @@ struct NotificationController {
         content.body = "You're up this weekend"
         
         // create date component, 30 seconds from now
-        let date = Date().addingTimeInterval(30)
+        let date = Date().addingTimeInterval(15)
         print("alert at: \(date)")
         let calendar = Calendar.current
         let datecomponent = calendar.dateComponents([.hour, .minute, .second] ,from: date)
         
         // create trigger
-        let trigger = UNCalendarNotificationTrigger(dateMatching: datecomponent, repeats: false)
+        let trigger = UNCalendarNotificationTrigger(dateMatching: datecomponent, repeats: true)
         
         // create request with identifier, content and trigger info
         let uuid = UUID().uuidString
@@ -78,7 +78,7 @@ struct NotificationController {
                     self.setupUN()
                 } else {
                     //self.setupTestUN()
-                    //print(notifications.count)
+                    print(notifications.count)
                 }
             }
         }

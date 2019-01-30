@@ -14,7 +14,7 @@ import UserNotifications
 
 
 class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, NewChoresDelegate {
-    
+
     // MARK: - variables
     @IBOutlet weak var addChoreButton: UIBarButtonItem!
     
@@ -22,6 +22,7 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     var currentTitle: String!
     var currentImage: UIImage!
     var firstLoad = true
+    var mayReload = false
     
     let notificationController = NotificationController()
     
@@ -48,11 +49,12 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        print("view appearr")
-        super.viewDidAppear(true)
+        super.viewDidAppear(animated)
         
-        // reload until the cells are preconfigured, only if there actually is local data
-        tableView.reloadData()
+        // needed to ensure animation will happen first boot
+        if mayReload {
+            tableView.reloadData()
+        }
     }
     
     // MARK: - Table view data source
@@ -67,6 +69,8 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
         let cell = tableView.dequeueReusableCell(withIdentifier: "ChoreCell", for: indexPath) as! ChoreTableViewCell
         
         let residents = HouseModelController.residents
+        
+        sortChoresByName()
         
         let chore = ChoreModelController.chores[indexPath.row]
         cell.choreTitleLabel.text = chore.title
@@ -107,8 +111,8 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
             
             // remove from model and update tableview
             ChoreModelController.chores.remove(at: indexPath.row)
-            ChoreModelController.saveChoresDirectory()
             tableView.deleteRows(at: [indexPath], with: .fade)
+            ChoreModelController.saveChoresDirectory()
         }
     }
     
@@ -134,7 +138,7 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
         self.tableView.register(choreCell, forCellReuseIdentifier: "ChoreCell")
     }
     
-    /// delegate method that reloads data after server results
+    /// delegate method that reloads data after cache and server loading
     func reloadCells() {
         DispatchQueue.main.async {
             self.tableView.reloadData()
@@ -195,6 +199,7 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
         
         // dismiss picker and update server
         picker.dismiss(animated: true) {
+            self.tableView.reloadData()
             guard let index = self.tempIndexPath?.row else { return }
             ChoreModelController.getChoreID(choreName: ChoreModelController.chores[index].title, completion: { (id) in
                 ChoreModelController.mutateChore(chore: ChoreModelController.chores[index], id: id)
@@ -217,6 +222,12 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
         
         return dateString
     }
+    
+    /// sorts chores array by name
+    func sortChoresByName() {
+       let sorted = ChoreModelController.chores.sorted(by: { $0.title < $1.title })
+        ChoreModelController.chores = sorted
+    }
 
     // MARK: - Navigation
 
@@ -227,6 +238,9 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
             imageViewController.image = self.currentImage
             imageViewController.imageTitle = self.currentTitle
         }
+        
+        // normal loading behaviour
+        mayReload = true
     }
     
     @IBAction func unwindToChores(segue: UIStoryboardSegue) {

@@ -173,10 +173,10 @@ class ChoreModelController {
             
             let chore = Chore(title: title, house: serverChore.house, image: image!, lastCleaned: nil, cleaningDue: cleaningDue, cleaningBy: nil)
             ChoreModelController.chores.append(chore)
-            
-            // reload cells
-            delegate?.reloadCells()
         }
+        
+        // reload cells
+        delegate?.reloadCells()
     }
     
     // MARK: - Persistence
@@ -211,6 +211,7 @@ class ChoreModelController {
             if let chores = try? Data(contentsOf: ChoreModelController.choresDirectory), let decodedChores = try? plistDecoder.decode([Chore].self, from: chores) {
                 ChoreModelController.chores = decodedChores
                 loadServer = false
+                delegate?.reloadCells()
                 completion()
             }
         }

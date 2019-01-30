@@ -30,6 +30,7 @@ class ResidentsViewController: UIViewController, UITableViewDelegate, UITableVie
         
         ChoreScoretableView.delegate = self
         ChoreScoretableView.dataSource = self
+        ChoreScoretableView.alwaysBounceVertical = false
         
         
         // configure leaveHouseButton
