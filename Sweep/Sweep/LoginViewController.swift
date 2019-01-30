@@ -132,6 +132,7 @@ class LoginViewController: UIViewController {
                 
                 // load chores from house
                 ChoreModelController.loadChoresDirectory {
+                    print("choresdone")
                     self.loadChoresFromServer()
                     
                     // create up to date schedule

@@ -48,12 +48,11 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     }
     
     override func viewDidAppear(_ animated: Bool) {
+        print("view appearr")
         super.viewDidAppear(true)
         
         // reload until the cells are preconfigured, only if there actually is local data
-        while tableView.visibleCells.isEmpty {
-            tableView.reloadData()
-        }
+        tableView.reloadData()
     }
     
     // MARK: - Table view data source
@@ -137,7 +136,9 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     
     /// delegate method that reloads data after server results
     func reloadCells() {
-        tableView.reloadData()
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
     }
     
     /// only enter enditing mode if chores are downloaded

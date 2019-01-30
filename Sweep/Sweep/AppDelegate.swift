@@ -36,6 +36,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let notificationCenter = UNUserNotificationCenter.current()
         
         notificationCenter.getNotificationSettings { (settings) in
+            
             // Do not schedule notifications if not authorized.
             guard settings.authorizationStatus == .authorized else {print("Notifications disabled"); return}
         }
