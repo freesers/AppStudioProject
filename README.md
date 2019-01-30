@@ -1,2 +1,2 @@
 # Sweep
-### _the chore schedule that works_
+### _The chore schedule that works_
