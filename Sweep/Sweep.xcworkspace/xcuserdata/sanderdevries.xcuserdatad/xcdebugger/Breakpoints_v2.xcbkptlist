@@ -10,7 +10,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/HouseModelController.swift"
-            timestampString = "570409858.358183"
+            timestampString = "570467612.285715"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "124"
@@ -26,7 +26,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/ScheduleTableViewController.swift"
-            timestampString = "570409858.3582489"
+            timestampString = "570467612.285786"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "16"
@@ -42,7 +42,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/ChoreModelController.swift"
-            timestampString = "570409858.3583061"
+            timestampString = "570464966.596305"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "158"
@@ -58,7 +58,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/ChoreModelController.swift"
-            timestampString = "570409858.3583651"
+            timestampString = "570464966.596349"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "173"
@@ -74,7 +74,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/ChoreModelController.swift"
-            timestampString = "570409858.35842"
+            timestampString = "570464966.5963891"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "110"
@@ -90,87 +90,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/LoginViewController.swift"
-            timestampString = "570409858.358479"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "106"
-            endingLineNumber = "106"
-            landmarkName = "loginButtonPressed(_:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweep/UserModelController.swift"
-            timestampString = "570409858.358549"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "67"
-            endingLineNumber = "67"
-            landmarkName = "loadUser(with:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "static Sweep.UserModelController.loadUser(with: Swift.String, completion: (Sweep.User) -&gt; ()) -&gt; ()"
-                  moduleName = "Sweep"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanderdevries/Documents/FPS%20&amp;%20Economie/Minor%20Programmeren/AppStudioProject/Sweep/Sweep/UserModelController.swift"
-                  timestampString = "570409757.371431"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "67"
-                  endingLineNumber = "67"
-                  offsetFromSymbolStart = "472">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static Sweep.UserModelController.loadUser(with: Swift.String, completion: (Sweep.User) -&gt; ()) -&gt; ()"
-                  moduleName = "Sweep"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanderdevries/Documents/FPS%20&amp;%20Economie/Minor%20Programmeren/AppStudioProject/Sweep/Sweep/UserModelController.swift"
-                  timestampString = "570409757.373036"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "68"
-                  endingLineNumber = "68"
-                  offsetFromSymbolStart = "72">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweep/UserModelController.swift"
-            timestampString = "570409858.358606"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "68"
-            endingLineNumber = "68"
-            landmarkName = "loadUser(with:completion:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweep/LoginViewController.swift"
-            timestampString = "570409858.35866"
+            timestampString = "570467612.2859"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "43"
@@ -186,7 +106,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/LoginViewController.swift"
-            timestampString = "570409858.358726"
+            timestampString = "570467612.28596"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "44"
@@ -202,157 +122,13 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/LoginViewController.swift"
-            timestampString = "570409858.3587919"
+            timestampString = "570467612.286016"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "216"
-            endingLineNumber = "216"
+            startingLineNumber = "214"
+            endingLineNumber = "214"
             landmarkName = "animateButton(loginButton:)"
             landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweep/RegisterViewController.swift"
-            timestampString = "570409858.3588541"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "167"
-            endingLineNumber = "167"
-            landmarkName = "checkPassword()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweep/ScheduleController.swift"
-            timestampString = "570409858.358905"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "45"
-            endingLineNumber = "45"
-            landmarkName = "rearrangePeople()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweep/ScheduleController.swift"
-            timestampString = "570409858.358956"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "48"
-            endingLineNumber = "48"
-            landmarkName = "rearrangePeople()"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweep/LoginViewController.swift"
-            timestampString = "570409858.359001"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "85"
-            endingLineNumber = "85"
-            landmarkName = "isUserLoggedIn()"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Sweep.House) -&gt; () in closure #1 (Sweep.User) -&gt; () in closure #1 () -&gt; () in Sweep.LoginViewController.isUserLoggedIn() -&gt; ()"
-                  moduleName = "Sweep"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanderdevries/Documents/FPS%20&amp;%20Economie/Minor%20Programmeren/AppStudioProject/Sweep/Sweep/LoginViewController.swift"
-                  timestampString = "570409757.503603"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "85"
-                  endingLineNumber = "85"
-                  offsetFromSymbolStart = "176">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 () -&gt; () in closure #1 (Sweep.House) -&gt; () in closure #1 (Sweep.User) -&gt; () in closure #1 () -&gt; () in Sweep.LoginViewController.isUserLoggedIn() -&gt; ()"
-                  moduleName = "Sweep"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanderdevries/Documents/FPS%20&amp;%20Economie/Minor%20Programmeren/AppStudioProject/Sweep/Sweep/LoginViewController.swift"
-                  timestampString = "570409757.505635"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "86"
-                  endingLineNumber = "86"
-                  offsetFromSymbolStart = "36">
-               </Location>
-            </Locations>
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "Yes"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweep/ChoreModelController.swift"
-            timestampString = "570409858.359055"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "92"
-            endingLineNumber = "92"
-            landmarkName = "getChoreID(choreName:completion:)"
-            landmarkType = "7">
-            <Locations>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static Sweep.ChoreModelController.getChoreID(choreName: Swift.String, completion: (Swift.Int) -&gt; ()) -&gt; ()"
-                  moduleName = "Sweep"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanderdevries/Documents/FPS%20&amp;%20Economie/Minor%20Programmeren/AppStudioProject/Sweep/Sweep/ChoreModelController.swift"
-                  timestampString = "570409757.510113"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "1064">
-               </Location>
-               <Location
-                  shouldBeEnabled = "Yes"
-                  ignoreCount = "0"
-                  continueAfterRunningActions = "No"
-                  symbolName = "closure #1 (Sweep.ServerChore) -&gt; Swift.Bool in closure #1 (Swift.Optional&lt;Foundation.Data&gt;, Swift.Optional&lt;__C.NSURLResponse&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in static Sweep.ChoreModelController.getChoreID(choreName: Swift.String, completion: (Swift.Int) -&gt; ()) -&gt; ()"
-                  moduleName = "Sweep"
-                  usesParentBreakpointCondition = "Yes"
-                  urlString = "file:///Users/sanderdevries/Documents/FPS%20&amp;%20Economie/Minor%20Programmeren/AppStudioProject/Sweep/Sweep/ChoreModelController.swift"
-                  timestampString = "570409757.511665"
-                  startingColumnNumber = "9223372036854775807"
-                  endingColumnNumber = "9223372036854775807"
-                  startingLineNumber = "92"
-                  endingLineNumber = "92"
-                  offsetFromSymbolStart = "32">
-               </Location>
-            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
       <BreakpointProxy
@@ -362,7 +138,7 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "Sweep/ChoreModelController.swift"
-            timestampString = "570409858.359109"
+            timestampString = "570464966.597295"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
             startingLineNumber = "143"
@@ -390,33 +166,49 @@
       <BreakpointProxy
          BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
          <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "Sweep/UserModelController.swift"
-            timestampString = "570409858.359194"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "86"
-            endingLineNumber = "86"
-            landmarkName = "deleteUser(with:)"
-            landmarkType = "7">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
             shouldBeEnabled = "Yes"
             ignoreCount = "0"
             continueAfterRunningActions = "No"
-            filePath = "Sweep/NotificationController.swift"
-            timestampString = "570409858.359242"
+            filePath = "Sweep/LoginViewController.swift"
+            timestampString = "570467612.286105"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "80"
-            endingLineNumber = "80"
-            landmarkName = "checkIfUserIsUp(usersDue:)"
+            startingLineNumber = "90"
+            endingLineNumber = "90"
+            landmarkName = "loginButtonPressed(_:)"
             landmarkType = "7">
+            <Locations>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "Sweep.LoginViewController.loginButtonPressed(Any) -&gt; ()"
+                  moduleName = "Sweep"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanderdevries/Documents/FPS%20&amp;%20Economie/Minor%20Programmeren/AppStudioProject/Sweep/Sweep/LoginViewController.swift"
+                  timestampString = "570467612.377158"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "90"
+                  endingLineNumber = "90"
+                  offsetFromSymbolStart = "664">
+               </Location>
+               <Location
+                  shouldBeEnabled = "Yes"
+                  ignoreCount = "0"
+                  continueAfterRunningActions = "No"
+                  symbolName = "closure #1 (Swift.Optional&lt;__C.FIRAuthDataResult&gt;, Swift.Optional&lt;Swift.Error&gt;) -&gt; () in Sweep.LoginViewController.loginButtonPressed(Any) -&gt; ()"
+                  moduleName = "Sweep"
+                  usesParentBreakpointCondition = "Yes"
+                  urlString = "file:///Users/sanderdevries/Documents/FPS%20&amp;%20Economie/Minor%20Programmeren/AppStudioProject/Sweep/Sweep/LoginViewController.swift"
+                  timestampString = "570467612.378693"
+                  startingColumnNumber = "9223372036854775807"
+                  endingColumnNumber = "9223372036854775807"
+                  startingLineNumber = "93"
+                  endingLineNumber = "93"
+                  offsetFromSymbolStart = "56">
+               </Location>
+            </Locations>
          </BreakpointContent>
       </BreakpointProxy>
    </Breakpoints>

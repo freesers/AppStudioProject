@@ -100,7 +100,6 @@
                                     <constraint firstItem="6M7-FJ-kgt" firstAttribute="leading" secondItem="bvF-vz-DW4" secondAttribute="leading" id="sNb-rQ-pgy"/>
                                     <constraint firstAttribute="trailing" secondItem="iEF-OA-MJ0" secondAttribute="trailing" id="sS0-sv-jox"/>
                                 </constraints>
-                                <variation key="heightClass=compact-widthClass=compact"/>
                             </stackView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zdF-uo-Pdc">
                                 <rect key="frame" x="16" y="20" width="48" height="30"/>
@@ -336,7 +335,6 @@
                         <outlet property="loginButton" destination="fco-Ms-nX2" id="eMp-fL-0tv"/>
                         <outlet property="passwordTextField" destination="lBf-fy-T1u" id="dua-1n-1oc"/>
                         <segue destination="1lu-RO-M5K" kind="show" identifier="logInSegue" id="Wlt-Tn-As5"/>
-                        <segue destination="1lu-RO-M5K" kind="show" identifier="loggedInSegue" id="cGg-ST-MlQ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JrJ-uE-E9V" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -346,8 +344,6 @@
         <!--Hi, Sander-->
         <scene sceneID="bfA-ol-9Mc">
             <objects>
-                <exit id="J44-aC-IeH" userLabel="Exit" sceneMemberID="exit"/>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="VYh-MU-PED" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="SHe-DN-Gzg" customClass="ResidentsViewController" customModule="Sweep" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mWU-dQ-fIb">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -438,8 +434,10 @@
                         <segue destination="J44-aC-IeH" kind="unwind" identifier="logOutSegue" unwindAction="unwindToLoginWithSegue:" id="fDl-4J-tUM"/>
                     </connections>
                 </viewController>
+                <exit id="J44-aC-IeH" userLabel="Exit" sceneMemberID="exit"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="VYh-MU-PED" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4708.125" y="-69.718309859154928"/>
+            <point key="canvasLocation" x="3758" y="-71"/>
         </scene>
         <!--Chores-->
         <scene sceneID="MMp-aU-NNz">
@@ -466,6 +464,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Chores" id="zpk-NF-Upe">
+                        <barButtonItem key="leftBarButtonItem" systemItem="edit" id="uLj-vI-oFz"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="RzA-pr-LI7">
                             <connections>
                                 <segue destination="crp-lQ-hpo" kind="presentation" modalTransitionStyle="flipHorizontal" id="Iir-Ti-VPM"/>
@@ -542,7 +541,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3hz-wY-cHi" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="4n6-ng-x6C" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="4709.6000000000004" y="-1317.3913043478262"/>
+            <point key="canvasLocation" x="4708" y="-1255"/>
         </scene>
         <!--New Chore-->
         <scene sceneID="Jx1-iN-ahg">
@@ -633,7 +632,7 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sct-LH-gtp" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <exit id="Q1e-Qb-hmr" userLabel="Exit" sceneMemberID="exit"/>
             </objects>
-            <point key="canvasLocation" x="5648.8000000000002" y="-2042.4287856071965"/>
+            <point key="canvasLocation" x="5642" y="-2043"/>
         </scene>
         <!--Schedule-->
         <scene sceneID="b71-j3-ceC">
@@ -739,7 +738,6 @@
         <!--Residents-->
         <scene sceneID="28g-Jl-bFP">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="hGp-KX-LQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="JOy-5N-whz" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Residents" image="people" id="1vz-03-o7u"/>
                     <toolbarItems/>
@@ -752,8 +750,9 @@
                         <segue destination="SHe-DN-Gzg" kind="relationship" relationship="rootViewController" id="jeS-1I-PYb"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hGp-KX-LQ8" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3757.5999999999999" y="-68.815592203898049"/>
+            <point key="canvasLocation" x="2717" y="-70"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="GAE-CW-eLc">
@@ -781,6 +780,6 @@
         <image name="test" width="1920" height="1440"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="GDo-xi-jof"/>
+        <segue reference="Wlt-Tn-As5"/>
     </inferredMetricsTieBreakers>
 </document>

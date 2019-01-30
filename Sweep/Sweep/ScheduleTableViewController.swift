@@ -116,5 +116,4 @@ class ScheduleTableViewController: UITableViewController {
         calculateSections()
         tableView.reloadData()
     }
-    
 }

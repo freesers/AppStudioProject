@@ -73,33 +73,10 @@ class LoginViewController: UIViewController {
             self.passwordTextField.text = "*******"
             self.loginButton.setTitle("Logging in...", for: .normal)
             let uid = user.uid
-            
-            // load userinfo from server
-            UserModelController.loadUser(with: uid, completion: { (user) in
-                
-                // load residents from house
-                HouseModelController.loadResidents(from: user.house) { (house) in
-                    HouseModelController.residents = house.residents.turnStringInArray()
-                    
-                    // load chores from house
-                    ChoreModelController.loadChoresDirectory {
-                        self.loadChoresFromServer()
-                        
-                        // create up to date schedule
-                        ScheduleController.rearrangePeople()
-                    }
-                }
-                
-                // segue to choresTableViewController
-                DispatchQueue.main.async {
-                    UserModelController.currentUser = user
-                    self.performSegue(withIdentifier: "loggedInSegue", sender: nil)
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }
-            })
+            self.userAndChoresConfig(uid: uid)
         }
     }
-    
+
     /// logs user in from FireBase account and server information
     @IBAction func loginButtonPressed(_ sender: Any) {
         
@@ -114,39 +91,60 @@ class LoginViewController: UIViewController {
             
             // check for error first
             if let error = authError {
-                print("Login error:", error.localizedDescription)
+                print(error.localizedDescription)
+                DispatchQueue.main.async {
+                    self.createAlert(with: "Unable to login. Email or password is incorrect")
+                    self.setToBlanc()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
             }
             
             guard let result = authResult else { return }
             let uid = result.user.uid
-            // load userinfo from server
-            UserModelController.loadUser(with: uid, completion: { (user) in
-                UserModelController.currentUser = user
-                
-                // load resident from house
-                HouseModelController.loadResidents(from: user.house) { (house) in
-                    HouseModelController.residents = house.residents.turnStringInArray()
-                    
-                    // load chores from house
-                    ChoreModelController.loadChoresDirectory {
-                        self.loadChoresFromServer()
-                        
-                        // create up to date schedule
-                        ScheduleController.rearrangePeople()
-                    }
-                }
-                
-                // segue to choresTableViewController
-                DispatchQueue.main.async {
-                    self.performSegue(withIdentifier: "logInSegue", sender: nil)
-                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
-                }
-            })
+            self.userAndChoresConfig(uid: uid)
             
             // print error if login failure
             guard let loginError = authError else { return }
             print("Login Error: \(loginError.localizedDescription)")
         }
+    }
+    
+    /// configures all the loading for users, residents chores & schedule
+    func userAndChoresConfig(uid: String) {
+        // load userinfo from server
+        UserModelController.loadUser(with: uid, completion: { (user) in
+            
+            // show error message if server returns nothing
+            guard let user = user else {
+                DispatchQueue.main.async {
+                    self.createAlert(with: "No response from server, try again later")
+                    self.setToBlanc()
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                }
+                return
+            }
+            
+            UserModelController.currentUser = user
+            
+            // load resident from house
+            HouseModelController.loadResidents(from: user.house) { (house) in
+                HouseModelController.residents = house.residents.turnStringInArray()
+                
+                // load chores from house
+                ChoreModelController.loadChoresDirectory {
+                    self.loadChoresFromServer()
+                    
+                    // create up to date schedule
+                    ScheduleController.rearrangePeople()
+                }
+            }
+            
+            // segue to choresTableViewController
+            DispatchQueue.main.async {
+                self.performSegue(withIdentifier: "logInSegue", sender: nil)
+                UIApplication.shared.isNetworkActivityIndicatorVisible = false
+            }
+        })
     }
     
     /// loads chores from server and updates the array
@@ -225,10 +223,14 @@ class LoginViewController: UIViewController {
     
     /// resets textfield and button when unwinded
     @IBAction func unwindToLogin(segue: UIStoryboardSegue) {
+        setToBlanc()
+    }
+    
+    /// sets text field and button to initial state
+    func setToBlanc() {
         emailTextField.text = ""
         passwordTextField.text = ""
         loginButton.setTitle("Sign In", for: .normal)
-        print("worked")
     }
 }
 

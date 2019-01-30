@@ -132,14 +132,7 @@ class HouseModelController {
         task.resume()
     }
     
-    // MARK: - Helpers
-    
-    /// creates string from residents array
-    static func toString(data: Any) -> String? {
-        guard let data = try? JSONSerialization.data(withJSONObject: data, options: []) else { return nil }
-        return String(data: data, encoding: .utf8)
-    }
-    
+    /// deletes user from house (replaces the array)
     static func deleteUserFromHouse(with id: Int) {
         let newArray = HouseModelController.residents.filter {$0 != UserModelController.currentUser.name}
         HouseModelController.residents = newArray
@@ -163,6 +156,14 @@ class HouseModelController {
         })
         task.resume()
         
+    }
+    
+    // MARK: - Helpers
+    
+    /// creates string from residents array
+    static func toString(data: Any) -> String? {
+        guard let data = try? JSONSerialization.data(withJSONObject: data, options: []) else { return nil }
+        return String(data: data, encoding: .utf8)
     }
 }
 

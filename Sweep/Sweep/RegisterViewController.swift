@@ -132,6 +132,16 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
         
         // create firebase account
         Auth.auth().createUser(withEmail: emailTextField.text!, password: passwordTextField.text!) { (AuthDataResult, Error) in
+            
+            // handle incorrect email
+            if let error = Error {
+                print("AutError: \(error.localizedDescription)")
+                DispatchQueue.main.async {
+                    self.emailTextField.text = ""
+                    UIApplication.shared.isNetworkActivityIndicatorVisible = false
+                    self.createAlert(with: "The email you entered is not correct")
+                }
+            }
             guard let user = AuthDataResult?.user  else { return }
             uid = user.uid
             self.setCurrentUser(with: uid) {
@@ -140,9 +150,6 @@ class RegisterViewController: UIViewController, UIPickerViewDataSource, UIPicker
                 } else {
                     self.existingHouse()
                 }
-            }
-            if let error = Error {
-                print("AutError: \(error.localizedDescription)")
             }
         }
     }

@@ -57,7 +57,7 @@ class UserModelController {
     }
     
     /// loads and decodes user from server, then gives user in completion handler
-    static func loadUser(with uid: String, completion: @escaping (User) -> Void) {
+    static func loadUser(with uid: String, completion: @escaping (User?) -> Void) {
         
         // setup request
         let userUrl = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/users?uid=\(uid)")!
@@ -71,16 +71,16 @@ class UserModelController {
                     completion(user[0])
                 }
                 
-                // nothing returned
-                else {
-                    print("Nothing received from server, is it running?")
-                   
+                // nothing returned, error handling in the viewcontroller itself
+                 else {
+                    completion(nil)
                 }
             }
         }
         task.resume()
     }
     
+    /// deletes user with from server
     static func deleteUser(with id: Int) {
         
         let deleteURL = URL(string: "https://ide50-freesers.legacy.cs50.io:8080/users/\(id)")!

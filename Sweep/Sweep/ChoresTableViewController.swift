@@ -49,7 +49,11 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-        self.tableView.reloadData()
+        
+        // reload until the cells are preconfigured, only if there actually is local data
+        while tableView.visibleCells.isEmpty {
+            tableView.reloadData()
+        }
     }
     
     // MARK: - Table view data source
@@ -83,7 +87,7 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     /// can edit rows if user is administrator
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
-        if Bool(UserModelController.currentUser.isAdministrator)! {
+        if Bool(UserModelController.currentUser.isAdministrator)! && UIApplication.shared.isNetworkActivityIndicatorVisible == false {
             return true
         } else {
             return false
@@ -134,6 +138,17 @@ class ChoresTableViewController: UITableViewController, CellSubclassDelegate, UI
     /// delegate method that reloads data after server results
     func reloadCells() {
         tableView.reloadData()
+    }
+    
+    /// only enter enditing mode if chores are downloaded
+    override func setEditing(_ editing: Bool, animated: Bool) {
+        if UIApplication.shared.isNetworkActivityIndicatorVisible == true {
+            let alert = UIAlertController(title: "Just a moment", message: "Before you can delete chores, please wait until the most recent chores are refreshed.", preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+            self.present(alert, animated: true)
+        } else {
+            super.setEditing(editing, animated: animated)
+        }
     }
     
     // MARK: - Cell interaction
