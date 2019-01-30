@@ -15,6 +15,6 @@ Sander de Vries
 https://github.com/freesers/AppStudioProject/blob/master/LICENSE
 
 ## External sources
-Sweep image: Andrei Skaryna (https://www.iconfinder.com/icons/2015940/broom_cleaning_office_sweep_icon_icon)
-FireBase Authentication: (https://firebase.google.com/products/auth/)
-Rester server: Martijn Stegeman (https://github.com/stgm/rester)
+* Sweep image: Andrei Skaryna (https://www.iconfinder.com/icons/2015940/broom_cleaning_office_sweep_icon_icon)
+* FireBase Authentication: (https://firebase.google.com/products/auth/)
+* Rester server: Martijn Stegeman (https://github.com/stgm/rester)
