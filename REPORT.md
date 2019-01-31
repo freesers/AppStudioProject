@@ -57,9 +57,4 @@ Because the schedule has to change in the next week(s) and not start at the begi
 
 Because I wanted the initial app something like the "Wie Betaalt Wat" for cleaning schedules, I wanted to create a score function for completing chores. These scores would then be displayed in the residents tab, and also used in creating the schedule. Making sure everybody does equal work. Unfortunately, given the time, I wasn't able to implement this feature. 
 
-
-
-
-
-
-
+A general point for challenges: I found that I had to write the same code in a lot of places, but those functions didn't really deserver an own file. I discovered that extensions were an excellent addition to the project. For example, extending UIViewController I could implement a tap to dismiss the keyboard behaviour for all my viewcontrollers with keyboards. And by extending UIColor with static properties "skyBlue", I could quickly set the correct color to all objects that needed them.
