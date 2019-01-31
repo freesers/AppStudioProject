@@ -9,4 +9,6 @@ Sweep lets users create and join houses to manage the chores that need to be don
 ![](doc/finalUtilityModels.png)
 
 ### LoginViewController
-Handles the login screen. If user is already signed in, he/her is redirected to the choreTableView. Requests all neccesary data from the server
+Handles the login screen. If user is already signed in, he/she is redirected to the choreTableView. Requests all neccesary data from the server. After a succesful verification with FireBase and the local server. This viewcontroller is also the destination of the unwind segues: sign out & leave house. If a user doesn't have an account yet, he/she can tap the "register" button, which segues to user to the RegisterViewController. 
+
+### RegisterViewController
