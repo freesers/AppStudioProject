@@ -11,6 +11,9 @@ Sweep lets users create and join houses to manage the chores that need to be don
 ## Author
 Sander de Vries
 
+## Video
+https://youtu.be/DXOA_M7095s
+
 ## LICENSE
 https://github.com/freesers/AppStudioProject/blob/master/LICENSE
 
