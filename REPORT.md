@@ -7,3 +7,6 @@ Sweep lets users create and join houses to manage the chores that need to be don
 ## Technical Desgin
 ![](doc/finalDesign.png)
 ![](doc/finalUtilityModels.png)
+
+### LoginViewController
+Handles the login screen. If user is already signed in, he/her is redirected to the choreTableView. Requests all neccesary data from the server
