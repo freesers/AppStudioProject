@@ -5,4 +5,4 @@ Sweep lets users create and join houses to manage the chores that need to be don
 ![](doc/chores.PNG)
 
 ## Technical Desgin
-bla bla bla
+![](doc/finalDesign.png)
