@@ -6,3 +6,4 @@ Sweep lets users create and join houses to manage the chores that need to be don
 
 ## Technical Desgin
 ![](doc/finalDesign.png)
+![](doc/finalUtilityModels.png)
